@@ -8,23 +8,24 @@
 # 如何与后台集成
 点击保存按钮时，会调用js/designer.js中的如下方法：
 ```javascript
-	$("#saveButton").click(function(){
-        var propertyMap={};
-        $("#reportTable").find(".widget").each(function(){
-            var widget=$(this);
-            var properties=widget.data("properties");
-            var id=widget.attr("id");
-            propertyMap[id]=properties;
-        });
-        var reportHtml=$("#reportTable").prop("outerHTML");
-        var report_id=Config['report_id'];
-        var reportConfig=JSON.stringify(propertyMap);
-        var parameter={reportHtml:reportHtml,reportConfig:reportConfig,report_id:report_id};
-        console.log(parameter);//TODO:在这里将reportHtml和reportConfig提交到后台，解析生成实际表单
-        // $.post("save_config.dhtml",parameter,function(json){
-        //  layer.alert(json.message);
-        // });
-    });
+$("#saveButton").click(function(){
+	var propertyMap={};
+	$("#reportTable").find(".widget").each(function(){
+		var widget=$(this);
+		var properties=widget.data("properties");
+		var id=widget.attr("id");
+		propertyMap[id]=properties;
+	});
+    var reportHtml=$("#reportTable").prop("outerHTML");
+	var report_id=Config['report_id'];
+	var reportConfig=JSON.stringify(propertyMap);
+	var parameter={reportHtml:reportHtml,reportConfig:reportConfig,report_id:report_id};
+	console.log(parameter);//TODO:在这里将reportHtml和reportConfig提交到后台，解析生成实际表单
+    // $.post("save_config.dhtml",parameter,function(json){
+		//  layer.alert(json.message);
+	// });
+});
+```
 将设计器生成的reportHtml与reportConfig提交到后台，后台做相应的解析生成最终的用户填写表单界面。同时后端还应有一套处理保存、修改表单数据的逻辑，建议根据reportConfig里的字段动态生成数据表的方式来做。
 # 添加新的控件
 如果此代码中的组件不足，可自己扩展。首先在widget.js中添加控件定义。
@@ -67,6 +68,11 @@ Widget['text']={//设置控件的名称
 		Widget.copyPropertyToWidget(propertyBox,widget);
 	}
 };
+```
+然后，找个合适的图标，把控件的入口放到designer.html中的widgetList中：
+```html
+<li widget="table"><a href="#"><i class="iconfont">&#xe807;</i></a><p>动态表格</p></li>
+```
 #联系我
 邮件:hxfein@126.com
 QQ群:586897279
