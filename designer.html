@@ -1,0 +1,330 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>自定义表单</title>
+    <link rel="stylesheet" type="text/css" href="http://124.161.16.163:1357/xaeimm_web/static_designer/andyui/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="http://124.161.16.163:1357/xaeimm_web/static_designer/andyui/css/unit.css">
+    <link rel="stylesheet" type="text/css" href="http://124.161.16.163:1357/xaeimm_web/static_designer/andyui/css/module.css">
+    <link rel="stylesheet" type="text/css" href="http://124.161.16.163:1357/xaeimm_web/static_designer/andyui/css/attribute.css">
+    <script src="http://124.161.16.163:1357/xaeimm_web/static_designer/andyui/js/jquery.min.js"></script>
+    <script src="http://124.161.16.163:1357/xaeimm_web/static_designer/andyui/js/andyui.js"></script>
+    <script type="text/javascript" src="http://124.161.16.163:1357/xaeimm_web/static/common/layer/layer.js"></script>
+	<link rel="stylesheet" type="text/css" href="./css/designer.css"/>
+	<script src="./js/widgets.js"></script>
+	<script src="./js/designer.js"></script>
+	<script src="http://124.161.16.163:1357/xaeimm_web/static/core/admin/js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript">
+		var Config={report_id:"5145d27672724b00ba8156509157eb9c"};
+		Config['reportConfig']=function(config){
+			return config||{};
+		}();
+	</script>
+</head>
+
+<body>
+   <div class="g-layout">
+   	<div class="layout-head ">
+   		<div class="m-toolbar f-b-b f-p-xs  f-bg-light-lt300">
+   			<div class="item f-m-r-xs">
+   				<a href="#" id="saveButton" class="u-btn info"><i class="iconfont">&#xe668;</i>保存</a>
+   			</div>
+   			
+   			<div class="u-group f-right">
+   				<!-- <a href="#" class="u-btn item" title="预览"><i class="iconfont">&#xe653;</i></a> -->
+   				<a href="/xaeimm_web/report/list.dhtml" class="u-btn item" title="返回"><i class="iconfont">&#xe602;</i></a>
+   			</div>
+   		</div>
+   	</div>
+   	<div class="layout-left f-b-r" style="width: 247px">
+   		<div class="m-panel fit g-h-auto">
+   			<div class="panel-head  f-bg-light-lt400">
+   				<div class="m-toolbar">
+   					<div class="title">组件库</div>
+   				</div>
+   			</div>
+   			<div class="panel-body">
+   				<ul id="widgetList" class="m-list icon">
+   					<li widget="text"><a href="#"><i class="iconfont">&#xe676;</i></a><p>文本</p></li>
+   					<li widget="textbox"><a href="#"><i class="iconfont">&#xe6e0;</i></a><p>单文本框</p></li>
+   					<li widget="textarea"><a href="#"><i class="iconfont">&#xe624;</i></a><p>多文本框</p></li>
+   					<li widget="select"><a href="#"><i class="iconfont">&#xe63f;</i></a><p>下拉选择</p></li>
+   					<li widget="decimalbox"><a href="#"><i class="iconfont">&#xe6c1;</i></a><p>数字输入</p></li>
+   					<li widget="datepicker"><a href="#"><i class="iconfont">&#xe626;</i></a><p>日期选择</p></li>
+   					<li widget="radio"><a href="#"><i class="iconfont">&#xe60d;</i></a><p>单选框</p></li>
+   					<li widget="multIndex"><a href="#"><i class="iconfont">&#xe995;</i></a><p>多选框</p></li>
+   					<li widget="table"><a href="#"><i class="iconfont">&#xe807;</i></a><p>动态表格</p></li>
+   				</ul>
+   			</div>
+   		</div>
+   	</div>
+   	
+   	
+   	<div class="layout-center f-b-r ">
+   		<div class="m-panel fit">
+   			<div class="panel-head f-bg-light-lt400">
+   				<div class="m-toolbar">
+   					<div class="title">表单设计</div>
+   					<button id="historyButton" class="item u-btn texture f-ng-p-sm f-bg-light-lt300"><i class="iconfont"></i>历史版本</button>
+   					<div class="item f-right">
+   						<div class="u-group">
+	   						<!-- disabled -->
+							<button id="mergeButton" type="button" class="u-btn texture"><i class="iconfont">&#xe639;</i>合并</button>
+							<button id="splitButton" type="button" class="u-btn texture"><i class="iconfont">&#xe61e;</i>拆分</button>
+							<button id="removeButton" type="button" class="u-btn texture"><i class="iconfont">&#xe60f;</i>移除</button>
+							<button id="clearButton" type="button" class="u-btn texture"><i class="iconfont">&#xe60f;</i>清空</button>
+   						</div>
+   					</div>
+   				</div>
+   			</div>
+   			<div class="panel-body f-bg-light-lt300">
+   				<div class="g-h-max f-p-md">
+   					<div id="designContent" class="g-h-auto f-center f-bg-white border-box f-shadow" style="padding:30px 60px 30px 30px;">
+   					    <table id="reportTable" class="m-table-form table edit" style="width:100%">
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+   					</div>
+   				</div>
+   			</div>
+   		</div>
+   		
+   	</div>
+   	<div class="layout-right"  style="width: 300px">
+   		
+   		<div class="m-panel fit">
+   			<div class="panel-head  f-bg-light-lt400">
+   				<div class="m-toolbar">
+   					<div class="title">表单属性配置</div>
+   				</div>
+   			</div>
+   			<div class="panel-body">
+				<div id="textProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">文本</td>
+							<td><input class="u-input attr" name="text" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">对齐方式</td>
+							<td>
+								<select class="u-select attr" name="align">
+									<option value="left">居左</option>
+									<option value="center">居中</option>
+									<option value="right">居右</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="textboxProperty" class="f-p-sm propertyBox">
+					<input class="u-input attr" type="hidden" name="index_code"/>
+					<input class="u-input attr" type="hidden" name="index_type" value="varchar"/>
+					<input class="u-input attr" type="hidden" name="widgetType" value="textbox"/>
+					<input class="u-input attr" type="hidden" name="save_type" value="2"/>
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">输入提示</td>
+							<td>
+								<input class="u-input attr" name="placeholder" value=""/>
+							</td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="textareaProperty" class="f-p-sm propertyBox">
+					<input class="u-input attr" type="hidden" name="index_code"/>
+					<input class="u-input attr" type="hidden" name="index_type" value="varchar"/>
+					<input class="u-input attr" type="hidden" name="widgetType" value="textarea"/>
+					<input class="u-input attr" type="hidden" name="save_type" value="2"/>
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="selectProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">代码表编码</td>
+							<td><input class="u-input attr" name="datasource_id" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="radioProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">代码表编码</td>
+							<td><input class="u-input attr" name="datasource_id" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="multIndexProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">代码表编码</td>
+							<td><input class="u-input attr" name="datasource_id" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="decimalboxProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="datepickerProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">指标名称</td>
+							<td><input class="u-input attr" name="index_name" value=""/></td>
+						</tr>
+						<tr>
+							<td class="table-head" style="width: 5em">验证表达式</td>
+							<td>
+								<input class="u-input attr" name="valid_expr" value=""/>
+							</td>
+						</tr>
+					</table>
+				</div>
+				
+				<div id="tableProperty" class="f-p-sm propertyBox">
+					<table class="m-table-form">
+						<tr>
+							<td class="table-head" style="width: 5em">表格名称</td>
+							<td><input class="u-input attr" name="table_name" value=""/></td>
+						</tr>
+					</table>
+				</div>
+   			</div>
+   		</div>
+   	</div>
+</div>
+<div style="display:none">
+	<table id="tableTemplate" class="m-table edit" style="display:none;" width="100%">
+		<thead>
+			<tr>
+				<th class="title">字段</th>
+				<th class="title">字段</th>
+				<th class="title">字段</th>
+				<th><button class="u-btn success"><i class="iconfont">&#xe659;</i></button></th>
+			</tr>
+   		</thead>
+   		<tbody>
+			<tr>
+				<td class="item">
+					<div class="widget">
+						<input type="text" placeholder="填写数据" class="u-input"/>
+					</div>
+				</td>
+				<td class="item">
+					<div class="widget">
+						<input type="text" placeholder="填写数据" class="u-input"/>
+					</div>
+				</td>
+				<td class="item">
+					<div class="widget">
+						<input type="text" placeholder="填写数据" class="u-input"/>
+					</div>
+				</td>
+				<td>
+					<button class="u-btn"><i class="iconfont">&#xe67f;</i></button>
+				</td>
+			</tr>
+   		</tbody>
+	</table>
+</div>
+
+</body>
+</html>
+
