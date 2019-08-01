@@ -1,0 +1,81 @@
+@import "../base/deploy";
+.m-topmenu {  
+	clear:both;
+	padding: 0;
+	li {
+		float: left;
+		display: block;
+		position: relative;
+		overflow: visible;
+		a {
+			display: block;
+			display: flex;
+			float: left;
+			line-height:;
+			padding: 0 13px;
+			box-sizing: border-box;
+			white-space: nowrap;
+			font-size: 14px;
+			position: relative;
+			overflow: hidden;
+			transition: background-color 0.5s, color 0.5s ,border-color 0.5s;
+			-moz-transition: background-color 0.5s, color 0.5s ,border-color 0.5s;	//Firefox 4 
+			-webkit-transition: background-color 0.5s, color 0.5s ,border-color 0.5s;	// Safari 和 Chrome
+			-o-transition: background-color 0.5s, color 0.5s ,border-color 0.5s;	// Opera 
+			&:hover{
+			}
+			.iconfont{ font-size: 14px;}
+			.icon{
+				margin-right:5px;
+				font-size: 18px;
+				float: inherit;
+			}
+			.arrow{
+				margin-left:5px;
+			}
+			&.active{
+				border-bottom-width: 3px;
+				border-bottom-style: solid;
+			}
+		  }
+		ul {
+			display:none;
+			width: 100%;
+			position: absolute;
+			top:;
+			left:0;
+			z-index:9999;			
+			li {
+				display: block;
+				clear: both;
+				width: 100%;
+				a {
+					width: 100%;
+					display: block;
+					&.active{
+						border-bottom-width:0;
+						border-bottom-style:solid;
+					}
+					.arrow{
+						margin-left:0;
+						float: right;
+					}
+					.icon{
+						font-size: 14px;
+					}
+				}
+				ul{
+					left: 100%;
+					display:none;
+					top: 0;
+					margin-left: 26px;
+				}
+			   }
+		   }
+	   }
+	//默认皮肤
+	#menu > .topmenu-skin(solid, @color-base-info);
+	//默认尺寸
+	#menu > .topmenu-size(43px);
+	
+}

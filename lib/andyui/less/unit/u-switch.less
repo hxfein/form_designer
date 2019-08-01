@@ -1,0 +1,50 @@
+@import "../base/deploy";
+.u-switch {
+	//.de;
+	border-width: 0;
+	display:inline-block;
+	*display: block;
+	float: left;
+	moz-user-select: -moz-none;
+	-moz-user-select: none;
+	-o-user-select:none;
+	-khtml-user-select:none;
+	-webkit-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	.iconfont{
+		//font-size: 31px;
+		cursor: pointer;
+		position: relative;
+		top:1px;
+	}
+	#input > .u-switch-size(@basesize);
+	&.sm{
+		#input > .u-switch-size(@sm);
+	}
+	&.xs{
+		#input > .u-switch-size(@xs);
+	}
+	&.lg{
+		#input > .u-switch-size(@lg);
+	}
+	&.md{
+		#input > .u-switch-size(@md);
+	}
+	&.xl{
+		#input > .u-switch-size(@xl);
+	}
+	input {
+		display: none;
+	}
+	&.on{
+		.iconfont{
+			color: #71B522;
+		}
+	}
+	&.off{
+		.iconfont{
+			color: #CCCCCC;
+		}
+	}
+}

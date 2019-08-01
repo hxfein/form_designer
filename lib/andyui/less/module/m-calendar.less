@@ -1,0 +1,363 @@
+@import "../base/deploy";
+@laydateW:260px;
+@laydateheadH:30px;
+@laydatecolor:#eee;
+@laydatetoday:#16aad8;
+@laydatebg:#fff;
+//日历插件
+.f-no-check(){
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.m-calendar{
+	width:100%;
+	border: 1px solid @laydatecolor;
+	overflow: hidden;
+	background: @laydatebg;
+	box-sizing: border-box;
+	//头部
+	.laydate-top, .head{
+		position: relative;
+		height: (@laydateheadH);
+		text-align: center;
+		//border-bottom: 1px solid @laydatecolor;
+		.f-no-check;
+		.laydate-left-y,.laydate-left-m{ position: absolute; left: 0px; top: 0px; color: @laydatetoday!important}
+		.laydate-left-m{ left:30px;}
+		.laydate-right-y,.laydate-right-m{ position: absolute; right: 0px; top: 0px; color: @laydatetoday!important}
+		.laydate-right-m{ right:30px;}
+		.laydate-right-y{
+			border-left: 1px solid @laydatecolor;
+			line-height: 29px;
+			background: lighten(@laydatecolor,5%);
+		}
+		.laydate-left-y{
+			border-right: 1px solid @laydatecolor;
+			line-height: 29px;
+			background: lighten(@laydatecolor,5%);
+		}
+		
+		.laydate-left-info{ display: block; float: left; width: 100%; height:@laydateheadH; line-height: @laydateheadH; color: #333; }
+		.laydate-left-info:hover{ color: #28a9e4}
+		.laydate-ym, .timeselect{
+			height: @laydateheadH;
+			line-height: @laydateheadH;
+			.laydate-choose{
+				float: left;
+				display: block;
+				width: 10px;
+				height: 10px;
+				line-height: 10px;
+				padding: ((@laydateheadH - 20px) * 0.5);
+				//background-color:darken(@laydatecolor,5%);
+				.iconfont{
+					color: darken(@laydatecolor,30%);
+				}
+				cite{
+					width: 0;
+					height: 0;
+					border-width: 4px;
+					border-style: dashed;
+					border-color: transparent;
+					overflow: hidden;
+					cursor: pointer;
+					display: block;
+				}
+				&.laydate-chprev{
+					cite{
+						border-right-style: solid;
+						border-right-color: darken(@laydatecolor,30%);
+						margin-left:-4px; 
+					}
+				}
+				&.laydate-chnext{
+					cite{
+						border-left-style: solid;
+						border-left-color: darken(@laydatecolor,30%);
+						margin-left:4px; 
+					}
+				}
+				&:hover{
+					background-color:lighten(@laydatecolor,2%);
+				}
+			}
+			input{
+				height: (@laydateheadH - 10px);
+				border:none;
+				line-height: (@laydateheadH - 10px);
+				text-align: center;
+				font-size: ((@laydateheadH - 10px) * 0.6);
+				width: 50px;
+				padding-left: 0px;
+				padding-right: (@laydateheadH - 10px);
+				float: left;
+				margin-right: 0!important;
+				background: none;
+				cursor: pointer;
+			}
+			label{
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-width: 4px;
+				border-style: dashed;
+				border-color: transparent;
+				overflow: hidden;
+				cursor: pointer;
+				top:50%;
+				right: ((@laydateheadH - 10px) * 2);
+				margin-top: -2px;
+				margin-right: -12px;
+				border-top-color: darken(@laydatecolor,30%);
+				border-top-style: solid;
+				z-index: 200;
+			}
+			//年选择器
+			&.year, &.laydate-y{
+				input{
+					width: 45px;
+				}
+			}
+			//月选择器
+			&.month, &.laydate-m{
+				input{
+					width: 30px;
+				}
+			}
+			//年弹出框
+			.laydate-yms{
+				border:solid 1px darken(@laydatecolor,10%);
+				width: 100%;
+				display: none;
+				position: absolute;
+				z-index: 400;
+				top:(@laydateheadH - 10px);
+				background-color:lighten(@laydatecolor,50%);
+				.minYear, .maxYear{
+						color:@laydatecolor;
+					}
+				&.laydate-show{
+
+//					transition: width 0.2s linear;
+//					-moz-transition:width 0.2s linear;
+//					-webkit-transition:width 0.2s linear;
+//					-o-transition:width 0.2s linear;
+				}
+				.laydate-tab{
+					
+					display: block;
+					position: relative;
+					text-align: center;
+					width: 100;
+					height: 12px;
+					padding: 4px 0;
+					background-color:darken(@laydatecolor,5%);
+					i{
+						cursor: pointer;
+						display: block;
+						margin: 0 auto;
+						width: 12px;
+						height: 12px;
+					}
+					
+					&.laydate-chtop{
+						cite{ 
+							border-bottom-style: solid;
+							border-bottom-color: darken(@laydatecolor,30%);
+							//margin-bottom: -5px;
+						}
+					}
+					&.laydate-chdown{
+						cite{
+							border-top-style: solid;
+							border-top-color: darken(@laydatecolor,30%);
+							//margin-top: -5px;
+						}
+					}
+					&:hover{
+						background-color:lighten(@laydatecolor,2%);
+					}
+				}
+				ul{
+					height: 139px;
+					padding: 0;
+					margin: 0;
+					width: 100%;
+					li, span{
+						float: left;
+						height: 20px;
+						cursor: pointer;
+						line-height: 20px;
+						width: 50%;
+						display: block;
+						text-align: center;
+						margin: 0!important;
+						padding: 0!important;
+						list-style: none;
+						font-size: 12px;
+						&:hover{
+							background-color:@laydatecolor;
+						}
+					}
+				}
+			}
+		}
+	}
+	//日期
+	.laydate-center{ padding: 0 0 5px 0;}
+	.laydate-table{
+		width: 100%;
+		border: none;
+		border-collapse: collapse;
+		thead{
+			tr{
+				th{
+					height: @laydateheadH;
+					text-align: center;
+					vertical-align: middle;
+					width: (@laydateW / 7);
+					font-size: 12px;
+					background: @laydatetoday;
+					color: #fff;
+				}
+			}
+		}
+		tbody{
+			tr{
+				td{
+					position: relative;
+					text-align: center;
+					.dateDD{
+						width: ((@laydateW / 7) - 6);
+						height: ((@laydateW / 7) - 6);
+						border-radius: 50%;
+						background-color:lighten(@laydatecolor,40%);
+						font-size: 12px;
+						position: relative;
+						color: darken(@laydatecolor,50%);
+						cursor: pointer;
+						left: 50%;
+						margin-left:(0 - ((@laydateW / 14) - 3));
+						&:hover{
+							background-color:lighten(@laydatecolor,2%);
+						}
+						div{
+							&.corner{
+								position: absolute;
+								top:-3px;
+								right: 0px;
+								width: 12px;
+								height: 12px;
+								line-height: 12px;
+								font-size: 11px;
+								text-align: center;
+								z-index: 7;
+								.iconfont{
+									font-size: 18px;
+									color: #FF0004;
+								}
+								.m-menu{
+									width: 130px;
+									background: #fff;
+									&.tagging{
+										z-index: 1000!important;
+									}
+									li{
+										a{
+											float: none;
+											text-align: left;
+											height: 25px;
+											line-height: 23px;
+											padding: 0 5px;
+										}
+									}
+								}
+							}
+							&.dateDay{
+								width: ((@laydateW / 7) - 6);
+								width: ((@laydateW / 7) - 6);
+								line-height: ((@laydateW / 7) - 6);
+								
+							}
+							&.dateText{
+								width: 100%;
+								text-align: center;
+								position: absolute;
+								bottom:-17px;
+								font-size: 12px;
+								left:0;
+								z-index: 0;
+								color: #ff6000;
+							}
+						}
+					}
+					.dateYY{ cursor: pointer;.f-no-check; padding: 10px;}
+					.dateYY:hover{ background:@laydatetoday; color: #FFF }
+					&.laydate-nothis{
+						.dateDD {
+							color: darken(@laydatecolor, 8%);
+							background: lighten(@laydatecolor,8%);
+							
+						}
+						.dateYY{ cursor: pointer;.f-no-check; padding: 10px;}
+					    .dateYY:hover{ background:@laydatetoday; color: #FFF }
+						.dateYY:hover{ background:@laydatetoday }
+					}//上个月
+					&.isToday{
+						.dateDD{
+							background: @laydatetoday;
+							.dateDay{
+								color: #fff;
+							}
+						}
+					}//今天
+
+				}
+			}
+		}
+	}
+	.laydate-table-y{
+		tbody{
+			tr{
+				td{ padding:3px;
+					.dateDD{
+						width: ((@laydateW / 6));
+						text-align: center;
+						height: ((@laydateW / 6)-13);
+						line-height: ((@laydateW / 6)-13);
+						border-radius:0;
+					}
+					div{
+					&.dateDay{
+								width:auto !important;
+								width: ((@laydateW / 7) - 6);
+								line-height: ((@laydateW / 7) - 6 );
+						        
+							}
+						}
+				
+				}
+		}
+			}
+	}
+	//
+	.laydate-bottom{
+		
+	}
+	//日历
+	&.display{
+		.laydate-table{
+			tbody{
+				tr{
+					td{
+						height: 49px;
+					}
+				}
+			}
+		}
+	}
+}

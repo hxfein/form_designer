@@ -1,0 +1,222 @@
+@import "../base/deploy";
+//面板
+.m-panel {
+	//默认面板不含边框与圆角
+	
+    .panel-head {
+		position: relative;
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		.title{
+			display: block;
+			float: left;
+			font-weight: 400;
+			text-indent: 10px;
+			.iconfont{
+				margin-right: 2px
+			}
+		}
+		.item{
+			display: block;
+			float: left;
+			font-weight: normal;
+			text-indent: 0;
+		}
+		
+		//以下为兼容老版本格式 新版本不再推荐使用
+		.icon {
+			//.de;
+			width: 35px;
+			display: block;
+			float: left;
+			color: #6B6B6B;
+			text-align: center;
+			i { 
+				font-size: 22px;
+			}
+		}
+		.grpou {
+			display: block;
+			float: left;
+		}
+		.panel-head-btnbar {
+			//.de;
+			float: left;
+			i {
+				font-size: 13px
+			}
+		}
+		.panel-h-l {
+			float: left;
+			//.de;
+			padding: 0;
+		}
+		.panel-h-bot {
+			float: left;
+			//.de;
+			padding: 0;
+		}
+		.panel-h-r {
+			float: right;
+			padding: 0;
+			//.de;
+		}
+		//老版本布局结束
+		//整合工具栏
+		.m-toolbar{
+			background: none!important;
+			.title{
+				border-bottom:none;
+				margin-right: 10px; 
+			}
+			.item{
+				margin: 0 2px;
+				.item{
+					margin:0px;
+					&.item-r{
+						//margin-left:-2px;
+						//margin-right:-2px;
+					}
+				}
+			}
+		}
+	}
+	.panel-foot{
+		.m-pagebar{
+			padding:5px;
+			.u-btn{
+				margin-left:-3px;
+			}
+			.u-input{
+				margin-bottom:-6px;
+			}
+		}
+	}
+	//具有边框线的面板样式
+	&.f-b{
+		border-style: solid;
+		border-width: 1px;
+		.panel-head{
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+		}
+		.panel-foot{
+			border-top-style: solid;
+			border-top-width: 1px;
+		}
+	}
+	//弹窗面板
+	&.window{
+		box-shadow: 3px 3px 9px 3px rgba(0,0,0,0.3);
+		//border:none;
+		border-style: solid;
+		border-width: 1px;
+		.panel-head{
+			//border:none;
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			.m-toolbar{
+				//padding:8px 5px 8px 5px!important;
+				.u-group{
+					.u-btn.sm{
+						padding: 0 6px!important;
+						border-left-width: 1px!important;
+						border:none!important;
+						i{
+							font-size: 14px!important;
+						}
+					}
+				}
+			}
+		}
+		.panel-body {
+			margin:0 5px 0 5px;
+			box-sizing: border-box;
+		}
+		.panel-foot{
+			text-align: right;
+			padding: 5px;
+			.u-btn{
+				padding-left:8px;
+				padding-right:8px;
+				margin: 0 1px;
+			}
+			
+		}
+		//提示样式
+		&.an_d_massage{
+			background:#fff !important;
+			.panel-head{
+				border-bottom: none;
+				background:#fff !important;
+				.m-toolbar{
+					padding-left: 0px;
+					padding-right: 0px;
+					background:#fff !important;
+					.u-group{
+						.u-btn, .item .u-btn{
+							//padding: 0 6!important;
+							border:none !important;
+							background: none !important;
+						}
+					}
+				}
+			}
+			.panel-body{
+				.panel-massage-box{
+					.panel-massage-icon{
+						font-size:64px;
+						width: 64px;
+						height: 64px;
+						float: left;
+						margin:0 10px;
+					}
+					.panel-massage{
+						padding: 0 10px 0 100px;
+					}
+				}
+			}
+			.panel-foot{
+				background:#fff !important;
+			}
+		}
+		//修改动画方案时间
+		&.zoomIn{
+			animation: zoomIn 0.3s;
+			-moz-animation: zoomIn 0.3s;
+			-webkit-animation: zoomIn 0.3s;
+			-o-animation: zoomIn 0.3s;
+		}
+		&.zoomOut{
+			animation: zoomOut 0.3s;
+			-moz-animation: zoomOut 0.3s;
+			-webkit-animation: zoomOut 0.3s;
+			-o-animation: zoomOut 0.3s;
+		}
+	}
+	//默认皮肤
+	#panel > .panel-color(solid , lighten(@color-base-light,35%), @color-base-info, lighten(@color-base-light, 8%) ,3px);
+	#panel > .panel-size(40px);
+}
+//以下样式为老版本需求--先不删除，新版本采用工具栏方式嵌入
+.m-panel .panel-foot .panel-foot-btnbar {  padding: 3px 10px 2px 10px; float: left; }
+.m-panel .panel-foot .panel-foot-btnbar i { font-size: 13px }
+
+//弹窗覆盖
+.m-panel-mask {
+	@tophack:~"expression(eval(document.documentElement.scrollTop))";
+	display: none;
+	position: fixed;
+	overflow: hidden;
+	left: 0px;
+	top: 0px;
+	*position:absolute;
+    *top:@tophack;
+}
+
+.m-panel-maskshow {
+	display: block;
+	filter: alpha(opacity=40)!important;
+	opacity: 0.6 !important;
+	background: #000;
+}

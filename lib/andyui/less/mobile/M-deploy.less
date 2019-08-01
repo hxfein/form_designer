@@ -1,0 +1,1337 @@
+//配置函数-即全局配置函数控制尺寸与皮肤
+
+//基础色
+@color-base-primary:#7266ba;
+@color-base-info:lighten(desaturate(#03A9F4,20%),4%);
+@color-base-success:#339933;
+@color-base-warning:#FF9900;
+@color-base-danger:desaturate(#F44336,10%);
+@color-base-light:#cccccc;
+@color-base-black:#263646;
+@color-base-dark:#3a3f51;
+@color-base-white:#ffffff; 
+//基础间距
+@spacing:5px;
+//基础圆角
+@radius:3px;
+//基础行高
+@height:26px;
+@line-height:26px;
+//字体定义
+@fontfamily:~"'Microsoft YaHei', \5fae\8f6f\96c5\9ed1, arial, \5b8b\4f53";
+@basesize:48px;
+@xs:24px;
+@sm:40px;
+@md:56px;
+@lg:64px;
+@xl:72px;
+//默认阴影
+@shadow-inset:rgba(0,0,0,.2) 0 3px 3px inset;
+//hack兼容
+@IE8hack:~"\9";
+@IE7hack:~"*";
+@star:~"expression(this.onFocus=this.blur())";
+
+//IE兼容引用文件
+.forie{
+	//behavior: url(/andyui/admin/css/PIE.htc)@IE8hack;
+}
+.forieboxsizing{
+    //behavior: url(/andyui/admin/css/box-sizing.htc)@IE8hack;
+}
+
+//尺寸定义--全局CSS使用以下尺寸定义
+.size(@hei, @padding, @bordersize) when ( (@hei - @padding*2 - @bordersize*2-8) < 12px ){
+	height: @hei;
+	line-height:(@hei - 2);
+	line-height:@hei@IE7hack;
+	line-height:(@hei - 2)@IE8hack;//IE8控制行高
+	border-width: @bordersize;
+	padding: 0 @padding;
+	font-size: 12px;
+	box-sizing:border-box;//默认内部填充
+	.forieboxsizing;
+	.iconfont{
+		font-size: (@hei - @padding*2 - @bordersize*2-8);
+	}
+}
+
+.size(@hei, @padding, @bordersize) when ( (@hei - @padding*2 - @bordersize*2-8) >= 12px ){
+	height: @hei;
+	line-height:(@hei - 2);
+	line-height:@hei@IE7hack;
+	line-height:(@hei - 2)@IE8hack;//IE8控制行高
+	border-width: @bordersize;
+	padding: 0 @padding;
+	font-size: (@hei - @padding*2 - @bordersize*2-8);
+	box-sizing:border-box;//默认内部填充
+	.forieboxsizing;
+	.iconfont{
+		font-size: (@hei - @padding*2 - @bordersize*2-8);
+	}
+}
+
+.xs{.size(@xs,2px,1px); font-size: 11px}
+.sm{.size(@sm,2px,1px);}
+.de{.size(@basesize,3px,1px);}
+.md{.size(@md,4px,1px);}
+.lg{.size(@lg,5px,1px);}
+.xl{.size(@xl,6px,1px);}
+
+//渐变色彩
+#color{
+	.bg-color(@color) when (lightness(@color) >= 70%){
+		border-color:darken(@color,12%);
+		background-color:@color;
+		color:fadeout(darken(@color,50%),10%);
+		a{
+			color:darken(@color,50%);
+			&:hover{
+				color:darken(@color,65%);
+			}
+		}
+		hr{
+			border-color:darken(@color,5%);
+		}
+	}
+	.bg-color(@color) when (lightness(@color) < 70%){
+		border-color:darken(@color,5%);
+		background-color:@color;
+		color:fadeout(lighten(@color,45%),15%);
+		a{
+			color:lighten(@color,45%);
+			&:hover{
+				color:lighten(@color,60%);
+			}
+		}
+		hr{
+			border-color:darken(@color,5%);
+		}
+	}
+	.bg-gral(@color) when (lightness(@color) < 70%){
+		background: @color;
+		background: -moz-linear-gradient(top,  @color 0%, darken(@color, 10%) 100%);
+		background: -webkit-linear-gradient(top,  @color 0%,darken(@color, 10%) 100%);
+		background: linear-gradient(to bottom,  @color 0%,darken(@color, 10%) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = @color, endColorstr = darken(@color, 10%));
+		color: lighten(@color, 55%);
+		border-color:darken(@color,5%);
+		background-repeat: no-repeat;
+	}
+	.bg-gral(@color) when (lightness(@color) >= 70%){
+		background: @color;
+		background: -moz-linear-gradient(top,  lighten(@color, 8%) 0%, @color 100%);
+		background: -webkit-linear-gradient(top,  lighten(@color, 8%) 0%,@color 100%);
+		background: linear-gradient(to bottom,  lighten(@color, 8%) 0%,@color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = lighten(@color, 8%), endColorstr = @color); 
+		color: darken(@color, 40%);
+		border-color:darken(@color,5%);
+		background-repeat: no-repeat;
+	}
+}
+//按钮色彩
+#u-btn{
+	.u-btn-skin(@btn-color)  when (lightness(@btn-color) >= 70%){
+		border-color:darken(@btn-color,12%);
+		color: darken(@btn-color,30%);
+		background-color:lighten(@btn-color,15%);
+		&:hover{
+			background-color:lighten(@btn-color,18%);
+			color:darken(@btn-color,40%);
+		}
+		&:active ,&.active{
+			background-color:lighten(@btn-color,15%);
+		}
+		&:disabled, &.disabled{
+			background-color:lighten(@btn-color,20%);
+			color:darken(@btn-color,20%);
+		}
+	}
+	.u-btn-skin(@btn-color) when (lightness(@btn-color) < 70%){
+		border-color:@btn-color;
+		color: lighten(@btn-color,45%);
+		background-color:@btn-color;
+		&:hover{
+			background-color:lighten(@btn-color,10%);
+			color:lighten(@btn-color,80%);
+		}
+		&:active ,&.active{
+			background-color:@btn-color;
+			color:lighten(@btn-color,80%);
+		}
+		&:disabled, &.disabled{
+			background-color:lighten(@btn-color,18%);
+			color:lighten(@btn-color,35%);
+		}
+	}
+	//渐变按钮
+	.u-btntext-skin(@btn-color){
+		#color > .bg-gral(@btn-color);
+		&:hover{
+			#color > .bg-gral(lighten(@btn-color,3%));
+		}
+		&:active ,&.active{
+			background:@btn-color!important;
+		}
+		&:disabled, &.disabled{
+			#color > .bg-gral(desaturate(@btn-color,23%));
+			color:fadeout(darken(@btn-color,30%),40%);
+		}
+	}
+}
+//文本输入框
+@input-err:~"url(/andyui/admin/img/err.png)";
+@input-cor:~"url(/andyui/admin/img/correct.png)";
+#input{
+	.u-input-skin(@input-color) when (lightness(@input-color) >= 70%){
+		#color > .bg-color(@input-color);
+		//提示文字颜色
+		&::-webkit-input-placeholder { //WebKit browsers
+			color:darken(@input-color,20%);
+		}
+		&:-moz-placeholder { //Mozilla Firefox 4 to 18
+			color:darken(@input-color,20%);
+		}
+		&::-moz-placeholder { //Mozilla Firefox 19+
+			color:darken(@input-color,20%);
+		}
+		&:-ms-input-placeholder { //Internet Explorer 10+
+			color:darken(@input-color,20%);
+		}
+		&:hover{//移入样式
+			background-image: url(/andyui/admin/img/edit.png);
+		}
+		&:focus{//获取焦点
+			#color > .bg-color(mix(@input-color,lighten(@color-base-info,30%)));//在原有基础颜色上添加蓝色
+			
+		}
+		&.nofocus:focus{//不允许获取焦点
+			#color > .bg-color(@input-color);
+		}
+		&.err{//错误状态
+			#color > .bg-color(mix(@input-color,lighten(@color-base-danger,30%)));//在原有基础颜色上添加蓝色
+		}
+		&.disabled, &:disabled{//不允许输入
+			#color > .bg-color(darken(@input-color,5%))
+		}
+		.option-block{
+			#color > .bg-color(darken(@input-color,8%))
+		}
+	}
+	.u-input-skin(@input-color) when (lightness(@input-color) < 70%){
+		#color > .bg-color(@input-color);
+		//提示文字颜色
+		&::-webkit-input-placeholder { //WebKit browsers
+			color:lighten(@input-color,20%);
+		}
+		&:-moz-placeholder { //Mozilla Firefox 4 to 18
+			color:lighten(@input-color,20%);
+		}
+		&::-moz-placeholder { //Mozilla Firefox 19+
+			color:lighten(@input-color,20%);
+		}
+		&:-ms-input-placeholder { //Internet Explorer 10+
+			color:lighten(@input-color,20%);
+		}
+		&:hover{//移入样式
+			background-image: url(/andyui/admin/img/edit2.png);
+		}
+		&:focus{//获取焦点
+			#color > .bg-color(mix(@input-color,lighten(@color-base-info,30%)));//在原有基础颜色上添加蓝色
+		}
+		&.nofocus:focus{//不允许获取焦点
+			#color > .bg-color(@input-color);
+		}
+		&.err{//错误状态
+			#color > .bg-color(mix(@input-color,@color-base-danger));//在原有基础颜色上添加蓝色
+		}
+		&.disabled, &:disabled{//不允许输入
+			#color > .bg-color(darken(@input-color,15%))
+		}
+	}
+	.u-select-skin(@input-color){
+		#color > .bg-color(@input-color);
+		&:hover{//移入样式
+			background-image: none;
+		}
+		&:focus{//获取焦点
+			#color > .bg-color(@input-color);
+			background-image: none;
+		}
+		&.nofocus:focus{//不允许获取焦点
+			#color > .bg-color(@input-color);
+		}
+		&.err{//错误状态
+			#color > .bg-color(mix(@input-color,@color-base-danger));//在原有基础颜色上添加蓝色
+		}
+		&.disabled, &:disabled{//不允许输入
+			#color > .bg-color(darken(@input-color,15%))
+		}
+	}
+	//.u-switch-color(@input-color){}
+	.u-switch-size(@size){
+		height: @size;
+		.iconfont{
+			font-size:(@size * 0.8);
+		}
+	}
+}
+//导航
+#menu{
+	//白底主题
+	.topmenu-skin(default, @bg-color , @topmenu-color){
+		background-color:@bg-color;
+		li{
+			a{
+				background:none;
+				color:darken(@bg-color,35%);
+				&:hover{
+					background-color: darken(@bg-color, 5%);
+					color:@topmenu-color;
+				}
+				&.active{
+					color:@topmenu-color;
+					background-color: darken(@bg-color, 5%);
+					border-bottom-color:@topmenu-color;
+				}
+			}
+			ul{
+				li{
+					a{  
+						background-color:@bg-color;
+						border-color:darken(@bg-color,20%);
+					}
+				}
+			}
+		}
+	}
+	//彩色主题
+	.topmenu-skin(solid, @topmenu-color){
+		background-color:@topmenu-color;
+		li{
+			a{
+				background-color:@topmenu-color;
+				color:lighten(@topmenu-color,40%);
+				&:hover{
+					background-color: darken(@topmenu-color, 5%);
+					color:lighten(@topmenu-color, 100%);
+				}
+				&.active{
+					border-bottom-color:lighten(@topmenu-color, 5%);
+					background-color: lighten(@topmenu-color, 5%);
+				}
+			}
+			ul{
+				li{
+					a{
+						border-color:darken(@topmenu-color, 5%);
+					}
+				}
+			}
+		}
+	}
+	//尺寸定义
+	.topmenu-size(@size){
+		height: @size;
+		li{
+			height: @size;
+			a{
+				height: @size;
+				line-height: @size;
+				&.active{
+					height: (@size - 3px);
+				}
+			}
+			ul{
+				top:@size;
+				li{
+					height:@size;
+					a{
+						height:@size;
+						line-height:@size;
+						&.active{
+							height:@size;
+						}
+					}
+					ul{
+						top:0;
+					}
+				}
+			}
+		}
+	}
+	//基础菜单皮肤
+	.menu-skin(@menucolor) when (lightness(@menucolor) >= 70%){
+		border-color:darken(@menucolor, 10%);
+		li, >li, ul>li{
+			a{
+				border-color:darken(@menucolor, 10%);
+				background-color:@menucolor;
+				color:darken(@menucolor, 30%);
+				&:hover{
+					background:darken(@menucolor, 5%);
+					color:darken(@menucolor, 50%);
+				}
+			}
+			&.line{
+				border-color:darken(@menucolor, 10%);
+			}
+			&.active{
+				a{
+					background-color:@color-base-info;
+					color:lighten(@menucolor, 80%)!important;
+				}
+			}
+		}
+	}
+	.menu-skin(@menucolor) when (lightness(@menucolor) < 70%){
+		border-color:@menucolor;
+		li, >li, ul>li{
+			a{
+				border-color:darken(@menucolor, 5%);
+				background-color:@menucolor;
+				color:lighten(@menucolor, 40%);
+				&:hover{
+					background:lighten(@menucolor, 5%);
+					color:lighten(@menucolor, 80%);
+				}
+			}
+			&.line{
+				border-color:darken(@menucolor, 5%);
+			}
+			&.active{
+				a{
+					background-color:darken(@menucolor, 5%);
+					color:lighten(@menucolor, 80%)!important;
+				}
+			}
+		}
+	}
+}
+//表单组
+#u-group{
+	//纯色主题
+	.group-skin(solid, @group-color) when (lightness(@group-color) >= 70%){
+		.item{
+			#color > .bg-color(@group-color)
+		}
+		.mark{
+			#color > .bg-color(darken(@group-color,4%))
+		}
+		.u-btn{
+			#u-btn > .u-btn-skin(darken(@group-color,4%));
+		}
+		.u-input{
+			#input > .u-input-skin(@group-color);
+		}
+		.u-select{
+			#input > .u-select-skin(@group-color);
+		}
+	}
+	.group-skin(solid, @group-color) when (lightness(@group-color) < 70%){
+		.item{
+			#color > .bg-color(@group-color)
+		}
+		.mark{
+			#color > .bg-color(@group-color)
+		}
+		.u-btn{
+			#u-btn > .u-btn-skin(@group-color);
+		}
+		.u-input{
+			#input > .u-input-skin(darken(@group-color,8%));
+		}
+		.u-select{
+			#input > .u-select-skin(darken(@group-color,8%));
+		}
+	}
+	//渐变主题
+	.group-skin(gral, @group-color) when (lightness(@group-color) >= 70%){
+		.item{
+			#color > .bg-color(darken(@group-color,5%))
+		}
+		.mark{
+			#color > .bg-color(darken(@group-color,5%))
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(darken(@group-color,5%));
+		}
+		.u-input{
+			#input > .u-input-skin(@group-color);
+		}
+		.u-select{
+			#input > .u-select-skin(@group-color);
+		}
+	}
+	.group-skin(gral, @group-color) when (lightness(@group-color) < 70%){
+		.item{
+			#color > .bg-color(@group-color)
+		}
+		.mark{
+			#color > .bg-color(@group-color)
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(@group-color);
+		}
+		.u-input{
+			#input > .u-input-skin(@group-color);
+		}
+		.u-select{
+			#input > .u-select-skin(@group-color);
+		}
+	}
+	//组合尺寸
+	.group-size(@size) {
+		height: @size;
+		padding: 0;
+		.u-btn, .u-input, .item, .u-label,.u-select{
+			.size(@size,4px,1px);
+			border-left-width:0;
+		}
+		.u-switch{
+			#input > .u-switch-size(@size)
+		}
+		.mark{
+			.size(@size,4px,1px);
+		}
+		.item{
+			//padding: 0;
+			line-height: @size;
+			&.u-btn, &.u-input, &.mark ,&.u-label,&.u-select{
+				line-height: (@size - 2px);
+			}
+		}
+		
+		.mark{
+			padding: 0 5px;
+		}
+		//上传组件中强制fwl控件大小
+		object, embed{
+			width: @size!important;
+			height: @size!important;
+		}
+	}
+}
+//combo
+#m-combo{
+	.combo-skin(@combocolor){
+		.u-input{
+			#input > .u-input-skin(@combocolor);
+		}
+		.u-group{
+			#u-group > .group-skin(solid , @combocolor);
+			}
+		.combo{
+			#color > .bg-color(@combocolor);
+		}
+		.m-menu, .u-down-menu{
+			#menu  > .menu-skin(lighten(@combocolor, 8%));
+		}
+	}
+}
+//页签
+#tabs{
+	// 纯色
+	.tabs-color(solid , @color, @active-color) when (lightness(@color) >= 70%){
+		border-bottom-color:@color;
+		li{
+			a{
+				color: darken(@color,30%);
+				background-color:@color; 
+				border-color:@color;
+				&:hover{
+					color: darken(@color,50%);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-color(@active-color);
+				}
+			}
+		}
+	}
+	.tabs-color(solid , @color, @active-color) when (lightness(@color) < 70%){
+		border-bottom-color:@color;
+		li{
+			a{
+				color: lighten(@color,20%);
+				background-color:@color; 
+				border-color:@color;
+				&:hover{
+					color: lighten(@color,40%);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-color(@active-color);
+				}
+			}
+		}
+	}
+	// 渐变
+	.tabs-color(gral , @color, @active-color) when (lightness(@color) >= 70%){
+		border-bottom-color:@color;
+		li{
+			a{
+				#color > .bg-gral(@color);
+				color: darken(@color,8%);
+				&:hover{
+					#color > .bg-gral(lighten(@color),8%);
+				}
+				&.active{
+					#color > .bg-gral(@active-color);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-gral(@active-color);
+				}
+			}
+		}
+	}
+	.tabs-color(gral , @color, @active-color) when (lightness(@color) < 70%){
+		border-bottom-color:@color;
+		li{
+			a{
+				#color > .bg-gral(@color);
+				color: lighten(@color,15%);
+				&:hover{
+					#color > .bg-gral(lighten(@color),8%);
+				}
+				&.active{
+					#color > .bg-gral(@active-color);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-gral(@active-color);
+				}
+			}
+		}
+	}
+	//尺寸样式
+	.tabs-style(half, @h, @r){
+		height: @h;
+		.m-tabs-nav{
+			height: @h;
+			li{
+				height: @h;
+				a{
+					height: @h;
+					line-height: (@h - 1px);
+					border-top-left-radius:@r;
+					border-top-right-radius:@r;
+					border-bottom-left-radius:0;
+					border-bottom-right-radius:0;
+				}
+			}
+		}
+	}
+}
+#tabs-box{
+	.tabs-style(solid, half, @color, @active-color, @h, @r){
+		#tabs > .tabs-color(solid , @color, @active-color);
+		#tabs > .tabs-style(half, @h, @r);
+		.m-tabs-content, .tabs-content{
+			border-color:@color;
+			>.item{
+				background-color: @active-color;
+			}
+		}
+	}
+}
+//工具栏
+#toolbar{
+	//尺寸
+	.toolbar-size(@size) {
+		height: @size;
+		.item{
+			height: @size;
+			line-height: @size;
+		}
+		.u-group{
+			#u-group > .group-size(@size);
+		}
+		.title{
+			height: (@size - 2px);
+			line-height: (@size - 2px);
+		}
+		.u-switch{
+			#input > .u-switch-size(@size);
+		}
+		.u-checkbox{
+			.size(@size,4px,1px);
+		}
+		.tabs{
+			li{
+				a{
+					height: @size;
+					line-height: @size;
+				}
+			}
+		}
+		.m-topmenu{
+			#menu > .topmenu-size(@size);
+		}
+	}
+	//色彩
+	.toolbar-color(gral , @toolbar-color , @active-color) {
+		#color > .bg-gral(@toolbar-color);
+		border-color:darken(@toolbar-color , 8%)!important;
+		.title{
+			border-bottom-color: @active-color;
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(@toolbar-color)
+		}
+		.u-group{
+			#u-group > .group-skin(gral, @toolbar-color)
+		}
+		.m-combo{
+			#m-combo > .combo-skin(@toolbar-color)
+		}
+		.tabs{
+			#tabs > .tabs-color(solid , @toolbar-color, @active-color);
+		}
+		.m-topmenu{
+			#menu > .topmenu-skin(default, @active-color);
+		}
+	}
+	.toolbar-color(solid , @toolbar-color , @active-color) {
+		#color > .bg-color(@toolbar-color);
+		border-color:darken(@toolbar-color , 8%)!important;
+		.title{
+			border-bottom-color: @active-color;
+			//color: lighten(@toolbar-color, 80%);
+		}
+		.u-btn{
+			#u-btn > .u-btn-skin(@toolbar-color);
+			border-color:darken(@toolbar-color , 8%)!important;
+		}
+		.u-group{
+			#u-group > .group-skin(solid, @toolbar-color);
+			border-color:darken(@toolbar-color , 8%)!important;
+		}
+		.m-combo{
+			#m-combo > .combo-skin(@toolbar-color);
+		}
+		.tabs{
+			#tabs > .tabs-color(solid , @toolbar-color, @active-color);
+		}
+		.m-topmenu{
+			#menu > .topmenu-skin(default , @toolbar-color , @active-color);
+		}
+	}
+}
+//面板
+#panel{
+	.panel-color(gral , @color, @active-color , @radius){
+		border-radius: @radius;
+		border-color: darken(@color,8%);
+		.panel-head{
+			#color > .bg-gral(@color);
+			border-top-left-radius: @radius;
+			border-top-right-radius: @radius;
+			.title{
+				color:darken(@color,30%);
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-color(gral , @color , @active-color);
+				border-top-left-radius: @radius;
+			    border-top-right-radius: @radius;
+			}
+		}
+		.panel-body{
+			//border-radius: @radius;
+			background-color: lighten(@color,30%);
+			border-color: darken(@color,8%);
+		}
+		.panel-foot{
+			background-color: lighten(@color,8%);
+			border-bottom-left-radius: @radius;
+			border-bottom-right-radius: @radius;
+		}
+	}
+	.panel-color(solid , @color, @active-color , @boder-color , @radius) when (lightness(@color) >= 70%){
+		border-radius: @radius;
+		border-color:  @boder-color;
+		.panel-head{
+			#color > .bg-color(@color);
+			border-top-left-radius: @radius;
+			border-top-right-radius: @radius;
+			.title{
+				color:darken(@color,60%)!important;
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-color(solid , @color , @active-color);
+				border-top-left-radius: @radius;
+			    border-top-right-radius: @radius;
+			}
+			border-color: @boder-color;
+			.u-btn{
+				border-color:@color!important;
+			}
+		}
+		.panel-body{
+			background-color: lighten(@color,30%);
+			//border-radius: @radius;
+			border-color:  @boder-color;
+		}
+		.panel-foot{
+
+			background-color: @color;
+			border-bottom-left-radius: @radius;
+			border-bottom-right-radius: @radius;
+		}
+	}
+	.panel-color(solid , @color, @active-color , @boder-color , @radius) when (lightness(@color) < 70%){
+		border-radius: @radius;
+		border-color: @boder-color;
+		.panel-head{
+			#color > .bg-color(@color);
+			border-top-left-radius: @radius;
+			border-top-right-radius: @radius;
+			.title{
+				color:lighten(@color,35%)!important;
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-color(solid , @color , @active-color);
+				border-top-left-radius: @radius;
+			    border-top-right-radius: @radius;
+			}
+			border-color: @boder-color;
+			.u-btn{
+				border-color:@color!important;
+			}
+		}
+		.panel-body{
+			background-color: lighten(@color,30%);
+			//border-radius: @radius;
+			border-color:  @boder-color;
+		}
+		.panel-foot{
+			background-color: @color;
+			min-height: @radius;
+			border-bottom-left-radius: @radius;
+			border-bottom-right-radius: @radius;
+		}
+	}
+	.panel-size(@size){
+		.panel-head{
+			height:(@size + 6px);
+			.title,
+			.item,
+			.icon,
+			.panel-head-btnbar,
+			.panel-h-l,
+			.panel-h-bot,
+			.panel-h-r{
+				height:@size;
+				line-height:@size;
+				padding: 3px 0;
+			}
+			.u-group{
+				#u-group > .group-size(@size);
+				.item, .title{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-size(@size);
+				.item, .title{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+				
+				.title{
+					height: @size;
+					line-height: @size;
+				}
+				
+				.u-btn{
+					padding:0 5px!important;
+				}
+			}
+		}
+		.panel-foot{
+			.u-group{
+				#u-group > .group-size(@size);
+				.item{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+			}
+			.m-toolbar{#toolbar > .toolbar-size(@size);
+				.item{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+			}
+		}
+	}
+}
+//列表
+#m-list{
+	.news-color(@color){
+		li{
+			border-color:lighten(@color, 58%);
+			a{
+				color:@color;
+				&:hover{
+					color:lighten(@color, 20%);
+				}
+				.time{
+					color:lighten(desaturate(@color,20%), 30%);
+				}
+			}
+			.info{
+				color:lighten(desaturate(@color,20%), 15%);
+			}
+		}
+	}
+	.icon-list(@liw , @m , @iconcolor ,@iconbg){
+		li{
+			width: @liw;
+			padding: @m;
+			a, i.icon.iconfont{
+				width: @liw;
+				height: @liw;
+				line-height: @liw;
+				background-color: @iconbg;
+				font-size: (@liw * 0.6);
+				.iconfont{
+					font-size: (@liw * 0.6);
+					color:@iconcolor;
+				}
+			}
+		}
+	}
+}
+//侧边导航
+#m-sidemenu{
+	.sidemenu-color(style1, @color, @active-color){
+		li{
+			#color > .bg-color(@color);
+			a{
+				#color > .bg-color(@color);
+				&:hover{
+					#color > .bg-color(lighten(@color,3%));
+				}
+				&.active{
+					color:@active-color;
+					&:after{
+						background-color:@active-color;
+					}
+				}
+			}
+			li{
+				#color > .bg-color(darken(@color,5%));
+				a{
+					#color > .bg-color(darken(@color,5%));
+					&:hover{
+						#color > .bg-color(darken(@color,1%));
+					}
+				}
+				li{
+					#color > .bg-color(darken(@color,10%));
+					a{
+						#color > .bg-color(darken(@color,10%));
+						&:hover{
+							#color > .bg-color(darken(@color,6%));
+						}
+					}
+					li{
+						#color > .bg-color(darken(@color,15%));
+						a{
+							#color > .bg-color(darken(@color,15%));
+							&:hover{
+								#color > .bg-color(darken(@color,11%));
+							}
+						}
+						li{
+							#color > .bg-color(darken(@color,20%));
+							a{
+								#color > .bg-color(darken(@color,20%));
+								&:hover{
+									background-color:darken(@color,16%);
+								}
+							}
+							li{
+								#color > .bg-color(darken(@color,25%));
+								a{
+									#color > .bg-color(darken(@color,25%));
+									&:hover{
+										#color > .bg-color(darken(@color,21%));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.sidemenu-color(style2, @color, @active-color){
+		li{
+			#color > .bg-color(@color);
+			a{
+				#color > .bg-gral(@color);
+				&:hover{
+					#color > .bg-gral(lighten(@color,3%));
+				}
+				&.active{
+					color:@active-color;
+					&:after{
+						background-color:@active-color;
+					}
+				}
+			}
+			li{
+				#color > .bg-color(@color);
+				a{
+					#color > .bg-color(darken(@color,5%));
+					&:hover{
+						#color > .bg-color(darken(@color,5%))!important;
+					}
+				}
+				li{
+					#color > .bg-color(darken(@color,5%));
+					a{
+						#color > .bg-color(darken(@color,10%));
+						&:hover{
+							#color > .bg-color(darken(@color,10%))!important;
+						}
+					}
+					li{
+						#color > .bg-color(darken(@color,10%));
+						a{
+							#color > .bg-color(darken(@color,15%));
+							&:hover{
+								#color > .bg-color(darken(@color,15%))!important;
+							}
+						}
+						li{
+							#color > .bg-color(darken(@color,15%));
+							a{
+								#color > .bg-color(darken(@color,20%));
+								&:hover{
+									background-color:darken(@color,20%)!important;
+								}
+							}
+							li{
+								#color > .bg-color(darken(@color,20%));
+								a{
+									#color > .bg-color(darken(@color,25%));
+									&:hover{
+										#color > .bg-color(darken(@color,25%))!important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.sidemenu-color(style3, @color, @active-color){
+		border-color:@color;
+		&:after, &:before{
+			border-color:@color;
+		}
+		li{
+			#color > .bg-color(@color);
+			a{
+				color:@color;
+				&:hover{
+					//#color > .bg-color(lighten(@color,5%));
+					color:lighten(@color,15%);
+				}
+				&.parent{
+					&:after{
+						background-color:@color;
+					}
+				}
+				&.active{
+					color:@active-color;
+					&:after{
+						background-color:@active-color;
+					}
+				}
+			}
+		}
+	}
+}
+//列表样式
+#table{
+	.table(solid, @color, @hovercolor) when (lightness(@color) >= 70%){
+		background-color:lighten(@color,25%);
+		border-color: darken(@color,10%)!important;
+		th,td{
+			border-color: darken(@color,10%);
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				color:darken(@color,45%);
+				background-color: @color;
+			}
+		}
+		tbody{
+			th,td{
+				color:darken(@color,35%);
+				background-color:lighten(@color,25%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,5%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor);
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(darken(@color,20%),15%));
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(/andyui/admin/img/node.png)}
+			        &.group { background-image: url(/andyui/admin/img/group.png)}
+			        &.group.open { background-image: url(/andyui/admin/img/group-open.png)}
+				}
+			}
+		}
+	}
+	.table(solid, @color, @hovercolor) when (lightness(@color) < 70%){
+		//background-color:lighten(@color,30%);
+		border-color: darken(@color,6%)!important;
+		th,td{
+			border-color: darken(@color,6%);
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				color:lighten(@color,50%);
+				background-color: @color;
+			}
+		}
+		tbody{
+			th,td{
+				color:lighten(@color,40%);
+				background-color:desaturate(lighten(@color,12%),0%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,4%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor);
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(lighten(@color,10%),15%));
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(/andyui/admin/img/node.png)}
+			        &.group { background-image: url(/andyui/admin/img/group.png)}
+			        &.group.open { background-image: url(/andyui/admin/img/group-open.png)}
+				}
+			}
+		}
+	}
+	.table(gral, @color, @hovercolor) when (lightness(@color) >= 70%){
+		
+		background-color:lighten(@color,25%);
+		border-color: darken(@color,10%)!important;
+		th,td{
+			border-color: darken(@color,10%);
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				#color > .bg-gral(@color);
+			}
+		}
+		tbody{
+			th,td{
+				color:darken(@color,35%);
+				background-color:lighten(@color,25%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,9%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor);
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(darken(@color,20%),15%));
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(/andyui/admin/img/node.png)}
+			        &.group { background-image: url(/andyui/admin/img/group.png)}
+			        &.group.open { background-image: url(/andyui/admin/img/group-open.png)}
+				}
+			}
+		}
+	
+	}
+	.table(gral, @color, @hovercolor) when (lightness(@color) < 70%){
+		//background-color:lighten(@color,30%);
+		border-color: darken(@color,15%)!important;
+		th,td{
+			border-color: darken(@color,15%)!important;
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				#color > .bg-gral(@color);
+			}
+		}
+		tbody{
+			th,td{
+				color:lighten(@color,40%);
+				background-color:desaturate(lighten(@color,12%),0%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,4%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor)!important;
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(lighten(@color,10%),15%))!important;
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(/andyui/admin/img/node.png)}
+			        &.group { background-image: url(/andyui/admin/img/group.png)}
+			        &.group.open { background-image: url(/andyui/admin/img/group-open.png)}
+				}
+			}
+		}
+	}
+}
+//表单
+#table-form{
+	.form-color(@headw, @color){
+		td{
+			color: darken(@color, 45%);
+			&.table-head{
+				width: @headw;
+				color: darken(@color, 55%);
+			}
+			.u-btn{
+				#u-btn > .u-btntext-skin(@color);
+			}
+			.u-input, .multi-select-box, .u-textarea{
+				#input > .u-input-skin(@color);
+			}
+			.u-select{ 
+				#input > .u-select-skin(@color);
+			}
+			.m-combo{
+				#m-combo > .combo-skin(@color);
+			}
+			.u-group{
+				#u-group > .group-skin(gral, @color);
+			}
+		}
+		&.inline, &.table{
+			background: darken(@color, 15%);
+			td{
+				background-color: @color;
+				&.table-head{
+					background-color: darken(@color, 9%);
+					color: darken(@color, 55%);
+				}
+			}
+		}
+	}
+}
+//进度条
+#progress{
+	.progress-style(@height, @color, @bar-color){
+		height: @height;
+		font-size:(@height * 0.7);
+		line-height: @height;
+		background-color: @color;
+		border-color: @color;
+		border-radius: (@height * 0.2);
+		padding: 0!important;
+		box-sizing: content-box!important;
+		.bar{
+			height:@height;
+			line-height: @height;
+			font-size:(@height * 0.7);
+			#color > .bg-color(@bar-color);
+		}
+	}
+}
+
+

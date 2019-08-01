@@ -1,0 +1,73 @@
+.col-editor {
+	right: 0;
+	top: -18px;
+	position: absolute;
+	display: block;
+}
+
+.col-editor .iconfont {
+	font-size: 16px;
+	color: #fff;
+	background-color: #73bf2d;
+	padding: 1px 1px 0 1px;
+	cursor: pointer;
+}
+
+.row-editor {
+	right: -36px;
+	top: 0;
+	position: absolute;
+	display: block;
+}
+
+.row-editor .iconfont {
+	font-size: 16px;
+	color: #fff;
+	background-color: #059DFF;
+	padding: 1px 1px 0 1px;
+	cursor: pointer;
+}
+
+.col-active {
+	border-left: 2px solid #73bf2d !important;
+}
+
+.row-active {
+	border-top: 2px solid #059dff !important;
+}
+
+.light{
+	border: 1px solid #77ce96;
+	background-color: #aef1b7 !important;
+	box-shadow: 0 0 8px #77ce96;
+}
+.childLight{
+	border: 1px solid #77ce96;
+	background-color: #aef1b7 !important;
+	box-shadow: 0 0 8px #77ce96;
+}
+.header{
+	background-color:#f2f2f2 !important;
+}
+.propertyBox{
+	display:none;
+}
+.widget_item{
+	margin-left:10px;
+}
+
+td{
+	-webkit-touch-callout: none; /* iOS Safari */
+
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+	-khtml-user-select: none; /* Konqueror */
+
+	-moz-user-select: none; /* Firefox */
+
+	-ms-user-select: none; /* Internet Explorer/Edge */
+
+	user-select: none; /* Non-prefixed version, currently
+
+	not supported by any browser */
+}

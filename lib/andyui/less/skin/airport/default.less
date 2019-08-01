@@ -1,0 +1,381 @@
+@import "../../base/deploy";
+@import "../framework-deploy";
+@import "../workbench";
+@import "../componentstyle";
+
+//风格定义
+@head-h:50px;//框架头部高度
+@primary-color:#2C5E8B;//皮肤主题颜色
+@primary-active-color:#eee;//皮肤主题高亮用于桌面主题
+@left-active-color:#FFCC00;//左侧导航高亮颜色
+@left-color:#4276A5;//左侧导航颜色
+@logo-color:#1f4f7b;//LOGO颜色
+@head-color:@primary-color;//头部背景颜色
+@head-active-color:#0e3b6f;//头部导航高亮颜色
+@bg-color:#eee;//整体背景颜色
+@foot-color:lighten(#7266ba,70%);//底部颜色
+@body-color:#333;//全局默认文字颜色
+@workbench-color:saturate(lighten(@primary-color,10%),5%);//工作台面样式
+//全局框架定义
+body{
+	background-color:@bg-color;
+	color:@body-color;
+	.g-framework{
+	  #framework > .default-color(@head-h , @primary-color , @left-color , @left-active-color, @logo-color , @head-color , @head-active-color , @bg-color , @foot-color);
+	  .framework-head{ 
+		  border-bottom-color:@head-color;
+		  .u-group .u-btn{
+			  line-height: 51px;
+			  height: 51px;
+			  font-size: 14px!important;
+			  display: inline;
+			  vertical-align: middle;
+			  .iconfont{
+				  font-size:22px!important;
+				  display: block;
+				  float: left;
+			  }
+			  img{
+				  padding: 13px 0;
+			  }
+			  > span{
+				  display: block;
+				  float: left;
+				  height: 51px;
+				  line-height: 51px;
+				  padding: 0 5px;
+				  &.u-point{
+					  //width: 10px;
+					  min-width: 10px;
+					  height: 10px;
+					  padding: 0;
+					  line-height: 10px;
+					  font-size: 10px!important;
+				  }
+			  }
+		  }
+		  .navmore{
+			 .bar{
+			  background-color: @logo-color;
+			  
+			  &:hover{
+				  background-color: darken(@logo-color,5%);
+				  
+			  }
+			  .iconfont{
+				  font-size:22px;
+				  color:rgba(255,255,255,.7);
+				 }
+			  }
+			  .navbox{
+				  background-color: #fff;
+				  top:52px!important;
+				  box-shadow: 5px 5px 5px rgba(0,0,0,.2);
+				  .m-magnet{
+					  li{
+						  a{
+							 background-color: #fff;
+							 color:#2b6eb5;
+							  &:hover{
+								  color: #fff!important;
+							  }
+						  }
+					  }
+				  }
+			  }
+		  } 
+		  .m-topmenu li a{
+			  font-size:16px;
+			  color: lighten(@head-color,40%)!important;
+		  }
+		  //新增的消息提示样式
+		  .messagebox{
+			  .combo{
+				  top:52px!important;
+			  }
+		  }
+		}
+		
+	  .m-tabs-header.line.frameworktabs{
+			border-bottom-color: darken(@bg-color,10%);
+			background-color: lighten(@bg-color,8%);
+			.m-tabs-nav{
+				li{
+					&.active{
+						a{
+							color: @left-color;
+							border-bottom-color: @left-color!important;
+							
+						}
+					}
+				}
+			}
+		}
+	  .toolbar{
+		.m-menu{
+			top:52px!important;
+			box-shadow: -5px 5px 5px rgba(0,0,0,.2);
+			padding: 5px 0;
+			overflow: hidden;
+			border:none;
+			animation: fadeInDown 0.3s;
+			li{
+				border:none;
+				padding: 0 5px 0 5px!important;
+				box-sizing: border-box;
+				a{
+					border-bottom:1px solid darken(@bg-color,10%);
+					color: @left-color!important;
+					padding: 0;
+
+				}
+				&:last-child{
+					a{
+						border-bottom: none;
+					}
+				}
+			}
+		}
+	  }
+	}
+}
+//页面头部的内侧阴影
+.pageshadow{
+	box-shadow:5px 5px 5px darken(@bg-color,5%) inset;
+	-moz-box-shadow:5px 5px 5px darken(@bg-color,5%) inset;/*firefox*/ 
+	-webkit-box-shadow:5px 5px 5px darken(@bg-color,5%) inset;/*webkit*/ 
+	animation: fadeIn 0.5s;
+}
+//整合表单组件样式,包含了各种表单组件以及各种附加色彩修饰
+#componentstyle(@primary-active-color, @bg-color, @head-active-color, @primary-active-color);
+.m-panel {
+#panel > .panel-size(30px);
+	.panel-head{
+		.title{
+			font-size: 14px;
+		}
+	}
+}
+//个人工作台
+.workbench{
+	#workbench >.workbench(@bg-color, @workbench-color, @primary-active-color);
+	//样式选择
+	//#workbench >.workbench(style02); 
+}
+
+
+//特殊样式-----------新增（黄波）
+
+.tree-title-icon{
+	font-size: 20px; 
+	position: relative;
+	top: 2px;
+}
+.sbd-table-head{
+	width: 110px; 
+	padding-right: 40px; 
+	font-size: 15px;
+	text-align: right;
+	color: #999999;
+}
+.f-font-size-20{
+	font-size: 20px;
+}
+.f-font-size-16{
+	font-size: 16px;
+}
+.f-left-2i{left: 2px !important}
+.f-bg-n{
+	background: none !important;
+}
+.m-tabs-header.ui-inline{
+	height: 42px;
+	background-color: #fff;
+}
+.m-tabs-header.ui-inline.line .m-tabs-nav{
+	height: 42px;
+}
+.m-tabs-header.ui-inline.line .m-tabs-nav li{
+	height: 42px;
+}
+.m-tabs-header.ui-inline.line .m-tabs-nav li a{
+	height: 40px;
+	line-height: 40px;
+	font-size: 15px;
+	border-radius: 0;
+	background: none;
+	border-color: #fff;
+	border-top: 0;
+	border-bottom: 2px solid #fff;
+}
+.m-tabs-header.line.ui-inline li.active a, .m-tabs-header.line.ui-inline li.activate a{
+	border-top: 0;
+	border-bottom: 2px solid #2294e7;
+	color: #2294e7;
+}
+.ui-inline-item{
+	height: 100%;
+}
+.m-table.ui-airport-table thead th, .m-table.ui-airport-table thead td{
+	background-color: #eff3f8;
+    border-color:#D3D3D3;
+	height: 29px;
+}
+.m-table.ui-airport-table tbody th, .m-table.ui-airport-table tbody td,.m-table.ui-airport-table tbody tr:nth-child(2n) td{
+	background-color: #fff;
+    border-color:#D3D3D3;
+	height: 24px;
+}
+.m-table.ui-airport-table tbody tr:hover td{
+	background-color: #eff3f8;
+	border-color:#D3D3D3;
+	color: #696969;
+}
+.m-table.ui-airport-table tbody tr:hover td button.u-btn.xs.texture,.m-table.ui-airport-table tbody tr:hover td .u-btn:hover{
+	background: #eff3f8;
+	color: #979797;
+    border-color: #e1e1e1;
+}
+.m-table.ui-airport-table tbody tr td .u-switch{
+	height: 24px;
+	line-height: 24px;
+}
+.m-table.ui-airport-table tbody tr.current td{
+	    background-color: #E4EFC9;
+}
+.m-table.ui-airport-table tbody tr.current td button.u-btn.xs.texture{
+	background: #E4EFC9;
+	color: #979797;
+    border-color: #d1d1d1;
+}
+.u-btn{
+	&.green{
+		#u-btn > .u-btn-color(#32c5d2)!important;
+	}
+	&.blue{
+		#u-btn > .u-btn-color(#3598dc)!important;
+	}
+}
+div.list{
+	padding: 2px 5px;
+	height: 22px;
+	line-height: 22px;
+	cursor: pointer;
+}
+div.list:hover{
+	color: #000;
+}
+.f-visible{
+	overflow: visible;
+}
+.f-visible-i{
+	.f-visible!important;
+}
+.f-y-visible{
+	overflow-y: visible;
+}
+.f-y-visible-i{
+	.f-visible!important;
+}
+.menu-icon-top{
+	position: absolute;top:-14px;font-size:20px;color:rgba(0, 0, 0, 0.3);left: 50%;margin-left: -8px;
+}
+.menu-icon-bottom{
+	position: absolute;bottom:-14px;font-size:20px;color:rgba(0, 0, 0, 0.3);left: 50%;margin-left: -8px;
+}
+.m-panel .panel-head .m-toolbar .u-checkbox.ui-checkbox{
+	font-size: 15px; 
+	color: #000;
+}
+.u-checkbox.ui-checkbox input{
+	width: 14px;
+	height: 14px;
+}
+.f-bg-white-i{
+	background-color: #fff !important;
+}
+.m-table-form.inline.ui-table, .m-table-form.table.ui-table{
+	border-spacing: 0;
+}
+.m-table-form.inline.ui-table tr td, .m-table-form.table.ui-table tr td{
+	border-top: 1px solid #d4d4d4;
+	border-left: 1px solid #d4d4d4;
+}
+.m-table-form.inline.ui-table tr td:last-child, .m-table-form.table.ui-table tr td:last-child{
+	border-right: 1px solid #d4d4d4;
+}
+.m-table-form.inline.ui-table tr:last-child td, .m-table-form.table.ui-table tr:last-child td{
+	border-bottom: 1px solid #d4d4d4;
+}
+.m-table-form.inline.ui-table tr.style-n td, .m-table-form.table.ui-table tr.style-n td{
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	height: 0;
+}
+.m-table-form.document.ui-table tr td{
+	border-top: 1px solid #E80C10;
+	border-left: 1px solid #E80C10;
+}
+.m-table-form.document.ui-table tr td:last-child{
+	border-right: 1px solid #E80C10;
+}
+.m-table-form.document.ui-table tr:last-child td{
+	border-bottom: 1px solid #E80C10;
+}
+.m-table-form.document.ui-table tr.style-n td,.m-table-form.ui-table tr.style-n td{
+	border: 0;
+	padding: 0;
+	margin: 0;
+	background: none;
+	height: 0;
+}
+.tool-right{
+	width: 258px;
+	right:2px;
+	top: 53px;
+	background-color: rgba(242, 242, 242, 1);
+	box-shadow:none;
+}
+.shrink{
+	right:14px; 
+	top: 66px;
+	z-index: 9999;
+}
+.scrollbar.shrink{
+	right:30px; 
+	top: 66px;
+}
+.tool-right.scrollbar{
+	right:18px;
+	top: 53px;
+}
+.u-group .item.item-r{
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0
+}
+.f-shadow-n{
+	box-shadow: none;
+}
+.f-m-l-sml{
+	margin-left: 8px;
+}
+.f-p-tb-xls{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.f-p-tb-xsm{
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.f-hide{
+	display: none;
+}
+.f-wh-all{
+	width: 100%;
+	height: 100%;
+}
+.m-table-form td .u-textarea{
+	width: calc(~"100% - 2px");
+}

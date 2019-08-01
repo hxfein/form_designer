@@ -1,0 +1,54 @@
+.m-scrolltabs{
+	position: relative;
+	padding: 0px 38px;
+	box-sizing: border-box;
+	width: 100%;
+	display: table;
+	//overflow-x: hidden;
+	//overflow-y: visible;
+	
+	.left-bar,
+	.right-bar{
+		position: absolute;
+		left:0px;
+		top:2px;
+		//margin-top: -17px;
+		width: 35px;
+		height: 35px;
+		text-align: center;
+		line-height: 35px;
+		color: #eeeeee;
+		cursor: pointer;
+		font-size: 35px;
+		z-index: 1000;
+		&:active{
+			//background-color: #dadada;
+			color: #ffffff;
+		}
+	}
+	.right-bar{
+		left:auto;
+		right:0px;
+	}
+	.scrolltabs-con{
+		height: 100%;
+		overflow: hidden;
+		//display: table;
+		position: relative;
+		&:hover{
+			//height: 500px;
+		}
+		//z-index: -1;
+	}
+	&.m-scrolltabs-cover{
+		padding: 0px;
+	} 
+	
+}
+//测试代码！
+//.an-scrolltabs{ 
+//	overflow: hidden;
+//	width: 100%;
+//	position: absolute;
+//	z-index: -1;
+//} 

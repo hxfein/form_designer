@@ -1,0 +1,365 @@
+@import "../base/deploy";
+@import "../attribute/attribute";
+
+
+.m-table-form { 
+	width: 100%;
+	border-spacing:0px;
+	table-layout: fixed;
+	word-break: break-all;
+	padding: 0px;
+	>tbody >tr {
+		>td{
+		vertical-align: middle;
+		z-index: 1;
+		overflow: visible;
+		
+		&.table-head{
+			text-align: right;
+			padding: 10px 5px;
+			
+		}
+		//内部表单修饰
+		.u-input, .m-tooltip, .u-select, .u-textarea, .u-group {
+			width:100%;
+		}
+		.u-input{
+			*width:99%;
+		}
+		> .u-input{
+			box-sizing: border-box;
+		}
+		.u-group{
+			float:none;
+			.item-r{
+				margin-left: -1px~"\9";
+			}
+		}
+		p,.u-input-span{
+			padding:0 8px 0px 8px;
+		}
+		.m-combo{
+			display: block;
+			width: 100%;
+			*position: static;
+		}
+		}
+	}
+	.text{
+		padding-left: 10px;
+		padding-right:10px;
+	}
+	.u-checkbox, .u-label, .u-switch{
+			height:@basesize;
+			line-height:@basesize;
+			width: auto;
+			margin: 0;
+			margin-left:0;
+			z-index: 1;
+			display: block;
+			float: left;
+			//background-color: #fff;
+			border-right:none;
+			//.border-box;
+			font-size: 12px;
+			padding-right: 0;
+			text-align: left;
+			padding-top: 0;
+	}
+	.u-switch{
+		margin-left:10px;
+	}
+	.ui-airport-swicth{
+		height:22px;
+		line-height:22px;
+		margin: 0;
+		padding: 0;
+	}
+	@namesize:120px;
+	&.document{
+		border-collapse: collapse;
+		border-spacing:0;
+		border-left:1px solid #E80C10;
+		
+		>tbody >tr {
+			>td{
+			border-style: solid;
+			border-width: 1px;
+			border-color: #E80C10;
+			padding-left: 5px;
+			padding-right: 5px;
+			color:#E80C10!important;
+			border-left-width: 0;
+			&.table-head{
+				border-right-width: 0;
+				color:#E80C10!important;
+			}
+		}
+		}
+		
+		
+		
+	}
+	
+	&.inline,&.edit, &.table{
+		border-collapse: separate;
+		*border-collapse: collapse;
+		border-spacing:1px;
+		>tbody >tr {
+			>td ,>th{
+				padding: 0;
+			}
+		}
+		
+		>tbody >tr {
+			>th{
+			text-align: right;
+			padding-right: 5px;
+			}
+		}
+		
+		>tbody >tr {
+			>td{
+				&.table-head{
+					padding: 5px;
+				}
+				.u-group{
+					margin-bottom: -2px;
+					button{
+						height: 28px;
+					}
+				}
+				table{
+					border-collapse: collapse;
+					*border-collapse: collapse;
+					border-spacing:0;
+				}
+			}
+		}
+		
+		//对表单圆角与边线
+		.u-input , .u-label , .u-checkbox, .checkbox, .u-select, .u-textarea, .u-btn, .item, .u-btn-eject, .u-inputitem, .m-combo, .u-btn-checkbox{
+			border-width: 0;
+			border-radius: 0;
+		}
+		//对表单组合的修饰
+		.u-group{
+			
+			.item-l{
+				border-left-width:0px!important;
+				//.u-group{
+//					.item-l{
+//						border-left-width:0px!important;
+//					}
+//				}
+			}
+			.u-group{
+				.u-input{
+					border-right-width:0px!important;
+				}
+			}
+			.u-input, .mark, .item{
+				border-right-width:1px;
+				&.item-r, &:last-child{
+					border-right-width:0px!important;
+				}
+				&:first-child, &.item-l{
+					border-left-width:0px!important;
+				}
+			}
+			.item-r{
+				border-right-width:0px!important;
+			}
+			
+		}
+		//对弹出选项菜单的阴影修饰
+		.m-menu,.u-down-menu,.menu{
+			border-radius: 0!important;
+			//box-shadow: 3px -3px 3px #eee;
+			a,li{
+				border-radius: 0!important;
+			}
+		}
+		//对弹出选项菜单的阴影修饰
+		.u-l-select{
+			.u-input{
+				border-radius: 0!important;
+				border-left-width:0!important;
+				border-right-width:1px!important;
+				&:last-child{
+					border-right-width:0!important;
+				}
+			}
+		}
+		.u-formitem{
+			height: 100%;
+			padding: 0;
+			position: relative;
+			display: block;
+			margin-left: @namesize;
+			label{
+				height: 100%;
+				line-height:22px;
+				width: @namesize;
+				margin: 0;
+				margin-left: -@namesize;
+				position: relative;
+				z-index: 1;
+				display: block;
+				float: left;
+				background-color: lighten(@color-base-light, 15%);
+				border-right: 1px #ccc solid;
+				//.border-box;
+				font-size: 12px;
+				padding-right: 5px;
+				text-align: right;
+				padding-top: 4px;
+			}
+		}
+		
+	}
+	&.table.edit{
+	   >tbody >tr {
+		   >td{
+			   border:1px solid #ccc;
+			   background:#fff;
+		   }
+		}
+	}
+	&.edit{
+        border-collapse: collapse;
+		border-spacing:0;
+		
+		>tbody >tr {
+			
+			>td{
+				position: relative;
+				.tredit, .coledit{
+					position: absolute;
+					display:block;
+					.iconfont{
+						font-size:16px;
+						color:#fff;
+						background-color:#73bf2d;
+						padding: 1px 1px 0 1px;
+						cursor: pointer;
+						&:nth-child(2){
+							background-color:#d4d4d4;
+							margin-left: -4px;
+							&:hover{
+								background-color:#FF0004;
+							}
+						}
+					}
+				}
+				.tredit{
+					right: -36px;
+					top:0;
+				}
+				.coledit{
+					right: 0;
+					top:-17px;
+				}
+			}
+			&.active{
+				>td{
+					border-bottom-width:2px;
+					border-bottom-color: #059DFF;
+				}
+			}
+			.colactive{
+				border-left: 2px solid #36de1c!important
+			}
+		
+		}
+		
+		>tbody >tr {
+			>td{
+				
+			padding:0;
+			height: 30px;
+			border:1px solid #fff;
+			background-color: #f3f3f3;
+			&.active{//选中
+				border:1px solid #77ce96;
+				background-color: #AEF1B7;
+				box-shadow: 0 0 8px #77ce96;
+			}
+			&.disabled{//不可编辑
+				border:1px solid #ccc;
+				background-color: #eee;
+			}
+			&.lay{//可放置
+				border:1px solid #FC963D;
+				background-color:#FDE2BA;
+			}
+			&.laybled{//不可放置
+				border:1px solid #D75153;
+				background-color: #F8BBBC;
+			}
+		
+			}
+		}
+		.closetable{
+			font-size:18px;
+			position: absolute;
+			top:-23px;
+			left: -5px;
+			cursor: pointer;
+			z-index: 999;
+			&:hover{
+				color:#FF0004
+			}
+		}
+	} 
+	
+	//默认样式
+	#table-form > .form-color(120px , lighten(@color-base-light, 18%));
+	
+	&.red{
+	//默认样式
+	#table-form > .form-color(100px , #FFE5E5);
+		tr{
+			td{
+				background-color: #fff!important;
+				.u-input, .u-textarea{
+					&:focus{//获取焦点
+						background-color:#FFE5E5;
+						color: darken(#FFE5E5,40%)
+					}
+					&.nofocus:focus{//不允许获取焦点
+						background-color:darken(#FFE5E5,5%);
+					}
+				}
+				p{
+					color: #333;
+				}
+			}
+		}
+	}
+	//使用div模式，再新版本下基本抛弃DIV模式
+	.u-formitem {
+		padding: 5px;
+		//.border-box;
+		position: relative;
+		label {
+			font-size: 13px;
+			margin-bottom: 8px;
+			margin-top: 8px;
+			display: block;
+			font-weight: normal;
+			color: #000;
+			width: 100%;
+		}
+		.m-tooltip{
+			//.f-clear;
+			float: left;
+		}
+		.u-textarea:hover{
+			height: 80px;
+			line-height: 20px;
+		}
+		//针对IE在.u-group 时出现的溢出将最后一项缩进1个像素
+	}
+}	
+

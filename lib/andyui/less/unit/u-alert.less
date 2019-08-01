@@ -1,0 +1,100 @@
+.m-alertbox {
+	width: 300px;
+	position: fixed;
+	z-index: 9999
+}
+.m-alertbox.t-m {
+	top: 10px;
+	left: 50%;
+	margin-left: -170px
+}
+.m-alertbox.t-r {
+	top: 10px;
+	right: 10px;
+}
+.m-alertbox.b-r {
+	bottom: 10px;
+	right: 10px;
+	border: none
+}
+.m-alertbox.m-c {
+	top: 50%;
+	left: 50%;
+	margin-left: -170px;
+	margin-top: -30px;
+	border: none;
+}
+.u-alert ,.m-alertbox .alert {
+	cursor: pointer; 
+	padding: 10px 22px 10px 37px;
+	border: 1px solid transparent;
+	border-radius:3px;
+	position: relative;
+	img{
+		width: 25px;
+	    height: 25px;
+		position: absolute;
+		top: 5px;
+		left: 6px
+	}
+	i{
+		font-size: 16px;
+	    position: absolute;
+	    top: 12px;
+	    left: 8px;
+		&.close{
+			left: auto;
+			top: 6px;
+			right:4px;
+			font-size: 12px;
+			transition: top 0.2s , right 0.2s;
+            -moz-transition: top 0.2s , right 0.2s;	/* Firefox 4 */
+			-webkit-transition: top 0.2s , right 0.2s;	/* Safari 和 Chrome */
+			-o-transition: top 0.2s , right 0.2s;	/* Opera */
+			&:hover{
+				top: 4px;
+			    right:2px;
+			}
+			&:active{
+				top: 5px;
+			    right:3px;
+			}
+		}
+	}
+	    background-color: #FFFFFF;
+	    border-color:#eee;
+	&.alert-default, &.default {
+		background-color: #FFFFFF;
+	}
+	&.alert-black, &.black {
+		background-color: rgba(0,0,0,.7);
+		color: #fff;
+		border-color: #000;
+	}
+	&.alert-success, &.success {
+		background-color: rgba(154,223,105,0.3);
+		color:darken(rgb(154,223,105),30%);
+		border-color:rgb(154,223,105);
+	}
+	&.alert-info, &.info {
+		background-color: rgba(0,163,255,0.3);
+		color: darken(rgb(0,163,255),10%);
+		border-color:rgb(0,163,255);
+	}
+	&.alert-warning, &.warning {
+		background-color: rgba(255,150,0,0.3);
+		color: darken(rgb(255,150,0),10%);
+		border-color:rgb(255,150,0);
+	}
+	&.alert-danger, &.danger {
+		background-color: rgba(255,43,46,0.3);
+		color: darken(rgb(255,43,46),10%);
+		border-color:rgb(255,43,46);
+	}
+	&.shadow, &.alert-default , &.alert-black, &.alert-success, &.alert-info, &.alert-warning, &.alert-danger{
+		box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+	}
+}
+
+
+

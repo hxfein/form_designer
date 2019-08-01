@@ -1,0 +1,2039 @@
+//配置函数-即全局配置函数控制尺寸与皮肤
+
+//基础色
+@color-base-primary:#7266ba;
+@color-base-info:lighten(desaturate(#03A9F4,20%),4%);
+@color-base-success:#339933;
+@color-base-warning:#FF9900;
+@color-base-danger:desaturate(#F44336,10%);
+@color-base-light:#cccccc;
+@color-base-black:#263646;
+@color-base-dark:#3a3f51;
+@color-base-white:#ffffff; 
+//基础间距
+@spacing:5px;
+//基础圆角
+@radius:3px;
+//基础行高
+@heightght:26px;
+@line-height:26px;
+//字体定义
+@fontfamily:~"'Microsoft YaHei', \5fae\8f6f\96c5\9ed1, arial, \5b8b\4f53";
+@basesize:30px;
+@xs:22px;
+@sm:26px;
+@md:35px;
+@lg:45px;
+@xl:52px; 
+//默认阴影
+@shadow-inset:rgba(0,0,0,.2) 0 3px 3px inset;
+//hack兼容
+@IE8hack:"\9"; 
+@IE7hack:"*";
+@star:~"expression(this.onFocus=this.blur())";
+
+//图片路径
+@imgurl:"../img/";
+
+//透明背景
+.clear-bg-black{
+	background-image:url("@{imgurl}bg-bg.png");
+	background-repeat: repeat;
+}
+.clear-bg-white{
+	background-image:url("@{imgurl}scrub.png");
+	background-repeat: repeat;
+}
+
+//圆角修复
+.radius{
+position:relative;
+z-index:1;
+behavior: url(/andyui/htc/ie-css3.htc);
+}
+
+//尺寸定义--全局CSS使用以下尺寸定义
+.size(@height, @padding, @bordersize) when ( (@height - @padding*2 - @bordersize*2-8) < 12px ){
+	height: @height;
+	line-height:(@height - (@bordersize * 2));
+	border-width: @bordersize; 
+	padding-top: 0 ;
+	padding-bottom: 0 ;
+	padding-left: @padding;
+	padding-right: @padding;
+	font-size: 12px;
+	box-sizing: border-box; 
+	.iconfont{
+		font-size: 12px;
+	}
+}
+.size(@height, @padding, @bordersize) when ( (@height - @padding*2 - @bordersize*2-8) >= 12px ){
+	height: @height;
+	line-height:(@height - (@bordersize * 2));
+	border-width: @bordersize; 
+	padding-top: 0 ;
+	padding-bottom: 0 ;
+	padding-left: @padding;
+	padding-right: @padding;	
+	font-size: (@height - @padding*2 - @bordersize*2-8);
+	.iconfont{
+		font-size: (@height - @padding*2 - @bordersize*2-8);
+	}
+}
+.xs{.size(@xs,2px,1px); font-size: 11px}
+.sm{.size(@sm,2px,1px);}
+.de{.size(@basesize,3px,1px);}
+.md{.size(@md,4px,1px);}
+.lg{.size(@lg,5px,1px);} 
+.xl{.size(@xl,6px,1px);}
+
+//渐变色彩  
+#color{
+	.bg-color(@color) when (lightness(@color) >= 70%){
+		border-color:darken(@color,12%);
+		background-color:@color;
+		color:darken(@color,50%);
+		a{
+			color:darken(@color,57%);
+			&:hover{
+				color:darken(@color,65%); 
+			}
+		}
+		hr{
+			border-color:darken(@color,5%);
+		}
+	}
+	.bg-color(@color) when (lightness(@color) < 70%){
+		border-color:darken(@color,5%);
+		background-color:@color;
+		color:lighten(@color,38%);
+		a{
+			color:lighten(@color,45%);
+			&:hover{
+				color:lighten(@color,60%);
+			}
+		}
+		hr{
+			border-color:darken(@color,5%);
+		}
+	}
+	.bg-color(@color) when (lightness(@color) < 30%){
+		border-color:darken(@color,5%);
+		background-color:@color;
+		color:lighten(@color,55%); 
+		a{
+			color:lighten(@color,65%);
+			&:hover{
+				color:lighten(@color,75%);
+			}
+		}
+		hr{
+			border-color:darken(@color,10%);
+		}
+	}
+	.bg-gral(@color) when (lightness(@color) < 70%){
+		background-color: @color;
+		background: -moz-linear-gradient(top,  @color 0%, darken(@color, 10%) 100%);
+		background: -webkit-linear-gradient(top,  @color 0%,darken(@color, 10%) 100%);
+		background: linear-gradient(to bottom,  @color 0%,darken(@color, 10%) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr =@color, endColorstr = darken(@color, 10%) ,GradientType=0); 
+        color: lighten(@color, 55%);
+		border-color:darken(@color,5%);
+		background-repeat: no-repeat;
+	}
+	.bg-gral(@color) when (lightness(@color) >= 70%){
+		background-color: @color;
+		background: -moz-linear-gradient(top,  lighten(@color, 8%) 0%, @color 100%);
+		background: -webkit-linear-gradient(top,  lighten(@color, 8%) 0%,@color 100%);
+		background: linear-gradient(to bottom,  lighten(@color, 8%) 0%,@color 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr =lighten(@color, 8%), endColorstr =@color ,GradientType=0); 
+		color: darken(@color, 40%);
+		border-color:darken(@color,5%);
+		background-repeat: no-repeat;
+	}
+}
+//按钮色彩
+#u-btn{
+	.u-btn-color(@btn-color){
+		border-color:@btn-color;
+		color:@btn-color;
+		background:#fff;
+		&:hover{
+			background:lighten(@btn-color,10%);
+			color:lighten(@btn-color,80%);
+		}
+		&:active ,&.active{
+			background:darken(@btn-color,7%);
+			border-color:darken(@btn-color,7%);
+			color:lighten(@btn-color,80%);
+		}
+		&:disabled, &.disabled{
+			background:lighten(@btn-color,18%);
+			color:lighten(@btn-color,35%);
+		}
+	}
+	.u-btn-skin(@btn-color)  when (lightness(@btn-color) >= 70%){
+		border-color:darken(@btn-color,12%);
+		color: darken(@btn-color,30%);
+		background:lighten(@btn-color,15%);
+		&:hover{
+			background:lighten(@btn-color,18%);
+			color:darken(@btn-color,40%);
+		}
+		&:active ,&.active{
+			background:lighten(@btn-color,15%);
+		}
+		&:disabled, &.disabled{
+			background:lighten(@btn-color,20%);
+			color:darken(@btn-color,20%);
+		}
+	}
+	.u-btn-skin(@btn-color) when (lightness(@btn-color) < 70%){
+		border-color:@btn-color;
+		color: lighten(@btn-color,45%);
+		background:@btn-color;
+		&:hover{
+			background:lighten(@btn-color,10%);
+			color:lighten(@btn-color,80%);
+		}
+		&:active ,&.active{
+			background:darken(@btn-color,7%);
+			border-color:darken(@btn-color,7%);
+			color:lighten(@btn-color,80%);
+		}
+		&:disabled, &.disabled{
+			background:lighten(@btn-color,18%);
+			color:lighten(@btn-color,35%);
+		}
+	}
+	//渐变按钮
+	.u-btntext-skin(@btn-color){
+		#color > .bg-gral(@btn-color);
+		&:hover{
+			#color > .bg-gral(lighten(@btn-color,3%)); 
+		}
+		&:active ,&.active{
+			background:@btn-color;
+		}
+		&:disabled, &.disabled{
+			#color > .bg-gral(desaturate(@btn-color,23%));
+			color:fadeout(darken(@btn-color,30%),40%);
+		}
+	}
+}
+//文本输入框
+#input{
+	.u-input-skin(@input-color) when (lightness(@input-color) >= 70%){
+		#color > .bg-color(@input-color);
+		background-color: lighten(@input-color,30%);
+		//提示文字颜色
+		&::-webkit-input-placeholder { //WebKit browsers
+			color:darken(@input-color,20%);
+		}
+		&:-moz-placeholder { //Mozilla Firefox 4 to 18
+			color:darken(@input-color,20%);
+		}
+		&::-moz-placeholder { //Mozilla Firefox 19+
+			color:darken(@input-color,20%);
+		}
+		&:-ms-input-placeholder { //Internet Explorer 10+
+			color:darken(@input-color,20%);
+		}
+		&:hover{//移入样式
+			background-image: url("@{imgurl}edit.png");
+		}
+		&div&:hover{
+			background-image:none!important;
+		}
+		&:focus{//获取焦点
+			#color > .bg-color(mix(@input-color,lighten(@color-base-info,30%)));//在原有基础颜色上添加蓝色
+		}
+		&.nofocus:focus{//不允许获取焦点
+			#color > .bg-color(@input-color);
+		}
+		&.err{//错误状态
+			#color > .bg-color(mix(@input-color,lighten(@color-base-danger,30%)));//在原有基础颜色上添加蓝色
+		}
+		&:disabled{//不允许输入
+			#color > .bg-color(darken(@input-color,5%));
+			background-image:none!important;
+			color:darken(@input-color,26%);
+		}
+		
+		&.disabled, &.disabled:hover{//不允许输入
+			#color > .bg-color(darken(@input-color,5%));
+			background-image:none!important;
+			color:darken(@input-color,26%);
+		}
+		.option-block{
+			#color > .bg-color(darken(@input-color,8%))
+		}
+	}
+	.u-input-skin(@input-color) when (lightness(@input-color) < 70%){
+		#color > .bg-color(@input-color);
+		//提示文字颜色
+		&::-webkit-input-placeholder { //WebKit browsers
+			color:lighten(@input-color,35%);
+		}
+		&:-moz-placeholder { //Mozilla Firefox 4 to 18
+			color:lighten(@input-color,35%);
+		}
+		&::-moz-placeholder { //Mozilla Firefox 19+
+			color:lighten(@input-color,35%);
+		}
+		&:-ms-input-placeholder { //Internet Explorer 10+
+			color:lighten(@input-color,35%);
+		}
+		&:hover{//移入样式
+			background-image: url("@{imgurl}edit2.png");
+		}
+		&div&:hover{
+			background-image:none!important;
+		}
+		&:focus{//获取焦点
+			#color > .bg-color(lighten(@input-color,5%));//在原有基础颜色上添加蓝色
+		}
+		&.nofocus:focus{//不允许获取焦点
+			#color > .bg-color(@input-color);
+		}
+		&.err{//错误状态
+			#color > .bg-color(mix(@input-color,@color-base-danger));//在原有基础颜色上添加蓝色
+		}
+		&:disabled{//不允许输入
+			#color > .bg-color(darken(@input-color,15%));
+			background-image:none!important;
+		}
+		&.disabled, &.disabled:hover{//不允许输入
+			#color > .bg-color(darken(@input-color,15%));
+			background-image:none!important;
+		}
+	}
+	.u-select-skin(@input-color){
+		#color > .bg-color(@input-color);
+		background: #fff;
+		&:hover{//移入样式
+			background-image: none;
+		}
+		&:focus{//获取焦点
+			#color > .bg-color(@input-color);
+			background-image: none;
+		}
+		&.nofocus:focus{//不允许获取焦点
+			#color > .bg-color(@input-color);
+		}
+		&.err{//错误状态
+			#color > .bg-color(mix(@input-color,@color-base-danger));//在原有基础颜色上添加蓝色
+		}
+		&.disabled, &:disabled{//不允许输入
+			#color > .bg-color(darken(@input-color,15%));
+			background-image:none!important;
+		}
+	}
+	//.u-switch-color(@input-color){}
+	.u-switch-size(@size){
+		height: @size;
+		.iconfont{
+			font-size:(@size * 0.8);
+		}
+	}
+ }
+//导航
+#menu{
+	//白底主题
+	.topmenu-skin(default, @bg-color , @topmenu-color){
+		background-color:@bg-color;
+		li{
+			a{
+				background:none;
+				color:darken(@bg-color,35%);
+				&:hover{
+					background-color: darken(@bg-color, 5%);
+					color:@topmenu-color;
+				}
+				&.active{
+					color:@topmenu-color;
+					background-color: darken(@bg-color, 5%);
+					border-bottom-color:@topmenu-color;
+				}
+			}
+			ul{
+				li{
+					a{  
+						background-color:@bg-color;
+						border-color:darken(@bg-color,20%);
+					}
+				}
+			}
+		}
+	}
+	//彩色主题
+	.topmenu-skin(solid, @topmenu-color){
+		background-color:@topmenu-color;
+		li{
+			a{
+				background-color:@topmenu-color;
+				color:lighten(@topmenu-color,40%);
+				&:hover{
+					background-color: darken(@topmenu-color, 5%);
+					color:lighten(@topmenu-color, 100%);
+				}
+				&.active{
+					border-bottom-color:lighten(@topmenu-color, 5%);
+					background-color: lighten(@topmenu-color, 5%);
+				}
+			}
+			ul{
+				li{
+					a{
+						border-color:darken(@topmenu-color, 5%);
+					}
+				}
+			}
+		}
+	}
+	//通用样式
+	.topmenu-color(@bgcolor, @activecolor) when (lightness(@bgcolor) >= 85% ){
+		background-color:@bgcolor;
+		li{
+			a{
+				background:none;
+				color:darken(@bgcolor, 35%);
+				&:hover{
+					background-color: darken(@bgcolor, 3%);
+					color:darken(@bgcolor, 55%);
+				}
+				&.active{
+					color:@activecolor;
+					background-color:darken(@bgcolor, 3%);
+					border-bottom-color:@activecolor;
+				}
+			}
+			ul{
+				li{
+					a{  
+						background-color:@bgcolor;
+						border-color:darken(@bgcolor,10%);
+					}
+				}
+			}
+		}
+	}
+	.topmenu-color(@bgcolor, @activecolor) when (lightness(@bgcolor) < 85% ){
+		background-color:@bgcolor;
+		li{
+			a{
+				background:none;
+				color:lighten(@bgcolor, 35%);
+				&:hover{
+					background-color: lighten(@bgcolor, 5%);
+					color:lighten(@bgcolor, 55%);
+				}
+				&.active{
+					color:lighten(@activecolor, 70%);
+					background-color:@activecolor;
+					border-bottom-color:@activecolor;
+				}
+			}
+			ul{
+				li{
+					a{  
+						background-color:@bgcolor;
+						border-color:darken(@bgcolor,8%);
+					}
+				}
+			}
+		}
+	}
+	//尺寸定义
+	.topmenu-size(@size){
+		height: @size;
+		li{
+			height: @size;
+			a{
+				height: @size;
+				line-height: @size;
+				&.active{
+					//height: (@size - 3px);
+				}
+			}
+			ul{
+				top:@size;
+				li{
+					height:30px;
+					a{
+						height:30px;
+						line-height:30px;
+						&.active{
+							height:30px;
+						}
+					}
+					ul{
+						top:0;
+					}
+				}
+			}
+		}
+	}
+	//基础菜单皮肤
+	.menu-skin(@menucolor) when (lightness(@menucolor) >= 70%){
+		border-color:darken(@menucolor, 10%);
+		li, >li, ul>li{
+			a{
+				border-color:darken(@menucolor, 10%);
+				background-color:@menucolor;
+				color:darken(@menucolor, 30%);
+				&:hover{
+					background:darken(@menucolor, 5%);
+					color:darken(@menucolor, 50%);
+				}
+			}
+			&.line{
+				border-color:darken(@menucolor, 10%);
+			}
+			&.active{
+				a{
+					background-color:@color-base-info;
+					color:lighten(@menucolor, 80%)!important;
+				}
+			}
+		}
+		&.items{
+			li.active{
+				a{
+					background-color:@menucolor;
+					border-left-color:@color-base-info;
+					color:@color-base-info!important;
+				}
+			}
+		}
+	}
+	.menu-skin(@menucolor) when (lightness(@menucolor) < 70%){
+		border-color:@menucolor;
+		li, >li, ul>li{
+			a{
+				border-color:darken(@menucolor, 10%);
+				background-color:darken(@menucolor, 8%);
+				color:lighten(@menucolor, 40%);
+				&:hover{
+					background:lighten(@menucolor, 5%);
+					color:lighten(@menucolor, 80%);
+				}
+			}
+			&.line{
+				border-color:darken(@menucolor, 5%);
+			}
+			&.active{
+				a{
+					background-color:lighten(@menucolor, 1%);
+					color:lighten(@menucolor, 80%)!important;
+				}
+			}
+		}
+	}
+}
+//表单组
+
+#u-group{
+	//纯色主题
+	
+	
+	.group-skin(solid, @group-color) when (lightness(@group-color) >= 70%){
+		.item{
+			#color > .bg-color(@group-color)
+		}
+		.mark{
+			#color > .bg-color(darken(@group-color,4%))
+		}
+		.u-btn{
+			#u-btn > .u-btn-skin(darken(@group-color,4%));
+		}
+		.u-input{
+			#input > .u-input-skin(@group-color);
+		}
+		.u-select{
+			#input > .u-select-skin(@group-color);
+		}
+	}
+	.group-skin(solid, @group-color) when (lightness(@group-color) < 70%){
+		.item{
+			#color > .bg-color(@group-color)
+		}
+		.mark{
+			#color > .bg-color(@group-color)
+		}
+		.u-btn{
+			#u-btn > .u-btn-skin(@group-color);
+		}
+		.u-input{
+			#input > .u-input-skin(darken(@group-color,8%));
+		}
+		.u-select{
+			#input > .u-select-skin(darken(@group-color,8%));
+		}
+	}
+	//渐变主题
+	.group-skin(gral, @group-color) when (lightness(@group-color) >= 70%){
+		.item{
+			#color > .bg-color(darken(@group-color,5%))
+		}
+		.mark{
+			#color > .bg-color(darken(@group-color,5%))
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(darken(@group-color,5%));
+		}
+		.u-input{
+			#input > .u-input-skin(@group-color);
+		}
+		.u-select{
+			#input > .u-select-skin(@group-color);
+		}
+	}
+	.group-skin(gral, @group-color) when (lightness(@group-color) < 70%){
+		.item{
+			#color > .bg-color(@group-color)
+		}
+		.mark{
+			#color > .bg-color(@group-color)
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(@group-color);
+		}
+		.u-input{
+			#input > .u-input-skin(@group-color);
+		}
+		.u-select{
+			#input > .u-select-skin(@group-color);
+		}
+	}
+	//组合尺寸
+	.group-size(@size) {
+		height: @size;
+		padding: 0;
+		.item{
+			.size(@size,5px,1px);
+			padding: 0px;
+			button.u-btn, select.u-input, .u-select{
+				.size((@size),5px,1px);
+				line-height:@size;
+			}
+		}
+		.u-btn, .u-input, .mark,.u-label,.u-group-center,.u-group-left,.u-group-right{
+			.size(@size,5px,1px);
+		}
+		button.u-btn, select.u-input, .u-select{
+			.size(@size,5px,1px);
+			line-height:(@size - 2); 
+		}
+		select.u-input, .u-select{
+			padding: 0;
+			*font-size: (@size - 9);
+		}
+		.u-switch{
+			#input > .u-switch-size(@size)
+		}
+		.u-inputitem.u-input{
+			padding-left:0;
+			padding-right:0;
+			.u-btn-checkbox, .checkbox{
+				height: @size!important;
+				line-height: (@size - 2);  
+			}
+		}
+		//.u-btn .iconfont, .mark .iconfont{
+			//min-width:12px;
+			//display: inline-block;
+			//padding: 0 3px; 
+			//float: left;
+		//}
+		.item{
+			.iconfont{
+				min-width:12px;
+				display: inline-block;
+				padding: 0 5px;
+			}
+			&.u-btn, &.mark{
+				.iconfont{
+					padding:0;
+				}
+				
+			}
+		}
+		.u-input.m-combo, .u-input.g-combo{
+			.u-group{
+				height:(@size - 2);
+			}
+		}
+		//上传组件中强制fwl控件大小
+		object, embed{
+			width: @size!important;
+			height: @size!important;
+		}
+	}
+}
+//combo
+
+#m-combo{
+	.combo-skin(@combocolor){
+		.u-input{
+			#input > .u-input-skin(@combocolor);
+			&.disabled{
+				background-color: darken(@combocolor,8%)!important;
+				color: darken(@combocolor,18%)!important;
+			}
+		}
+		
+		.u-group{
+			#u-group > .group-skin(solid , @combocolor);
+			}
+		.combo{
+			#color > .bg-color(@combocolor);
+		}
+		.m-menu, .u-down-menu{
+			#menu  > .menu-skin(@combocolor);
+		}
+	}
+}
+//页签
+
+#tabs{
+	// 纯色
+	.tabs-color(solid , @color, @active-color) when (lightness(@color) >= 70%){
+		border-bottom-color:@color;
+		li{
+			a{
+				color: darken(@color,30%);
+				background-color:@color; 
+				border-color:@color;
+				&:hover{
+					color: darken(@color,50%);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-color(@active-color);
+				}
+			}
+			.iconfont.close{
+				color: darken(@color,15%);
+				&:hover{
+					color: darken(@color,40%);
+				}
+			}
+		}
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				background-color:@color;
+				color: darken(@color,30%);
+				&:hover{
+					color:darken(@color,45%);
+				}
+				&:active{
+					background-color:darken(@color,8%);
+					color:lighten(@color,20%);
+				}
+			}
+		}
+		&.line{
+			li{
+				&.active, &.activate{
+					a{
+						background-color: #fff;
+						border-left-color:@color;
+						border-right-color:@color;
+						border-top-color: @active-color;
+						color: @active-color;
+					}
+				}
+			}
+		}
+		&.mo{
+			border-bottom-color:darken(@color,10%);
+			&.line{
+			li{
+				&.active, &.activate{
+					a{
+						background-color:@color;
+						border-bottom-color: @active-color;
+						color: @active-color;
+					}
+				}
+			}
+		}
+		}
+	}
+	.tabs-color(solid , @color, @active-color) when (lightness(@color) < 70%){
+		border-bottom-color:@color;
+		li{
+			a{
+				color: lighten(@color,20%);
+				background-color:@color; 
+				border-color:@color;
+				&:hover{
+					color: lighten(@color,40%);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-color(@active-color);
+				}
+			}
+			.iconfont.close{
+				color: lighten(@color,10%);
+				&:hover{
+					color: lighten(@color,30%);
+				}
+			}
+		}
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				background-color:@color;
+				color: lighten(@color,20%);
+				&:hover{
+					color: lighten(@color,45%);
+				}
+			}
+		}
+		&.line{
+			li{
+				&.active, &.activate{
+					a{
+						background-color: #fff;
+						border-left-color:@color;
+						border-right-color:@color;
+						border-top-color: @active-color;
+						color: @active-color;
+					}
+				}
+			}
+		}
+		&.mo{
+			border-bottom-color:darken(@color,10%);
+			&.line{
+			li{
+				&.active, &.activate{
+					a{
+						background-color:@color;
+						border-bottom-color: @active-color;
+						color: @active-color;
+					}
+				}
+			}
+		}
+		}
+	}
+	// 渐变
+	.tabs-color(gral , @color, @active-color) when (lightness(@color) >= 70%){
+		border-bottom-color:darken(@color,8%);
+		li{
+			a{
+				#color > .bg-gral(@color);
+				color: darken(@color,8%);
+				&:hover{
+					#color > .bg-gral(lighten(@color,8%));
+				}
+				&.active{
+					#color > .bg-gral(@active-color);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-gral(@active-color);
+					border-color:darken(@color,8%);
+				}
+			}
+			.iconfont.close{
+				color: darken(@color,6%);
+				&:hover{
+					color: darken(@color,30%);
+				}
+			}
+		}
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				background-color:@color;
+				color: darken(@color,30%);
+				&:hover{
+					color: darken(@color,45%);
+				}
+			}
+		}
+	}
+	.tabs-color(gral , @color, @active-color) when (lightness(@color) < 70%){
+		border-bottom-color:darken(@color,8%);
+		li{
+			a{
+				#color > .bg-gral(@color);
+				color: lighten(@color,15%);
+				&:hover{
+					#color > .bg-gral(lighten(@color,8%));
+				}
+				&.active{
+					#color > .bg-gral(@active-color);
+				}
+			}
+			&.active, &.activate{
+				a{
+					#color > .bg-gral(@active-color);
+					border-color:darken(@color,8%);
+				}
+			}
+			.iconfont.close{
+				color: lighten(@color,10%);
+				&:hover{
+					color: lighten(@color,30%);
+				}
+			}
+		}
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				background-color:@color;
+				color: lighten(@color,20%);
+				&:hover{
+					color: lighten(@color,45%);
+				}
+			}
+		}
+	}
+	//尺寸样式
+	.tabs-style(half, @h, @r){
+		height: (@h - 1px);
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				height: (@h - 1px);
+				line-height:(@h - 1px);
+			}
+		}
+		.m-tabs-nav{
+			height: (@h - 2px);
+			padding-top: 1px;
+			li{
+				height: (@h - 2px);
+				a{
+					height: (@h - 2px);
+					line-height: (@h - 3px);
+					border-top-left-radius:@r;
+					border-top-right-radius:@r;
+					border-bottom-left-radius:0;
+					border-bottom-right-radius:0;
+				}
+			}
+		}
+		
+		&.line{
+			.m-tabs-nav{
+			height: (@h - 3px);
+			padding-top: 1px;
+			li{
+				height: (@h - 3px);
+				a{
+					height: (@h - 3px);
+					line-height: (@h - 4px);
+				}
+			}
+		}
+		}
+	}
+	
+	//尺寸样式
+	.tabs-style(btn, @h, @r){
+		height: @h;
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				height: (@h - 1px);
+				line-height:(@h - 1px);
+			}
+		}
+		.m-tabs-nav{
+			height: (@h - 1px);
+			padding-top: 1px;
+			li{
+				height: (@h - 1px);
+				a{
+					height: (@h - 1px);
+					line-height: (@h - 2px);
+					border-radius:@r!important;
+				}
+			}
+		}
+	}
+	
+	//尺寸样式
+	.tabs-style(mo, @h, @r){
+		height: (@h - 1px);
+		//溢出结构
+		&.overflow{ 
+			.right-bar, .left-bar{
+				height: (@h - 1px);
+				line-height:(@h - 1px);
+			}
+		}
+		.m-tabs-nav{
+			height: (@h - 2px);
+			padding-top: 1px;
+			li{
+				height: (@h - 2px);
+				a{
+					height: (@h - 2px);
+					line-height: (@h - 3px);
+					border-radius:0!important;
+				}
+			}
+		}
+		&.line{
+			.m-tabs-nav{
+			height: (@h - 3px);
+			padding-top: 1px;
+			li{
+				height: (@h - 3px);
+				a{
+					height: (@h - 3px);
+					line-height: (@h - 4px);
+				}
+			}
+		}
+		}
+	}
+}
+
+#tabs-box{
+	.tabs-style(solid, half, @color, @active-color, @bgcolor, @h, @r){
+		.m-tabs-header{
+		#tabs > .tabs-color(solid , @color, @active-color);
+		#tabs > .tabs-style(half, @h, @r);
+		}
+		.m-tabs-content, .tabs-content{
+			border-color:@color;
+			>.item{
+				background-color: @bgcolor;
+			}
+		}
+		&.head-bottom{
+			.m-tabs-header{
+				height: @h;//注意
+				.m-tabs-nav{
+					li{
+						a{
+							height: (@h - 1px) ;//注意
+						}
+					}
+				}
+			}
+		}
+	}
+}
+//工具栏
+
+#toolbar{
+	//尺寸
+	.toolbar-size(@size) {
+		height: @size;
+		.item{
+			height: @size;
+			line-height: @size;
+			.u-btn{
+				.size(@size, 12px, 1px);
+			}
+			.m-combo{
+				height: @size; 
+			}
+		}
+		.u-group{
+			#u-group > .group-size(@size);
+		}
+		.title{
+			height: (@size - 2px);
+			line-height: (@size - 2px);
+		}
+		.u-switch{
+			#input > .u-switch-size(@size);
+		}
+		.u-checkbox{
+			.size(@size,4px,1px);
+		}
+		.tabs{
+			margin-top: 2px;
+			margin-bottom: 2px;
+			li{
+				border-radius: (@size * 0.25);
+				a{
+					height: (@size - 4px);
+					line-height: (@size - 4px);
+					border-radius: (@size * 0.25); 
+				}
+			}
+		}
+		.m-topmenu{
+			#menu > .topmenu-size(@size);
+		}
+		
+		
+	}
+	//色彩
+	.toolbar-color(gral , @toolbar-color , @active-color) {
+		#color > .bg-gral(@toolbar-color);
+		border-color:darken(@toolbar-color , 14%)!important;
+		.title{
+			border-bottom-color: @active-color;
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(@toolbar-color)
+		}
+		.u-group{
+			#u-group > .group-skin(gral, @toolbar-color)
+		}
+		.m-combo{
+			#m-combo > .combo-skin(@toolbar-color)
+		}
+		.tabs{
+			#tabs > .tabs-color(solid , @toolbar-color, @active-color);
+		}
+		.m-topmenu{
+			#menu > .topmenu-skin(default, @active-color);
+		}
+	}
+	.toolbar-color(solid , @toolbar-color , @active-color) {
+		#color > .bg-color(@toolbar-color);
+		border-color:darken(@toolbar-color , 10%)!important;
+		.title{
+			border-bottom-color: @active-color;
+			//color: lighten(@toolbar-color, 80%);
+		}
+		.u-btn{
+			#u-btn > .u-btn-skin(@toolbar-color);
+			//border-color:@toolbar-color!important;
+		}
+		.u-group{
+			#u-group > .group-skin(solid, @toolbar-color);
+			border-color:darken(@toolbar-color , 8%)!important;
+		}
+		.m-combo{
+			#m-combo > .combo-skin(@toolbar-color);
+		}
+		.tabs{
+			#tabs > .tabs-color(solid , @toolbar-color, @active-color);
+		}
+		.m-topmenu{
+			#menu > .topmenu-skin(default , @toolbar-color , @active-color);
+		}
+	}
+}
+//面板
+
+#panel{
+	//头部渐变
+	.panel-color(gral , @color, @active-color , @radius){
+		border-color: darken(@color,8%);
+		background-color: lighten(@color,30%);
+		.panel-head{
+			#color > .bg-gral(@color);
+			.title{
+				color:darken(@color,30%);
+				span{
+					border-color: darken(@color,8%); 
+				}
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-color(gral , @color , @active-color);
+			}
+			&.active{
+				.title, .iconfont{
+					color: @active-color!important;
+					span{
+						border-color:@active-color;
+					}
+				}
+			}
+			//&:hover{
+//				#color > .bg-gral(lighten(@color,8%));
+//			}
+		}
+		.panel-body{
+
+			background-color: lighten(@color,30%);
+			border-color: darken(@color,8%);
+		}
+		.panel-foot{
+			background-color: lighten(@color,8%);
+			
+			border-color: darken(@color,8%);
+			.m-pagebar{
+				.u-btn{
+					#u-btn > .u-btntext-skin(@color);
+				}
+				.u-input{
+					#input > .u-input-skin(@color);
+				}
+				.u-select{
+					#input > .u-select-skin(@color); 
+				}
+			}
+		}
+
+		&.f-r, &.window{
+			border-radius: @radius;
+			.panel-head{
+				border-top-left-radius: @radius;
+				border-top-right-radius: @radius;
+				.m-toolbar{
+					border-top-left-radius: @radius;
+					border-top-right-radius: @radius;
+				}
+			}
+			.panel-foot, .panel-body{
+				border-bottom-left-radius: @radius;
+				border-bottom-right-radius: @radius;
+			}
+		}
+	}
+	//头部纯色，色度大于70%
+	.panel-color(solid , @color, @active-color , @boder-color , @radius) when (lightness(@color) >= 70%){
+		border-color:  @boder-color;
+		background-color: lighten(@color,30%);
+		.panel-head{
+			#color > .bg-color(@color);
+			border-color:  @boder-color;
+			.title{
+				color:darken(@color,60%)!important;
+				span{
+					border-color:  @boder-color;
+				}
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-color(solid , @color , @active-color);
+			}
+			border-color: @boder-color;
+			&.active, &.active:hover{
+				#color > .bg-color(@active-color)!important;
+				.title, .iconfont{
+					color: #fff!important;
+					span{
+						border-color:  @active-color!important;
+					} 
+				}
+			}
+//			&:hover{
+//				#color > .bg-color(lighten(@color,8%));
+//			}
+		}
+		.panel-body{
+			background-color: lighten(@color,30%);
+			//border-radius: @radius;
+			border-color:  @boder-color;
+		}
+		.panel-foot{
+			background-color: @color;
+			border-color:  @boder-color;
+			.m-pagebar{
+				.u-btn{
+					#u-btn > .u-btn-skin(darken(@color,10%));
+					border-color:@color!important;
+				}
+				.u-input{
+					#input > .u-input-skin(@color);
+				}
+				.u-select{
+					#input > .u-select-skin(@color); 
+				}
+			}
+		}
+		&.f-r, &.window{
+			border-radius: @radius;
+			.panel-head{
+				border-top-left-radius: @radius;
+				border-top-right-radius: @radius;
+				.m-toolbar{
+					border-top-left-radius: @radius;
+					border-top-right-radius: @radius;
+				}
+			}
+			.panel-foot, .panel-body{
+				border-bottom-left-radius: @radius;
+				border-bottom-right-radius: @radius;
+			}
+		}
+	}
+	//头部纯色，色度小于70%
+	.panel-color(solid , @color, @active-color , @boder-color , @radius) when (lightness(@color) < 70%){
+		border-color: @boder-color;
+		background-color: lighten(@color,30%);
+		.panel-head{
+			#color > .bg-color(@color);
+			border-color:  @boder-color;
+			.title{
+				color:#fff!important;
+				span{
+					border-color:  @boder-color;
+				}
+			}
+			
+			.m-toolbar{
+				#toolbar > .toolbar-color(solid , @color , @active-color);
+			}
+			border-color: @boder-color; 
+			&.active, &.active:hover{
+				#color > .bg-color(@active-color)!important;
+				.title, .iconfont{
+					color: @active-color!important;
+					span{
+						border-color: @active-color!important;
+					}
+				}
+			}
+//			&:hover{
+//				#color > .bg-color(lighten(@color,8%));
+//			}
+		}
+		.panel-body{
+			background-color: lighten(@color,30%);
+			border-color:  @boder-color;
+		}
+		.panel-foot{
+			background-color: @color;
+			min-height: @radius;
+			border-color: @boder-color;
+			.m-pagebar{
+				.u-btn{
+					#u-btn > .u-btn-skin(lighten(@color,10%));
+					border-color:@color!important;
+				}
+				.u-input{
+					#input > .u-input-skin(@color);
+				}
+				.u-select{
+					#input > .u-select-skin(@color); 
+				}
+			}
+		}
+		&.f-r, &.window{
+			border-radius: @radius;
+			.panel-head{
+				border-top-left-radius: @radius;
+				border-top-right-radius: @radius;
+				.m-toolbar{
+					border-top-left-radius: @radius;
+					border-top-right-radius: @radius;
+				}
+			}
+			.panel-foot, .panel-body{
+				border-bottom-left-radius: @radius;
+				border-bottom-right-radius: @radius;
+			}
+		}
+	}
+	//panel的头部尺寸
+	.panel-size(@size){
+		@psize:((@size - 30px) * 0.5);
+		.panel-head{
+			height:@size;
+			box-sizing: border-box;
+			.title,
+			.item,
+			.icon,
+			.panel-head-btnbar,
+			.panel-h-l,
+			.panel-h-bot,
+			.panel-h-r{
+				box-sizing: border-box;
+				height:@size;
+				line-height:30px;
+				padding: @psize 0;
+			}
+			.title{
+				font-size:14px;
+			}
+			.u-group{
+				#u-group > .group-size(30px);
+				.item, .title{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-size(30px); 
+				padding:@psize 5px;
+				.item, .title{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+				.title{
+					//height:(@size - @psize);
+					//line-height:(@size - @psize); 
+				}
+				.u-btn{
+					//padding:0 6px!important;
+				}
+			}
+		}
+		.panel-foot{
+			.u-group{
+				#u-group > .group-size(@size);
+				.item{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+			}
+			.m-toolbar{
+				#toolbar > .toolbar-size(@size);
+				padding:3px 0;
+				.item{
+					padding-top: 0px;
+					padding-bottom: 0px;
+				}
+			}
+		}
+		
+		&.fit{
+			height: 100%;
+			position: relative;
+			box-sizing: border-box;
+			.panel-head{
+				position: absolute;
+				width: 100%;
+				box-sizing: border-box;
+				z-index: 3;
+				top:0;
+				left: 0;
+			}
+			.panel-body{
+				height:100%;
+				box-sizing: border-box;
+				padding-top: @size;
+				padding-left: 0;
+				padding-right: 0;
+				padding-bottom: 0;
+				position: relative;
+				overflow: auto;
+			}
+		}
+	}
+	.m-accordion-color(@color){
+		.m-panel{
+			.panel-head{
+				&:hover{
+					#color > .bg-color(lighten(@color,5%));
+				}
+			}
+		}
+	}
+}
+//列表
+#m-list{
+	.news-color(@color){
+		li{
+			border-color:lighten(@color, 58%);
+			a{
+				color:@color;
+				&:hover{
+					color:lighten(@color, 20%);
+				}
+				.time{
+					color:lighten(desaturate(@color,20%), 30%);
+				}
+			}
+			.info{
+				color:lighten(desaturate(@color,40%), 30%);
+			}
+		}
+	}
+	.icon-list(@liw , @m , @iconcolor ,@iconbg){
+		li{
+			width: @liw;
+			padding: @m;
+			a, i.icon.iconfont{
+				width: @liw;
+				height: @liw;
+				line-height: @liw;
+				background-color: @iconbg;
+				font-size: (@liw * 0.68);
+				.iconfont{
+					font-size: (@liw * 0.68);
+					color:@iconcolor;
+				}
+			}
+		}
+	}
+}
+//侧边导航
+#m-sidemenu{
+	.sidemenu-color(style1, @color, @active-color){
+		li{
+			#color > .bg-color(@color);
+			a{
+				#color > .bg-color(@color);
+				&:hover{
+					#color > .bg-color(lighten(@color,3%));
+				}
+				&.active{
+					color:@active-color;
+					&:after{
+						background-color:@active-color;
+					}
+				}
+			}
+			li{
+				#color > .bg-color(darken(@color,5%));
+				a{
+					#color > .bg-color(darken(@color,5%));
+					&:hover{
+						#color > .bg-color(darken(@color,1%));
+					}
+				}
+				li{
+					#color > .bg-color(darken(@color,10%));
+					a{
+						#color > .bg-color(darken(@color,10%));
+						&:hover{
+							#color > .bg-color(darken(@color,6%));
+						}
+					}
+					li{
+						#color > .bg-color(darken(@color,15%));
+						a{
+							#color > .bg-color(darken(@color,15%));
+							&:hover{
+								#color > .bg-color(darken(@color,11%));
+							}
+						}
+						li{
+							#color > .bg-color(darken(@color,20%));
+							a{
+								#color > .bg-color(darken(@color,20%));
+								&:hover{
+									background-color:darken(@color,16%);
+								}
+							}
+							li{
+								#color > .bg-color(darken(@color,25%));
+								a{
+									#color > .bg-color(darken(@color,25%));
+									&:hover{
+										#color > .bg-color(darken(@color,21%));
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.sidemenu-color(style2, @color, @active-color){
+		li{
+			#color > .bg-color(@color);
+			a{
+				#color > .bg-gral(@color);
+				&:hover{
+					#color > .bg-gral(lighten(@color,3%));
+				}
+				&.active{
+					color:@active-color;
+					&:after{
+						background-color:@active-color;
+					}
+				}
+			}
+			li{
+				#color > .bg-color(@color);
+				a{
+					#color > .bg-color(darken(@color,5%));
+					&:hover{
+						#color > .bg-color(darken(@color,5%))!important;
+					}
+				}
+				li{
+					#color > .bg-color(darken(@color,5%));
+					a{
+						#color > .bg-color(darken(@color,10%));
+						&:hover{
+							#color > .bg-color(darken(@color,10%))!important;
+						}
+					}
+					li{
+						#color > .bg-color(darken(@color,10%));
+						a{
+							#color > .bg-color(darken(@color,15%));
+							&:hover{
+								#color > .bg-color(darken(@color,15%))!important;
+							}
+						}
+						li{
+							#color > .bg-color(darken(@color,15%));
+							a{
+								#color > .bg-color(darken(@color,20%));
+								&:hover{
+									background-color:darken(@color,20%)!important;
+								}
+							}
+							li{
+								#color > .bg-color(darken(@color,20%));
+								a{
+									#color > .bg-color(darken(@color,25%));
+									&:hover{
+										#color > .bg-color(darken(@color,25%))!important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.sidemenu-color(style3, @color, @active-color){
+		border-color:@color;
+		&:after, &:before{
+			border-color:@color;
+		}
+		li{
+			#color > .bg-color(@color);
+			color:@color;
+			a{
+				color:@color;
+				&:hover{
+					//#color > .bg-color(lighten(@color,5%));
+					color:lighten(@color,15%);
+				}
+				&.parent{
+					&:after{
+						background-color:@color;
+					}
+				}
+				&.active{
+					color:@active-color;
+					&:after{
+						background-color:@active-color;
+					}
+				}
+			}
+		}
+	}
+}
+//列表样式
+#table{
+	.table(solid, @color, @hovercolor) when (lightness(@color) >= 70%){
+		background-color:lighten(@color,25%);
+		border-color: darken(@color,10%)!important;
+		th,td{
+			border-color: darken(@color,10%);
+			.u-input{
+				.size(28px, 4px, 1px); 
+			}
+			.u-group{
+				#u-group > .group-size(24px); 
+			}
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+			&.success{
+				#u-btn > .u-btntext-skin(@color-base-success);
+			}
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				color:darken(@color,45%);
+				background-color: @color;
+			}
+		}
+		tbody{
+			th,td{
+				color:desaturate(darken(@color,50%),50%);
+				background-color:lighten(@color,25%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,2%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td, &.active td, &.active:hover td, &.active:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor);
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(darken(@color,20%),15%));
+				}
+			}
+			&.complex{
+				border-color: darken(@color,10%)!important;
+				&:hover{
+					tr{
+						td,th{
+							#color > .bg-color(@hovercolor);
+							.u-btn{
+								#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+							}
+							.u-group{
+								#u-group > .group-skin(gral, lighten(@hovercolor,8%));
+							}
+						}
+					}
+				}
+			} 
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url("@{imgurl}node.png")}
+			        &.group { background-image: url("@{imgurl}group.png")}
+			        &.group.open { background-image: url("@{imgurl}group-open.png")}
+				}
+			}
+		}
+	}
+	.table(solid, @color, @hovercolor) when (lightness(@color) < 70%){
+		//background-color:lighten(@color,30%);
+		border-color: darken(@color,6%)!important;
+		th,td{
+			border-color: darken(@color,6%);
+			.u-input{
+				.size(28px, 4px, 1px);
+			}
+			.u-group{
+				#u-group > .group-size(28px);
+			}
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+			&.success{
+				#u-btn > .u-btntext-skin(@color-base-success);
+			}
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				color:lighten(@color,50%);
+				background-color: @color;
+			}
+		}
+		tbody{
+			th,td{
+				color:lighten(@color,40%);
+				background-color:desaturate(lighten(@color,12%),0%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,4%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor);
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(lighten(@color,10%),15%));
+				}
+			}
+			&.complex{
+				border-color: darken(@color,10%)!important;
+				&:hover{
+					tr{
+						td,th{
+							#color > .bg-color(@hovercolor);
+							.u-btn{
+								#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+							}
+							.u-group{
+								#u-group > .group-skin(gral, lighten(@hovercolor,8%));
+							}
+						}
+					}
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(/andyui/admin/img/node.png)}
+			        &.group { background-image: url(/andyui/admin/img/group.png)}
+			        &.group.open { background-image: url(/andyui/admin/img/group-open.png)}
+				}
+			}
+		}
+	}
+	.table(gral, @color, @hovercolor) when (lightness(@color) >= 70%){
+		
+		background-color:lighten(@color,25%);
+		border-color: darken(@color,10%)!important;
+		th,td{
+			border-color: darken(@color,10%);
+			.u-input{
+				.size(28px, 4px, 1px);
+			}
+			.u-group{
+				#u-group > .group-size(28px);
+			}
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+			&.success{
+				#u-btn > .u-btntext-skin(@color-base-success);
+			}
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				#color > .bg-gral(@color);
+			}
+		}
+		tbody{
+			th,td{
+				color:darken(@color,35%);
+				background-color:lighten(@color,25%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,9%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor);
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(darken(@color,20%),15%));
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(/andyui/admin/img/node.png)}
+			        &.group { background-image: url(/andyui/admin/img/group.png)}
+			        &.group.open { background-image: url(/andyui/admin/img/group-open.png)}
+				}
+			}
+		}
+	
+	}
+	.table(gral, @color, @hovercolor) when (lightness(@color) < 70%){
+		//background-color:lighten(@color,30%);
+		border-color: darken(@color,15%)!important;
+		th,td{
+			border-color: darken(@color,15%)!important;
+			.u-input{
+				.size(28px, 4px, 1px);
+			}
+			.u-group{
+				#u-group > .group-size(28px);
+			}
+		}
+		.u-btn{
+			#u-btn > .u-btntext-skin(lighten(@color,8%));
+			&.success{
+				#u-btn > .u-btntext-skin(@color-base-success);
+			}
+		}
+		.u-group{
+			#u-group > .group-skin(gral, lighten(@color,8%));
+		}
+		thead{
+			th,td{
+				#color > .bg-gral(@color);
+			}
+		}
+		tbody{
+			th,td{
+				color:lighten(@color,40%);
+				background-color:desaturate(lighten(@color,12%),0%);
+			}
+			tr{
+				&:nth-child(2n){
+					td{
+						background-color:lighten(@color,4%);
+					}
+				}
+				&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+					#color > .bg-color(@hovercolor)!important;
+					.u-btn{
+						#u-btn > .u-btntext-skin(lighten(@hovercolor,8%));
+					}
+					.u-group{
+						#u-group > .group-skin(gral, lighten(@hovercolor,8%)); 
+					}
+				}
+				&.current, &.current .lockColumnBg, &.current:hover td{
+					#color > .bg-color(saturate(lighten(@color,10%),15%))!important;
+				}
+			}
+		}
+		&.m-treegrid{
+			tr{
+				td{
+					&.node { background-image: url(../img/node.png)}
+			        &.group { background-image: url(../img/group.png)}
+			        &.group.open { background-image: url(../img/group-open.png)}
+				}
+			}
+		}
+	}
+}
+//表单
+#table-form{
+	.form-color(@headw, @color){
+		td{
+			color: darken(@color, 45%);
+			&.table-head{
+				width: @headw;
+				color: darken(@color, 55%);
+			}
+			.u-btn{
+				#u-btn > .u-btntext-skin(@color);
+			}
+			.u-input, .multi-select-box, .u-textarea{
+				#input > .u-input-skin(@color);
+			}
+			.u-select{ 
+				#input > .u-select-skin(@color);
+			}
+			.m-combo{
+				#m-combo > .combo-skin(@color);
+			}
+			.u-group{
+				#u-group > .group-skin(gral, @color);
+			}
+			.u-label, .u-checkbox{
+				color: darken(@color, 45%);
+			}
+		}
+		&.inline, &.table, &.edit{
+			background: darken(@color, 15%);
+			td{
+				background-color: lighten(@color,8%);
+				*border:1px solid darken(@color, 15%);
+				&.table-head{
+					background-color: darken(@color, 3%);
+					color: darken(@color, 55%);
+				}
+				table{
+					background: darken(@color, 15%);
+				}
+			}
+		}
+	}
+}
+
+//多选面板
+#m-choicepanel(@color){
+	.bar, .option , .selected {
+		border-color: darken(@color, 7%);
+		background: #fff;
+	}
+	.bar{
+		background: @color; 
+		.u-btn{
+				#u-btn > .u-btntext-skin(@color);
+			}
+	}
+	.selected{
+		.m-sidemenu{
+			#m-sidemenu > .sidemenu-color(style1, @color, darken(@color, 25%));
+		}
+	}
+}
+//进度条
+#progress{
+	.progress-style(@height, @color, @bar-color){
+		height: @height;
+		font-size:(@height * 0.7);
+		line-height: @height;
+		background-color: @color;
+		border-color: @color;
+		border-radius: (@height * 0.2);
+		padding: 0!important;
+		box-sizing: content-box!important;
+		.bar{
+			height:@height;
+			line-height: @height;
+			font-size:(@height * 0.7);
+			border-radius: (@height * 0.2) 0 0 (@height * 0.2);
+			#color > .bg-color(@bar-color);
+		}
+	}
+}
+//面包屑
+#path{
+	.path-size(@pathh){
+		height: @pathh;
+		li{
+			height: @pathh;
+			line-height: @pathh;
+			a{
+				height: @pathh;
+			    line-height: @pathh;
+				font-size: (@pathh * 0.4);
+				.iconfont{
+					font-size: (@pathh * 0.4);
+					line-height: (@pathh * 0.4);
+					width: (@pathh * 0.4);
+					height: (@pathh * 0.4);
+					top:(@pathh * 0.3);
+					right:(0 - (8 + (@pathh * 0.2)));
+				}
+			}
+			&.home{
+				a{
+					padding-left: ((@pathh * 0.4) + 4);
+					.homeicon{
+						right: auto;
+						left:0;
+					}
+				}
+			}
+		}
+	}
+	.path-color(@pathcolor, @activecolor){
+		background-color: lighten(@pathcolor,20%);
+		border-color:lighten(@pathcolor,5%);
+		li{
+			color:@pathcolor;
+			a{
+				color:@pathcolor;
+			}
+			&.active{
+				color:@activecolor;
+				a{
+					color:@activecolor;
+				}
+			}
+			&.home{
+				color:darken(@pathcolor, 10%);
+				a{
+					color:darken(@pathcolor, 10%);
+				}
+			}
+		}
+	}
+}
+
+

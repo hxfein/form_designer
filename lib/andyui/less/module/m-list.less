@@ -1,0 +1,286 @@
+@import "../base/deploy";
+@import "../attribute/attribute";
+//@import "g-layout";
+.m-list {
+	//基础样式
+	.f-clear;
+	#m-list > .news-color(#333);
+	li{
+		padding: 2px 5px;
+		.f-clear;
+		a{
+			.f-clear;
+			text-decoration: none;
+			line-height: 26px;
+			.f-textoverflow;
+			width: 100%;
+			&:hover{
+			}
+		}
+	}
+	//有下划线
+	&.line{
+		li{
+			border-bottom-style: dotted;
+			border-bottom-width: 1px;
+		}
+	}
+	
+	//新闻
+	&.news{
+		li{
+			a{
+				.f-textoverflowclose;
+				.title{
+					display: block;
+					width: 73%;
+					.f-textoverflow;
+					float: left;
+					font-weight: normal;
+				}
+				.time{
+					display: block;
+					width: 25%;
+					text-align: right;
+					.f-textoverflow;
+					float: right;
+				}
+			}
+		}
+		&.brief{
+			li{
+				a{
+					.title{
+						font-size: 14px!important;
+					}
+				}
+				.info{
+					padding: 5px 0px;
+					line-height: 20px;
+					.pic{
+						float: left;
+						margin-right: 15px;
+						margin-bottom: 8px;
+					}
+				}
+			}
+		}
+		//置顶新闻
+		&.topnews{
+			li{
+				.img{
+					width: 120px;
+					height: 100px;
+					float: left;
+				}
+				.content{
+					float: left;
+					a{
+						h3{
+							margin: 0 0 8px 0;
+						}
+						.text{
+							width: 70%;
+							.f-textoverflowclose;
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	//图形列表
+	&.img{
+		li{
+			float: left;
+			padding: 0;
+			display: block;
+			position: relative;
+			a{
+				line-height: normal;
+				display: block;
+				float: none;
+				padding: 8px;
+				position: relative;
+				width: auto;
+			}
+			.img{
+				width: 100%;
+			}
+			.title{
+				line-height: 20px;
+				font-size: 13px;
+				font-weight: bold;
+				text-align: center;
+			}
+			//用于上传文件列表的关闭
+			.close, .checked{
+				position: absolute;
+				top: 0;
+				right:0;
+				display: none;
+				width: 100%;
+				padding: 3px;
+				z-index: 99;
+				background-color: rgba(255,255,255,.5);
+				text-align: right;
+				.iconfont{
+					cursor: pointer;
+					font-size: 12px;
+					color: #333;
+				}
+			}
+			&:hover{
+				.close{
+					display: block;
+				}
+			}
+			.checked{
+				display: block;
+				width: auto;
+				padding: 0;
+				background: none;
+				.iconfont{
+					cursor: pointer;
+					font-size: 16px;
+					color:#199C1F;
+				}
+			}
+		}
+		&.upload-list{
+			li{
+				width: 120px;
+				height: 135px;
+				margin: 4px;
+				.title {
+					font-weight: normal;
+					margin-bottom: 5px;
+					.f-tof;
+				}
+			}
+		}
+	}
+	&.nav{
+		li{
+			a{
+			height: 48px;
+			line-height: 44px;
+			border-bottom:1px #eee solid;
+			margin-bottom:3px;	
+			padding-bottom:3px; 
+			font-size: 14px;
+				i,img{
+					height: 44px;
+					width: 44px;
+					display: block;
+					line-height: 44px;
+					border-radius: 50%;
+					text-align: center;
+					float: left;
+					margin: 0px 10px 4px 5px;
+					font-size: 18px;
+					//color: #fff!important;
+				}
+				&.carte{
+					.name{
+						font-size: 14px;
+						display: block;
+						line-height: 20px;
+					}
+					.phone{
+						font-size: 12px;
+						color: #6C6C6C;
+						display: block;
+						line-height: 25px;
+					}
+				}
+			}
+		}
+	}
+	&.icon{
+		.f-clear;
+		li{
+		text-align: center;
+		display: block;
+		float: left;
+		a, i.icon.iconfont{
+			.f-clear;
+			display: block;
+			text-align: center;
+			margin:0px;
+			border-radius: 8px;
+			//.radius;
+			position: relative;
+			overflow: visible;
+			cursor: pointer;
+			text-indent: 0;
+			&:hover{
+				animation:pulse 0.5s;
+			}
+			.iconfont{
+				&.close{
+					position: absolute;
+					font-size: 18px!important;
+					color:#FF0000!important;
+					top:2px;
+					right:-2px;
+					line-height: 0;
+					width: 15px;
+					height: 15px;
+					border-radius: 50%;
+					background-color: #fff;
+					line-height: 17px!important;
+					text-align: left!important;
+				}
+				&.choose{
+					position: absolute;
+					font-size: 18px!important;
+					color:#54ACFF!important;
+					top:2px;
+					right:-2px;
+					line-height: 0;
+					width: 15px;
+					height: 15px;
+					border-radius: 50%;
+					background-color: #fff;
+					line-height: 17px!important;
+					text-align: left!important;
+					&.checked{
+						color:#82E400!important;
+					}
+				}
+			}
+			
+			
+			
+		}
+		p, .name, .code{
+			.f-textoverflow;
+			text-align: center;
+			width: 100%;
+			line-height: 26px;
+			padding-bottom: 0;
+			
+		}	
+	}
+		#m-list > .icon-list(60px, 8px, #50b0ef, #f6f6f6);
+		&.active{
+			position: absolute; 
+			z-index: 2999;
+			cursor: move;
+			li{
+				a{  
+					cursor: move;
+					border: 1px dotted #00A6EC;
+					box-shadow: 2px 2px 7px #ccc;
+				}
+			}
+		}
+	}
+	&.dialogue{
+		li{
+			.headimg{}
+			a{}
+		}
+	}
+}

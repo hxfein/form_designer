@@ -1,0 +1,43 @@
+/* CSS Document */
+.u-float{
+	position: absolute;
+	z-index: 1000;
+	background-color: #FFFFFF;
+	box-shadow: -2px 0 4px rgba(0,0,0,.3);
+	&.hide {
+		display: none;
+	}
+	&.top{
+		left: 0;
+		top: 0;
+		box-shadow: 0 2px 4px rgba(0,0,0,.3);
+		width: 100%;
+		min-height: 50px;
+		border-bottom: #eee 1px solid \9;
+		
+	}
+	&.bottom {
+		left: 0;
+		bottom: 0;
+		box-shadow: 0 -2px 4px rgba(0,0,0,.3);
+		width: 100%;
+		min-height: 50px;
+		border-top: #eee 1px solid \9;
+	}
+	&.left {
+		left: 0;
+		bottom: 0;
+		box-shadow: 2px 0 4px rgba(0,0,0,.3);
+		width: 200px;
+		height: 100%;
+		border-right: #eee 1px solid \9;
+	}
+	&.right {
+		right: 0;
+		bottom: 0;
+		box-shadow: -2px 0 4px rgba(0,0,0,.3);
+		width: 200px;
+		height: 100%;
+		border-left: #eee 1px solid \9;
+	}
+}

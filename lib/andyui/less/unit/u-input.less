@@ -1,0 +1,326 @@
+@import "../base/deploy";
+@import "u-point";
+//表单
+.u-input , .u-label , .u-checkbox, .u-select, .u-textarea{
+	.de;
+	display:block;
+	float: left;
+	padding: 0;
+	border-radius:@radius;
+	border-style: solid;
+	outline:none;//取消input和textarea的聚焦边框
+	text-indent: 5px;
+	line-height: (@basesize - 2); 
+	
+	&.sm{
+		.sm;
+		padding: 0;
+		line-height: (@sm - 2);
+		
+	}
+	&.xs{
+		.xs;
+		padding: 0;
+		line-height: (@xs - 2);
+	}
+	&.lg{
+		.lg;
+		padding: 0;
+		line-height: (@lg - 2);
+		
+	}
+	&.md{
+		.md;
+		padding: 0;
+		line-height: (@md - 2);
+		
+	}
+	&.xl{
+		.xl;
+		padding: 0;
+		line-height: (@xl - 2);
+		
+	}
+	&:hover{
+		background-position: right 50%;
+		background-repeat: no-repeat;
+	}
+	&.nohover:hover{background-image:none!important;}
+	&:focus{
+		background-image:none!important;
+	}
+	&.nofocus:focus{
+		box-shadow:none;
+		background-image:none!important;
+	}
+	&.err{
+		background-image:none!important;
+	}
+	&:disabled{
+		background-image:none!important;
+		cursor:not-allowed;
+		moz-user-select: -moz-none;
+		-moz-user-select: none;
+		-o-user-select:none;
+		-khtml-user-select:none;
+		-webkit-user-select:none;
+		-ms-user-select:none;
+		user-select:none;
+	}
+	&.disabled, &.u-diseditor{
+		background-image:none!important;
+		cursor:not-allowed;
+		moz-user-select: -moz-none;
+		-moz-user-select: none;
+		-o-user-select:none;
+		-khtml-user-select:none;
+		-webkit-user-select:none;
+		-ms-user-select:none;
+		user-select:none;
+	}
+	//默认皮肤
+	#input > .u-input-skin(@color-base-white);
+}
+
+//下拉框
+.u-select, select.u-input{
+	&:hover{
+		cursor: pointer;
+	}
+	*font-size:20px;
+	&.xs{*font-size:12px;}
+	&.sm{*font-size:16px;}
+	&.md{*font-size:24px;}
+	&.lg{*font-size: 33px;}
+	&.xl{*font-size: 40px;}
+	#input > .u-select-skin(@color-base-white);
+}
+//单选多选
+.u-label, .u-checkbox{
+	border:none;
+	display:inline-block!important;
+	*display: block!important;
+	*float: left!important;
+	background: none;
+	width:auto!important;
+	input{
+		position:relative;
+		margin:0 5px 0 5px;
+		top:2px;
+		*top:-1px;
+		*margin:0 2px 0 2px;
+	}
+	&:hover{
+		background-image:none;
+		cursor: pointer;
+	}
+}
+.u-input-err {
+	width:20px;
+	height:20px;
+	position:absolute;
+	padding-right:1px;
+	right:2px;
+	top:50%;
+	background: url("@{imgurl}err.png") 50% center no-repeat;
+	margin-top:-10px;
+	z-index: 1;
+}
+.u-input-cor {
+	width:20px;
+	height:20px;
+	position:absolute;
+	padding-right:1px;
+	right:2px;
+	top:50%;
+	background: url("@{imgurl}correct.png") 50% center no-repeat;
+	margin-top:-10px;
+	z-index: 1;
+}
+textarea.u-input ,textarea.u-textarea{
+	height:auto;
+}
+//表单多选器
+.u-btn-eject, .u-inputitem {
+	   
+	.u-btn-checkbox, .checkbox{
+		.u-input;
+		width: 100%;
+		overflow-y:auto;
+		overflow-x:hidden;
+		display: block;
+		float: left;
+		text-indent: 0;
+		&:hover{
+			background-image:none!important
+		}
+	}
+	.multi-select-box, .multi-box{
+		padding-left: 3px;
+		padding-right: 3px;
+		&:hover{
+			background-image: none!important
+		}
+		*padding-bottom:2px;
+		*position: static!important;
+		.option-block{
+			behavior:none!important;
+			.u-point;
+			.u-point.xs;
+			.u-point.text;
+			position: static;
+			z-index: auto;
+			//position: relative!important;
+			margin:2px 1px;
+			margin:0px 1px 1px 1px\9;
+			*margin:3px 1px;
+			font-size: 12px;
+			i.iconfont{
+				font-size: 12px;
+			}
+			cursor: pointer;
+		}
+		.iconfont{
+			padding: 0!important;
+			&:hover{
+				color:#2A2A2A;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+//上传插件
+.m-upload{
+	position: relative;
+	.upload-box{
+		position: absolute;
+		background: #fff;
+		display: block;
+		padding: 10px;
+		border:1px solid #ccc;
+		border-radius: 3px;
+		box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+	}
+	.item-l{
+		margin-left: -1px;
+	}
+}
+
+
+.u-upload {
+	height: 26px;
+	border: 1px solid #CCC;
+	cursor: pointer;
+	position: relative;
+	padding: 0;
+	border-radius: 3px;
+	background-color: #fff;
+	text-indent: 0px;
+}
+.u-upload .thumbnail {
+	padding: 1px 0 0 2px;
+}
+.u-upload .thumbnail img {
+	padding-right: 3px;
+	width: 16px;
+	height: 18px;
+}
+.u-upload .icon {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	display: inline-block;
+	width: 26px;
+	height: 26px;
+	font-size: 21px;
+	line-height: 28px;
+	color: #AEBBBB;
+}
+.u-upload-load {
+	display: block;
+	float: left;
+}
+.u-upload-load li {
+	display: block;
+	float: left;
+	width: 101px;
+	height: 120px;
+	margin: 0 5px;
+	border: 1px solid #CCC;
+	padding: 5px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	position: relative;
+}
+.u-upload-load li.last {
+	padding: 0px;
+	border: none;
+	cursor: pointer;
+	width: 113px;
+	height: 129px;
+}
+.u-upload-load li p {
+	width: 102px;
+	height: 23px;
+	line-height: 23px;
+	border-bottom: 1px solid #66CCFF;
+	overflow: hidden;
+	margin-bottom: 0px;
+}
+.u-upload-load li .iconfont {
+	float: right;
+	color: #EC5944;
+	cursor: pointer;
+	line-height: 23px;
+}
+.u-upload-load li .loading {
+	width: 102px;
+	height: 4px;
+	background: #CCCCCC;
+	position: absolute;
+	left: 5px;
+	top: 116px;
+	overflow: hidden;
+}
+.u-upload-load li .loading .speed {
+	width: 102px;
+	height: 4px;
+	background: #66CC00;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	overflow: hidden;
+}
+.u-upload-down {
+	position: absolute;
+	left: -1px;
+	top: 38px;
+	background: #FFF;
+}
+.u-upload-down li {
+	margin: 0;
+	margin-right: 5px;
+}
+.u-upload-path {
+	padding: 10px;
+}
+.u-upload-path span {
+	color: #8C8C8C
+}
+.u-upload-choice li {
+	border: none !important;
+	width: 68px;
+	height: 105px;
+}
+.u-upload-choice li img {
+	margin-bottom: 10px;
+}
+.u-upload-choice li p {
+	border-bottom: none !important;
+	width: 63px;
+	text-align: center;
+	color: #666;
+	height: 18px;
+	line-height: 18px;
+}

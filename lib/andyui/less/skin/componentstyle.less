@@ -1,0 +1,121 @@
+@import "../base/deploy";//配置
+
+#componentstyle(@primary-active-color, @bg-color, @head-active-color, @primary-color){
+	//主题背景的渐进色阶
+	.bg-color{
+		background-color: @bg-color;
+		border-color: darken(@bg-color,8%);
+		&.dk{
+			background-color: darken(@bg-color,4%);
+			border-color: darken(@bg-color,8%);
+		}
+		&.dker{
+			background-color: darken(@bg-color,8%); 
+			border-color: darken(@bg-color,15%);
+		}
+	}
+	//主题皮肤背景颜色
+	.primary-color{
+		background-color: @primary-color;
+		color: #fff;
+		a{
+			color:lighten(@primary-color,35%);
+		}
+	}
+	//应用列表  用于应用展示
+	.m-list.icon.app{
+		#m-list > .icon-list(64px , 12px , #fff , @primary-active-color);
+	}
+	//简易工具栏
+	.m-toolbar.line{
+		#toolbar > .toolbar-color(solid , @bg-color , @head-active-color);
+		border-bottom: 1px solid darken(@bg-color,8%);
+		padding: 0!important;
+	}
+	//小工具栏
+	.m-toolbar.xs{
+		#toolbar > .toolbar-size(22px);
+		padding: 3px;
+	}
+	//tabs导航
+	.m-tabs-header {
+		#tabs > .tabs-color(solid , @bg-color, lighten(@bg-color,6%));
+		border-bottom: 1px solid darken(@bg-color,8%);
+	}
+	
+	.m-tabs {
+		#tabs-box > .tabs-style(solid, half, darken(@bg-color,8%), #fff, #fff, 30px, 3px);
+	}
+	//质感按钮组
+	.u-group.texture{
+		#u-group >.group-skin(gral, #fefefe);
+	}
+	//图标按钮集
+	.u-group.icons{
+		#u-group >.group-skin(solid, #fefefe);
+		.u-btn{
+			background:none;
+			border:none;
+			.iconfont{
+				font-size: 16px!important;
+				color: #666;
+			}
+		}
+	}
+	//全局面板
+	.m-panel{
+		#panel > .panel-color(solid , lighten(@bg-color,2%),  @head-active-color , darken(@bg-color,8%) , 3px);
+		&.white{
+			#panel > .panel-color(solid , #ffffff, @head-active-color , darken(@bg-color,8%) , 3px);
+			.panel-head{
+				border-bottom-color: #ffffff;
+			}
+			.panel-foot{
+				border-top-color: #ffffff; 
+			}
+		}
+	}
+	//手风琴样式
+	.m-accordion{
+		#panel > .m-accordion-color(lighten(@bg-color,2%))
+	}
+	//弹出对话框
+	.window{
+		#panel > .panel-color(solid , #ffffff,  @head-active-color , #ffffff , 5px);
+		.panel-head{
+			.title{
+				color: #333!important;
+			}
+		}
+	}
+	//全局列表样式
+	.m-table{
+		#table > .table(solid, darken(@bg-color,2%), #FFE596);
+	}
+	//全局表单颜色
+	.m-table-form{
+		#table-form > .form-color(120px, lighten(@bg-color,1%))
+	}
+	//左侧面板样式
+	.layout-left.m-panel{
+		#panel > .panel-color(solid , darken(@bg-color,2%), @head-active-color , darken(@bg-color,8%) , 0px)
+	}
+	//溢出左右滑动控制插件
+	.m-scrolltabs{
+		.left-bar,
+		.right-bar{
+			color: darken(@bg-color,20%);
+			&:hover{
+				color:darken(@bg-color,15%);
+			}
+		}
+	}
+	.f-b,.f-b-t,.f-b-b,.f-b-l,.f-b-r{
+		border-color: darken(@bg-color,8%);
+	}
+	//多选面板
+	.m-choicepanel{
+		#m-choicepanel(darken(@bg-color,2%));
+	}
+}
+

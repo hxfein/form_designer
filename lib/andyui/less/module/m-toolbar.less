@@ -1,0 +1,70 @@
+@import "../base/deploy";
+.m-toolbar {
+	//padding:3px!important;
+	//box-sizing: content-box!important;
+	.item{
+		float: left;
+		display: block;
+		//&.u-btn,&.u-select{
+			//margin-right:2px;
+		//}
+	}
+//	.u-group{
+//		.item{
+//			display: inline;
+//			margin-right:0px;
+//		}
+//	}
+	.title{
+		border-bottom-width: 2px;
+		border-bottom-style: solid;
+		padding:0 8px;
+		font-weight: 500;
+	}
+	.u-switch{}
+	.u-checkbox{}
+	.tabs {
+		margin: 4px 5px;
+		li {
+			margin: 0 3px;
+			float: left;
+			display: block;
+			
+			a{
+				float: left;
+				display: block;
+				padding: 0 5px;
+				
+				&:hover{
+				}
+				&.active{
+				}
+			}
+			&.active{
+				a{
+				}
+			}
+		}
+	}
+	.m-topmenu{
+	}
+	//默认尺寸
+	#toolbar > .toolbar-size(@basesize);
+	//默认颜色
+	#toolbar > .toolbar-color(solid , @color-base-white , @color-base-info);
+}
+
+.m-pagebar{ zoom:1;}
+.m-pagebar:after {
+	display: block;
+	clear: both;
+	visibility: hidden;
+	overflow: hidden;
+	content: "\20";
+}
+.m-pagebar .u-input{
+	float:none !important;
+	display:inline-block;
+	text-align: center;
+	text-indent: 0px;
+}

@@ -1,0 +1,65 @@
+@import "../base/deploy";//基础配置
+//结构
+.u-btn { 
+	display: inline-block;
+	moz-user-select: -moz-none;
+		-moz-user-select: none;
+		-o-user-select:none;
+		-khtml-user-select:none;
+		-webkit-user-select:none;
+		-ms-user-select:none;
+		user-select:none;
+	box-sizing: border-box; 
+	.de;
+	border-radius: 3px;
+	text-decoration: none;
+	outline: none;
+	border-style: solid;
+	position: relative;
+	*position: static;
+    &:hover {
+		cursor: pointer;
+	}
+	&:active ,&.active{
+		box-shadow:@shadow-inset;
+	}
+	&.active{
+		cursor: default;
+	}
+	&:disabled, &.disabled{
+		cursor:not-allowed;
+	}
+	.u-point{
+		position: absolute;
+		top:3px;
+		right: 3px;
+	}
+	//文字链接按钮
+	&.link{
+		border: none;
+		background: none!important;
+		box-shadow: none!important;
+	}
+	.iconfont{
+		//margin-right: 2px
+		margin: 0 0px;
+	}
+	
+	//基础皮肤颜色 
+	#u-btn > .u-btn-skin(lighten(@color-base-light,7%));
+}
+	button.u-btn, a.u-btn{
+		.size((@basesize + 2),1em,1px);
+		font-size: 14px;
+		*line-height: (@basesize - 5);
+		&.xs{.size((@xs + 2),2px,1px); font-size: 11px; *line-height: 14px;}
+		&.sm{.size((@sm + 2),2px,1px); *line-height: 16px;}
+        &.md{.size((@md + 2),4px,1px); *line-height: 18px;}
+        &.lg{.size((@lg + 2),5px,1px); *line-height: 26px;} 
+        &.xl{.size((@xl + 2),6px,1px); *line-height: 28px;}
+	}
+//保留按钮组合老样式
+.m-btn-group { _padding-left: 5px; }
+.m-btn-group .u-btn { display: block; float: left; border-radius: 0px; margin-left: -2px!important; }
+.m-btn-group .u-btn:first-child{ border-top-left-radius: 3px; border-bottom-left-radius: 3px; }
+.m-btn-group .u-btn:last-child { border-top-right-radius: 3px; border-bottom-right-radius: 3px;  }

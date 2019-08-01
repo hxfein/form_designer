@@ -1,0 +1,20 @@
+@import "../base/deploy";
+.m-sidemenu {
+	&.info{#m-sidemenu > .sidemenu-color(style1, @color-base-info, #9EFFFB);}
+	&.primary{#m-sidemenu > .sidemenu-color(style1, @color-base-primary, #FFF00C);}
+	&.success{#m-sidemenu > .sidemenu-color(style1, @color-base-success, #CDFC4C);}
+	&.warning{#m-sidemenu > .sidemenu-color(style1, @color-base-warning, #A66400);}
+	&.danger{#m-sidemenu > .sidemenu-color(style1, @color-base-danger, #FFF00C);}
+	&.black{#m-sidemenu > .sidemenu-color(style1, @color-base-black, #FFC30F);}
+	&.dark{#m-sidemenu > .sidemenu-color(style1, @color-base-dark, #FFC30F);}
+	
+	&.style01{
+		&.info{#m-sidemenu > .sidemenu-color(style2, lighten(@color-base-info,42%), @color-base-info);}
+		&.primary{#m-sidemenu > .sidemenu-color(style2, @color-base-primary, #FFF00C);}
+		&.success{#m-sidemenu > .sidemenu-color(style2, @color-base-success, #CDFC4C);}
+		&.warning{#m-sidemenu > .sidemenu-color(style2, @color-base-warning, #A66400);}
+		&.danger{#m-sidemenu > .sidemenu-color(style2, @color-base-danger, #FFF00C);}
+		&.black{#m-sidemenu > .sidemenu-color(style2, @color-base-black, #FFC30F);}
+		&.dark{#m-sidemenu > .sidemenu-color(style2, @color-base-dark, #FFC30F);}
+	}
+}

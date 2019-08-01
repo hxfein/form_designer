@@ -1,0 +1,216 @@
+@import "../base/deploy";//基础配置
+//渐变-亮 
+.f-bg-gral-info{
+	#color > .bg-gral(desaturate(lighten(@color-base-info, 36%),20%))
+}
+.f-bg-gral-success{
+	#color > .bg-gral(desaturate(lighten(@color-base-success, 36%),20%))
+}
+.f-bg-gral-warning{
+	#color > .bg-gral(desaturate(lighten(@color-base-warning, 36%),20%))
+}
+.f-bg-gral-danger{
+	#color > .bg-gral(desaturate(lighten(@color-base-danger, 36%),20%))
+}
+.f-bg-gral-light{
+	#color > .bg-gral(desaturate(lighten(@color-base-light, 15%),0%))
+}
+.f-bg-gral-primary{
+	#color > .bg-gral(desaturate(lighten(@color-base-primary, 36%),20%))
+}
+.f-bg-gral-dark{
+	#color > .bg-gral(desaturate(lighten(@color-base-dark, 36%),0%))
+}
+.f-bg-gral-black{
+	#color > .bg-gral(desaturate(lighten(@color-base-black, 36%),0%))
+}
+
+//渐变-暗
+.f-bg-grad-info{
+	color: #fff;
+	background: url("@{imgurl}info.png") repeat-x left 50%;
+	border-color: @color-base-info;
+}
+.f-bg-grad-success{
+	color: #fff;
+	background: url("@{imgurl}success.png") repeat-x left 50%;
+	border-color: desaturate(lighten(@color-base-success, 25%),10%);
+}
+.f-bg-grad-warning{
+	color: #fff;
+	background: url("@{imgurl}warning.png") repeat-x left 50%;
+	border-color: @color-base-warning;
+}
+.f-bg-grad-danger{
+	color: #fff;
+	background: url("@{imgurl}danger.png") repeat-x left 50%;
+	border-color: @color-base-danger;
+}
+.f-bg-grad-light{
+	color: #555;
+	background: url("@{imgurl}light.png") repeat-x left 50%;
+	border-color:#909090;
+}
+.f-bg-grad-primary{
+	color: #fff;
+	background: url("@{imgurl}primary.png") repeat-x left 50%;
+	border-color: @color-base-primary;
+}
+.f-bg-grad-dark{
+	color: #fff;
+	background: url("@{imgurl}dark.png") repeat-x left 50%;
+	border-color: @color-base-dark;
+}
+.f-bg-grad-black{
+	#color > .bg-gral(desaturate(darken(@color-base-black, 3%),0%))
+}
+
+
+.f-bg-white {
+	background-color:@color-base-white;
+	color: desaturate(darken(@color-base-white, 60%), 70%);
+}
+
+.f-bg-light-lt400{#color > .bg-color(desaturate(lighten(@color-base-light, 16%),0%))!important}
+.f-bg-light-lt300{#color > .bg-color(desaturate(lighten(@color-base-light, 12%),0%))!important}
+.f-bg-light-lter{#color > .bg-color(desaturate(lighten(@color-base-light, 8%),0%))!important}
+.f-bg-light-lt{#color > .bg-color(desaturate(lighten(@color-base-light, 4%),0%))!important}
+.f-bg-light{#color > .bg-color(@color-base-light)!important;}
+.f-bg-light-dk{#color > .bg-color(saturate(darken(@color-base-light, 9%),0%))!important}
+.f-bg-light-dker{#color > .bg-color(saturate(darken(@color-base-light, 18%),0%))!important}
+.f-bg-light-dk300{#color > .bg-color(saturate(darken(@color-base-light, 27%),0%))!important}
+.f-bg-light-dk400{#color > .bg-color(saturate(darken(@color-base-light, 36%),0%))!important}
+
+.f-bg-dark-lt400{#color > .bg-color(desaturate(lighten(@color-base-dark, 55%),0%))!important}
+.f-bg-dark-lt300{#color > .bg-color(desaturate(lighten(@color-base-dark, 38%),0%))!important}
+.f-bg-dark-lter{#color > .bg-color(desaturate(lighten(@color-base-dark, 20%),0%))!important}
+.f-bg-dark-lt{#color > .bg-color(desaturate(lighten(@color-base-dark, 15%),0%))!important}
+.f-bg-dark{#color > .bg-color(@color-base-dark)!important;}
+.f-bg-dark-dk{#color > .bg-color(saturate(darken(@color-base-dark, 5%),0%))!important}
+.f-bg-dark-dker{#color > .bg-color(saturate(darken(@color-base-dark, 13%),0%))!important}
+.f-bg-dark-dk300{#color > .bg-color(saturate(darken(@color-base-dark, 20%),0%))!important}
+.f-bg-dark-dk400{#color > .bg-color(saturate(darken(@color-base-dark, 25%),0%))!important}
+
+.f-bg-black-lt400{#color > .bg-color(desaturate(lighten(@color-base-black, 55%),0%))!important}
+.f-bg-black-lt300{#color > .bg-color(desaturate(lighten(@color-base-black, 38%),0%))!important}
+.f-bg-black-lter{#color > .bg-color(desaturate(lighten(@color-base-black, 20%),0%))!important}
+.f-bg-black-lt{#color > .bg-color(desaturate(lighten(@color-base-black, 15%),0%))!important}
+.f-bg-black{#color > .bg-color(@color-base-black)!important;}
+.f-bg-black-dk{#color > .bg-color(saturate(darken(@color-base-black, 5%),0%))!important}
+.f-bg-black-dker{#color > .bg-color(saturate(darken(@color-base-black, 10%),0%))!important}
+.f-bg-black-dk300{#color > .bg-color(saturate(darken(@color-base-black, 15%),0%))!important}
+.f-bg-black-dk400{#color > .bg-color(saturate(darken(@color-base-black, 20%),0%))!important}
+
+
+.f-bg-primary-lt400{#color > .bg-color(desaturate(lighten(@color-base-primary, 36%),20%))!important}
+.f-bg-primary-lt300{#color > .bg-color(desaturate(lighten(@color-base-primary, 27%),15%))!important}
+.f-bg-primary-lter{#color > .bg-color(desaturate(lighten(@color-base-primary, 18%),10%))!important}
+.f-bg-primary-lt{#color > .bg-color(desaturate(lighten(@color-base-primary, 9%),5%))!important}
+.f-bg-primary{#color > .bg-color(@color-base-primary)!important;}
+.f-bg-primary-dk{#color > .bg-color(saturate(darken(@color-base-primary, 9%),2%))!important}
+.f-bg-primary-dker{#color > .bg-color(saturate(darken(@color-base-primary, 18%),4%))!important}
+.f-bg-primary-dk300{#color > .bg-color(saturate(darken(@color-base-primary, 27%),6%))!important}
+.f-bg-primary-dk400{#color > .bg-color(saturate(darken(@color-base-primary, 36%),8%))!important}
+
+.f-bg-success-lt400{#color > .bg-color(desaturate(lighten(@color-base-success, 36%),20%))!important}
+.f-bg-success-lt300{#color > .bg-color(desaturate(lighten(@color-base-success, 27%),15%))!important}
+.f-bg-success-lter{#color > .bg-color(desaturate(lighten(@color-base-success, 18%),10%))!important}
+.f-bg-success-lt{#color > .bg-color(desaturate(lighten(@color-base-success, 9%),5%))!important}
+.f-bg-success{#color > .bg-color(@color-base-success)!important;}
+.f-bg-success-dk{#color > .bg-color(saturate(darken(@color-base-success, 5%),2%))!important}
+.f-bg-success-dker{#color > .bg-color(saturate(darken(@color-base-success, 10%),4%))!important}
+.f-bg-success-dk300{#color > .bg-color(saturate(darken(@color-base-success, 15%),6%))!important}
+.f-bg-success-dk400{#color > .bg-color(saturate(darken(@color-base-success, 20%),8%))!important}
+
+.f-bg-info-lt400{#color > .bg-color(desaturate(lighten(@color-base-info, 36%),20%))!important}
+.f-bg-info-lt300{#color > .bg-color(desaturate(lighten(@color-base-info, 27%),15%))!important}
+.f-bg-info-lter{#color > .bg-color(desaturate(lighten(@color-base-info, 18%),10%))!important}
+.f-bg-info-lt{#color > .bg-color(desaturate(lighten(@color-base-info, 9%),5%))!important}
+.f-bg-info{#color > .bg-color(@color-base-info)!important;}
+.f-bg-info-dk{#color > .bg-color(saturate(darken(@color-base-info, 9%),2%))!important}
+.f-bg-info-dker{#color > .bg-color(saturate(darken(@color-base-info, 18%),4%))!important}
+.f-bg-info-dk300{#color > .bg-color(saturate(darken(@color-base-info, 27%),6%))!important}
+.f-bg-info-dk400{#color > .bg-color(saturate(darken(@color-base-info, 36%),8%))!important}
+
+
+.f-bg-warning-lt400{#color > .bg-color(desaturate(lighten(@color-base-warning, 36%),20%))!important}
+.f-bg-warning-lt300{#color > .bg-color(desaturate(lighten(@color-base-warning, 27%),15%))!important}
+.f-bg-warning-lter{#color > .bg-color(desaturate(lighten(@color-base-warning, 18%),10%))!important}
+.f-bg-warning-lt{#color > .bg-color(desaturate(lighten(@color-base-warning, 9%),5%))!important}
+.f-bg-warning{#color > .bg-color(@color-base-warning)!important;}
+.f-bg-warning-dk{#color > .bg-color(saturate(darken(@color-base-warning, 9%),2%))!important}
+.f-bg-warning-dker{#color > .bg-color(saturate(darken(@color-base-warning, 18%),4%))!important}
+.f-bg-warning-dk300{#color > .bg-color(saturate(darken(@color-base-warning, 27%),6%))!important}
+.f-bg-warning-dk400{#color > .bg-color(saturate(darken(@color-base-warning, 36%),8%))!important}
+
+.f-bg-danger-lt400{#color > .bg-color(desaturate(lighten(@color-base-danger, 36%),20%))!important}
+.f-bg-danger-lt300{#color > .bg-color(desaturate(lighten(@color-base-danger, 27%),15%))!important}
+.f-bg-danger-lter{#color > .bg-color(desaturate(lighten(@color-base-danger, 18%),10%))!important}
+.f-bg-danger-lt{#color > .bg-color(desaturate(lighten(@color-base-danger, 9%),5%))!important}
+.f-bg-danger{#color > .bg-color(@color-base-danger)!important;}
+.f-bg-danger-dk{#color > .bg-color(saturate(darken(@color-base-danger, 9%),2%))!important}
+.f-bg-danger-dker{#color > .bg-color(saturate(darken(@color-base-danger, 18%),4%))!important}
+.f-bg-danger-dk300{#color > .bg-color(saturate(darken(@color-base-danger, 27%),6%))!important}
+.f-bg-danger-dk400{#color > .bg-color(saturate(darken(@color-base-danger, 36%),8%))!important}
+
+
+//字体颜色
+.f-color-white {
+	color: #fff!important;
+}
+.f-color-danger {
+	color:@color-base-danger!important;
+}
+.f-color-info {
+	color:@color-base-info!important;
+}
+.f-color-success {
+	color:saturate(@color-base-success,10%)!important;
+}
+.f-color-warning {
+	color:saturate(@color-base-warning,20%)!important;
+}
+.f-color-light {
+	color:@color-base-light!important;
+}
+.f-color-black {
+	color:@color-base-black!important;
+}
+.f-color-dark {
+	color:@color-base-dark!important;
+}
+.f-color-primary {
+	color:@color-base-primary!important;
+}
+.f-color-yellow {
+	color:#FFC600!important;
+}
+//边框颜色
+.f-b-white {
+	border-color: #fff;
+}
+.f-b-danger {
+	border-color:@color-base-danger;
+}
+.f-b-info {
+	border-color:@color-base-info;
+}
+.f-b-success {
+	border-color:@color-base-success;
+}
+.f-b-warning {
+	border-color:@color-base-warning;
+}
+.f-b-light {
+	border-color:@color-base-light;
+}
+.f-b-black {
+	border-color:@color-base-black;
+}
+.f-b-dark {
+	border-color:@color-base-dark;
+}
+.f-b-primary {
+	border-color:@color-base-primary;
+}
+

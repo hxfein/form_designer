@@ -1,0 +1,202 @@
+@import "../base/deploy";
+//@import "u-btn";
+//@import "m-menu";
+//组合框
+.u-group,.u-l-select {
+	position:relative;
+	//float: left;
+	//display: block; 
+	//position: static;
+	//width: 100%;
+	//z-index: 1;
+	//组合表单标识图标或文字
+	.mark{
+		//border-radius: 3px;
+		box-sizing: border-box;
+		moz-user-select: -moz-none;
+		-moz-user-select: none;
+		-o-user-select:none;
+		-khtml-user-select:none;
+		-webkit-user-select:none;
+		-ms-user-select:none;
+		user-select:none; 
+	}
+	//组合框定义的尺寸
+	#u-group > .group-size(@basesize);
+	&.xs{ 
+		#u-group > .group-size(@xs);
+	}
+	&.sm{
+		#u-group > .group-size(@sm);
+	}
+	&.md{
+		#u-group > .group-size(@md);
+	}
+	&.lg{
+		#u-group > .group-size(@lg);
+	}
+	&.xl{
+		#u-group > .group-size(@xl);
+	}
+	//导致组件横向展开
+	.u-input{
+		width: 1px;
+		//overflow: hidden;
+	}
+	
+	.u-btn, .u-input, .item, .u-select, .u-label, .u-switch, .u-group-center,.u-group-left,.u-group-right, .mark{
+		float:left;
+		border-radius:0;
+		position: relative;
+		//z-index: 2;
+		min-width:1em;
+		display: inline-block;
+		*display: block;
+		border-style: solid;
+		border-left-width: 0px!important;
+		*position: static;
+		//采用伪类方式进行组合，但在兼容环境下建议使用&.item-l
+		&:first-child, &.item-l { 
+			border-top-left-radius: 3px;
+			border-bottom-left-radius: 3px;
+			border-left-width: 1px!important;
+			
+			
+		}
+        &:last-child, &.item-r{
+			border-top-right-radius:3px;
+			border-bottom-right-radius: 3px;
+			//z-index: 3;
+			
+		}
+		&.u-input.item-l, &.u-btn.item-l, &.mark.item-l, &.u-select.item-l, &.u-label.item-l, .item-l { 
+			//border-left-width: 1px!important;
+		}
+	}
+	.u-group-left{
+		border-top-left-radius: 3px;
+		border-bottom-left-radius: 3px;
+		z-index: 1;
+		border-left-width: 1px!important;
+	}
+	.u-group-right{
+		border-top-right-radius:3px;
+		border-bottom-right-radius: 3px;
+		z-index: 3;
+		margin-right:-1px;
+	}
+	//修正文件上传
+	label.u-btn{
+		min-width: 13px;
+	}
+	//单选多选开关的修正
+	.u-label,.u-switch{
+		border-width:1px;
+		padding-right: 8px;
+		white-space:nowrap; //强迫不换行
+	}
+	.m-tooltip{
+		float:left;
+	}
+	//在使用item来进行封装其他表单组件的修饰
+
+	.item, .u-group-center, .u-group-left, .u-group-right{
+		.u-input, .u-btn, .u-label,.u-select,.u-switch{
+			float:left;
+			border-radius:0;
+			border:none;
+			display: block
+		}
+		
+		&.u-inputitem{
+			border: none;
+		}
+		&.u-label{
+			border-style: solid;
+			border-width: 1px;
+			padding-right: 7px;
+			padding-left: 0;
+		}
+	}
+	//兼容combo的修正
+	&.combo{
+		.u-input{
+			border-right-width:0!important;
+			&:hover{
+				background-image:none;
+				cursor: pointer;
+			} 
+			&:focus{
+				box-shadow:none;
+				background-image:none!important;
+				background-color: #fff;
+				border-color:@color-base-light;
+			}
+		}
+	}
+	
+	
+	//默认组合皮肤
+	#u-group > .group-skin(solid, @color-base-white);
+	//多重组合
+	.u-inputitem{
+		padding-left:0;
+		padding-right:0;
+	}
+	div.u-input{
+			padding: 0;
+			background-image: none!important;
+		}
+	.u-group{
+		margin-top: 0px;
+		
+		.mark{
+			//border-left-width:0px!important;
+			border-width: 0!important;
+			text-indent: 0!important;
+			.iconfont ,&.iconfont{ 
+				width: 12px
+			}
+		}
+		.u-input, .u-select, .item{
+			border-left-width:0px!important;
+			border-width: 0;
+			background: none!important;
+		}
+	}
+	
+	
+}
+
+
+
+
+
+ 
+//.u-group .u-group-sample { border: 1px solid #CCC; height: 26px; border-radius: 3px; }
+//.u-group .u-group-left { float: left; border-top-right-radius:0 !important; border-bottom-right-radius:0 !important; }
+//.u-group .u-group-left .u-btn, .u-group .u-group-left .u-input{border-top-right-radius:0 !important; border-bottom-right-radius:0 !important;font-size:12px; line-height:22px}
+//.u-group .u-group-center { float: left; border-radius: 0 !important; margin-left: -1px; }
+//.u-group .u-group-center .u-btn, .u-group .u-group-center .u-input{border-radius: 0 !important;}
+//.u-group .u-group-right { float: left; border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; margin-left: -1px; }
+//.u-group .u-group-right .u-btn, .u-group .u-group-right .u-input{ border-top-left-radius:0 !important; border-bottom-left-radius:0 !important; font-size:12px; line-height:22px}
+//.u-group .iconfont { display: inline-block; width: 16px; }
+
+//最初版本使用的组合结构 考虑下是否保留
+.u-but-group { position: relative; display: inline-block; padding: 0 8px; height: 28px; line-height: 30px; border: 1px solid #CCC; background: #EEE; cursor: pointer; border-radius: 3px; overflow: hidden; font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif; font-size: 14px; *padding:0 6px; z-index: 10; }
+.u-but-group .u-but-button { display: inline-block; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; cursor: pointer; filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; outline: none; _top: -2px; _left: -2px; _width: 300%; z-index: 100; border: 1px solid #CCC; }
+.u-but-group:hover, .u-btn-eject .u-but-group:hover { background: #DDD; }
+.u-but-group:active, .u-btn-eject .u-but-group:active { background: #EEE; }
+.u-but-group.white { background: #FFF; color: #666; }
+.u-but-group.white:hover { color: #000; }
+.u-but-group.sm { padding: 0 5px; height: 26px; line-height: 26px; font-size: 13px; *padding:0;
+}
+.u-but-group.sm i { font-size: 13px; }
+.u-but-group.xs { padding: 0 5px; height: 18px; line-height: 18px; font-size: 12px; *padding:0;
+}
+.u-but-group.xs i { font-size: 12px; }
+.u-but-group.md { padding: 0 8px; height: 38px; line-height: 38px; font-size: 16px; }
+.u-but-group.lg { padding: 0 10px; height: 44px; line-height: 44px; font-size: 18px; }
+.u-but-group .u-group-checkbox { margin-top: 7px; *margin-top:3px;
+}
+

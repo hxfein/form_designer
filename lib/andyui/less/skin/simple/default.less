@@ -1,0 +1,492 @@
+@import "../../base/deploy";
+@import "../framework-deploy";
+@import "../workbench";
+@import "../componentstyle";
+//风格定义
+@head-h:50px;//框架头部高度
+@primary-color:#16aad8;//皮肤主题颜色
+@primary-active-color:#16aad8;//皮肤主题高亮用于桌面主题
+@left-active-color:#FFCC00;//左侧导航高亮颜色
+@left-color:#1c2b36;//左侧导航颜色
+@logo-color:#16aad8;//LOGO颜色
+@head-color:@primary-color;//头部背景颜色
+@head-active-color:lighten(@primary-color,9%);//头部导航高亮颜色
+@bg-color:#f0f3f4;//整体背景颜色
+@foot-color:lighten(@bg-color,2%);//底部颜色
+@body-color:#333;//全局默认文字颜色
+@workbench-color:lighten(@bg-color,2%);//工作台面样式
+
+
+
+body{
+	background-color:@bg-color;
+	color:@body-color;
+	//全局优化
+	.g-layout{
+		.layout-left{
+			border-right:1px solid darken(@bg-color,8%);
+		}
+		.layout-center {
+			>.m-panel{
+				background-color: transparent;
+				&.f-b{
+					border-width:0;
+				}
+				>.panel-body{
+					background-color: transparent;
+					
+				}
+				&.fit{
+					>.panel-body{
+						padding:60px 15px 15px 15px;
+					}
+				}
+			}
+		}
+	}
+	//框架修饰
+	.g-framework{
+	  #framework > .simple-color(@head-h , @primary-color , @left-active-color, @logo-color , @head-color , @head-active-color , @bg-color , @foot-color);
+	  .m-tabs-header.line.frameworktabs{
+			border-bottom-color: darken(@bg-color,10%);
+			background-color: lighten(@bg-color,8%);
+			.m-tabs-nav{
+				li{
+					&.active{
+						a{
+							color: @primary-color;
+							border-bottom-color: @primary-color!important;
+						}
+					}
+				}
+			}
+		}
+	  .userbox{
+			background-image:url(../../../img/lefttopbg.png);
+			background-size: 100% 100%;
+		}
+		
+	}
+}
+
+//页面头部的内侧阴影
+.pageshadow{
+	//box-shadow:5px 5px 5px darken(@bg-color,5%) inset;
+	//-moz-box-shadow:5px 5px 5px darken(@bg-color,5%) inset;
+	//-webkit-box-shadow:5px 5px 5px darken(@bg-color,5%) inset;
+	
+}
+.f-shadow{
+	box-shadow:5px 5px 5px darken(@bg-color,5%);
+	-moz-box-shadow:5px 5px 5px darken(@bg-color,5%);/*firefox*/ 
+	-webkit-box-shadow:5px 5px 5px darken(@bg-color,5%);/*webkit*/ 
+}
+//tabs
+.m-tabs{
+	.m-tabs-header{
+		.m-tabs-nav{
+			li{
+				a{ 
+					background: none;
+					border-width: 0;
+					transition: none;
+					-moz-transition: none; /* Firefox 4 */
+					-webkit-transition: none; /* Safari 和 Chrome */
+					-o-transition: none; /* Opera */
+				}
+				&.active{
+					a{
+						border-width: 1px;
+						border-color: darken(@bg-color,8%);
+						border-bottom-color: #fff;
+						color: darken(@bg-color,50%);
+					}
+				}
+			}
+		}
+	}
+}
+//整合表单组件样式,包含了各种表单组件以及各种附加色彩修饰
+#componentstyle(@primary-active-color, @bg-color, @head-active-color, @workbench-color);
+//个人工作台
+.workbench{
+	#workbench >.workbench(@bg-color, @workbench-color, @primary-active-color);
+	//样式选择
+	//#workbench >.workbench(style02);
+	//搜索
+	.m-panel{
+		.panel-head{
+			.item.search{
+				float: right;
+				margin: 6px 5px 0 0;
+				.u-input{
+					border: 1px solid darken(@workbench-color,8%);
+					border-right: none;
+				}
+				.u-btn{
+					border-color: @primary-color!important;
+					background: @primary-color!important;
+					color: #fff!important;
+					&:active{
+						background: darken(@primary-color,10%)!important;
+					}
+				}
+			}
+		}
+	}
+}
+
+//jqgrid样式优化
+//头部颜色
+
+.ui-jqgrid{
+	.ui-jqgrid-labels,
+	.ui-jqgrid-hdiv,
+	.ui-jqgrid-pager{
+		background-color: lighten(@bg-color,2%)!important;
+		border-color:darken(@bg-color,8%)!important;
+	}
+	.ui-jqgrid-bdiv{
+		border-left:1px solid darken(@bg-color,8%)!important;
+		border-right:1px solid darken(@bg-color,8%)!important;
+		box-sizing: border-box;
+	}
+	.ui-jqgrid-pager{
+		border-left:1px solid darken(@bg-color,8%)!important;
+		border-right:1px solid darken(@bg-color,8%)!important;
+		border-bottom:1px solid darken(@bg-color,8%)!important;
+		height: 40px!important;
+		box-sizing: border-box;
+	}
+	.ui-jqgrid-hdiv{
+		border-left:1px solid darken(@bg-color,8%)!important;
+		border-right:1px solid darken(@bg-color,8%)!important;
+		box-sizing: border-box;
+	}
+} 
+.ui-jqgrid .ui-jqgrid-labels th, .ui-jqgrid tr.ui-row-ltr td, .ui-jqgrid tr.ui-row-rtl td,.ui-jqgrid .ui-jqgrid-bdiv{
+	border-color: darken(@bg-color,8%)!important;
+}
+.ui-jqgrid tr.ui-row-ltr td{
+	border-right-width:0px!important;
+}
+.ui-jqgrid .ui-jqgrid-sortable{
+	color:#333;
+	font-weight: normal;
+}
+
+.f-visible{
+	overflow: visible;
+}
+.f-visible-i{
+	.f-visible!important;
+}
+.f-y-visible{
+	overflow-y: visible;
+}
+.f-y-visible-i{
+	.f-visible!important;
+}
+.f-visible-i, .ui-jqgrid-btable{
+	.u-btn, .u-btn.sm, .u-btn.xs{
+		height: 22px;
+		line-height: 20px;  
+		padding: 0 6px;
+		margin-right:3px;
+		font-size: 12px!important;
+		border-color: darken(@bg-color,12%);
+		color: darken(@bg-color,30%);
+		.iconfont{
+			font-size:14px!important;
+			top:1px!important;
+		}
+		&:hover{
+			box-shadow: 2px 2px 3px darken(@bg-color,9%);
+			color: darken(@bg-color,55%);
+		}
+	}
+	.m-combo{
+		.u-btn{
+			margin-right:0;
+			.iconfont{
+				position: absolute;
+				font-size:12px!important;
+				transition: all .3s;
+				-moz-transition: all .3s;	/* Firefox 4 */
+				-webkit-transition: all .3s;	/* Safari 和 Chrome */
+				-o-transition: all .3s;	/* Opera */
+			}
+			&:hover{
+				.iconfont{
+					//position: relative;
+					transform:rotate(90deg);
+					-ms-transform:rotate(90deg);
+					-moz-transform:rotate(90deg);
+					-webkit-transform:rotate(90deg);
+					-o-transform:rotate(90deg);
+				}
+			}
+		}
+	}
+	.u-float{
+		box-shadow: -2px 2px 4px rgba(0,0,0,.05);
+		top:28px!important;
+	}
+}
+
+//上传附件列表
+.upload-list{
+	margin: 0;
+	padding: 0;
+	display: block;
+	li{
+		position: relative;
+		display: inline;
+		float: left;
+		width: 110px;
+		height: 110px;
+		background-color: #fff;
+		box-shadow: 0 0 5px rgba(0,0,0,.2);
+		margin: 5px;
+		box-sizing: border-box;
+		padding: 5px;
+		.info{
+			width: 100px;
+			height: 60px;
+			text-align: center;
+			display: block;
+			position: relative;
+			float: left;
+			img{ 
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+			}
+			i{
+				width: 100%;
+				height: 100%;
+				font-size: 55px;
+				line-height: 60px;
+				text-align: center;
+			}
+		}
+		.name{
+			height: 22px;
+			box-sizing: border-box;
+			padding: 5px;
+			background-color:#EBEBEB;
+			color:#9A9A9A;
+			line-height: 12px;
+			font-size: 12px;
+			width: 100px;
+			display: block;
+			overflow: hidden;
+	        text-overflow: ellipsis;
+	        white-space: nowrap;
+			transition: all 0.3s linear;
+            -moz-transition: all 0.3s linear;
+            -webkit-transition: all 0.3s linear;
+            -o-transition: all 0.3s linear;
+		}
+		.mb{
+			height: 20px;
+			line-height: 20px;
+			width: 40%;
+			font-size: 12px;
+			color: #9F9F9F;
+			display: inline;
+			float: left;
+			text-align: left;
+		}
+		.user{
+			height: 20px;
+			line-height: 20px;
+			width: 60%;
+			font-size: 12px;
+			color: #9F9F9F;
+			display: inline;
+			float: right;
+			text-align: right;
+		}
+		.delete{
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			height: 16px;
+			width: 16px;
+			line-height: 16px;
+			text-align: center;
+			font-size: 12px;
+			color:#7F7F7F;
+			background-color: #fff;
+			border: 1px solid #eee;
+			z-index: 3;
+			cursor: pointer;
+		}
+		&:hover{
+			
+			.name{
+				position: absolute;
+				top: 65px;
+				left: 5px;
+				z-index: 4;
+				line-height: 16px;
+				background-color: #3F3F3F;
+				color:#fff;
+				overflow:visible;
+	            text-overflow:inherit;
+	            white-space:normal;
+				height: auto;
+			}
+		}
+		&.add{
+			font-size:55px;
+			color: #cacaca;
+			line-height: 81px;
+			text-align: center;
+			cursor: pointer;
+			
+			&:after{
+				content: "点击上传文件";
+				position: absolute;
+				bottom:17px;
+				left: 50%;
+				margin-left: -3em;
+				font-size: 12px;
+				line-height: 12px;
+			}
+			&:hover{
+				color:#707070;
+				background-color: #e5e5e5;
+			}
+		}
+	}
+	&.table{
+		
+		li{
+			background-color: #fff;
+			display: table;
+			width: 100%;
+			box-shadow: none;
+			margin: 0;
+			float: none;
+			height: 35px;
+			padding: 0;
+			line-height: 35px;
+			border-bottom: 1px solid darken(@bg-color,5%);
+			> div, >i{
+			   display: table-cell;
+			   height:35px;
+			   line-height: 35px;
+			   font-size: 12px;
+			   position: inherit;
+			   background:none;
+			   padding: 0;
+			   float: none;
+			
+			}
+			.info{
+				width: 40px;
+				padding:0px;
+				position: relative;
+				i{
+					width:inherit;
+					height:inherit;
+					line-height:inherit;
+					font-size: 22px;
+					display: block;
+					float: left;
+					position: absolute;
+					top:0;
+					left:0;
+				}
+				img{
+					width: 21px;
+					height: 21px;
+					display: block;
+					position: absolute;
+					top:7px;
+					left:9px;
+				}
+			}
+			.name{
+				width: 41%;
+				line-height: 35px;
+				text-align: left;
+				position: absolute;
+			}
+			.user{
+				width: 100px;
+				text-align: left;
+				float: none
+			}
+			.time{
+				width: 140px;
+				text-align: left;
+				float: none
+			}
+			.mb{
+				width: 60px;
+				text-align: left;
+				float: none
+			}
+			.view{
+				position:inherit;
+				width: 30px;
+				text-align: left;
+				float: none;
+				font-size: 16px;
+				border: none;
+				top: 0;
+				left: 0;
+			}
+			.delete{
+				position:inherit;
+				width: 30px;
+				text-align: left;
+				float: none;
+				font-size: 16px;
+				border: none;
+				top: 0;
+				left: 0;
+			}
+			&:nth-child(even){
+				background-color:@bg-color;
+			}
+			&:hover{
+				.name{
+					display: block;
+					width: 41%;
+					position:absolute;
+					height: 35px;
+					float: none;
+					background: none;
+					top:inherit;
+					left:inherit;
+			        //display:table-cell;
+					line-height: 35px;
+					color: #307BC9;
+					overflow: hidden;
+	                text-overflow: ellipsis;
+	                white-space: nowrap;
+				}
+			}
+			&.add{
+			   font-size:19px;
+			   line-height:33px;
+			   background-color:@bg-color;
+			   border-bottom: none;
+				&:after{
+					bottom:0px;
+					margin-left: 17px;
+					line-height: 35px;
+				}
+				&:hover{
+					background-color: darken(@bg-color,3%);
+					color: darken(@bg-color,40%);
+				}
+		}
+			
+		}
+	}
+}

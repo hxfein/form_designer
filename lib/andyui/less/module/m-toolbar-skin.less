@@ -1,0 +1,30 @@
+@import "../base/deploy";/*基础配置*/
+@import "../attribute/attribute";
+.m-toolbar {
+	&.sm{#toolbar > .toolbar-size(@sm)}
+	&.md{#toolbar > .toolbar-size(@md)}
+	&.lg{#toolbar > .toolbar-size(@lg)}
+	&.xs{#toolbar > .toolbar-size(@xs)}
+	&.xl{#toolbar > .toolbar-size(@xl)}
+	
+//	&.primary{#toolbar > .toolbar-color(gral , lighten(@color-base-primary , 40%) , @color-base-primary)}
+//	&.info{#toolbar > .toolbar-color(gral , lighten(@color-base-info , 40%) , @color-base-info)}
+//	&.success{#toolbar > .toolbar-color(gral , lighten(@color-base-success , 40%) , @color-base-success)}
+//	&.warning{#toolbar > .toolbar-color(gral , lighten(@color-base-warning , 40%) , @color-base-warning)}
+//	&.danger{#toolbar > .toolbar-color(gral , lighten(@color-base-danger , 40%) , @color-base-danger)}
+//	&.light{#toolbar > .toolbar-color(gral , lighten(@color-base-light , 40%) , @color-base-light)}
+//	&.black{#toolbar > .toolbar-color(gral , lighten(@color-base-black , 40%) , @color-base-black)}
+//	&.dark{#toolbar > .toolbar-color(gral , lighten(@color-base-dark , 40%) , @color-base-dark)}
+	
+	&.primary{#toolbar > .toolbar-color(solid , @color-base-primary , @color-base-primary)}
+	&.info{#toolbar > .toolbar-color(solid , @color-base-info , @color-base-info)}
+	&.success{#toolbar > .toolbar-color(solid , @color-base-success , @color-base-success)}
+	&.warning{#toolbar > .toolbar-color(solid , @color-base-warning , @color-base-warning)}
+	&.danger{#toolbar > .toolbar-color(solid , @color-base-danger , @color-base-danger)}
+	&.light{#toolbar > .toolbar-color(solid , @color-base-light , @color-base-light)}
+	&.black{#toolbar > .toolbar-color(solid , @color-base-black , @color-base-black)}
+	&.dark{#toolbar > .toolbar-color(solid , @color-base-dark , @color-base-dark)}
+}
+
+
+

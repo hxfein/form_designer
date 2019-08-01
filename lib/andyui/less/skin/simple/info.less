@@ -1,0 +1,41 @@
+@import "../../base/deploy";
+@import "../framework-deploy";
+@import "../workbench";
+@import "../componentstyle";
+//风格定义 
+@head-h:40px;//框架头部高度
+@primary-color:#3D83B8;//皮肤主题颜色
+@primary-active-color:#00BFFF;//皮肤主题高亮用于桌面主题
+@left-active-color:#FFFF00;//左侧导航高亮颜色
+@left-color:@primary-color;//左侧导航颜色
+@logo-color:#0097d9;//LOGO颜色
+@head-color:@primary-color;//头部背景颜色
+@head-active-color:#00BFFF;//头部导航高亮颜色
+@bg-color:#F5F9FC;//整体背景颜色
+@foot-color:#E4EBEB;//底部颜色
+@body-color:#3D83B8;//全局默认文字颜色
+@workbench-color:#ffffff;//工作台面样式
+body{
+	background-color:@bg-color;
+	color:@body-color;
+	.g-framework{
+	  #framework > .simple-color(@head-h , @primary-color , @left-active-color, @logo-color , @head-color , @head-active-color , @bg-color , @foot-color);
+	}
+}
+
+
+//页面头部的内侧阴影
+.pageshadow{
+	box-shadow:5px 5px 5px darken(@bg-color,5%) inset;
+	-moz-box-shadow:5px 5px 5px darken(@bg-color,5%) inset;/*firefox*/ 
+	-webkit-box-shadow:5px 5px 5px darken(@bg-color,5%) inset;/*webkit*/ 
+	animation: fadeIn 0.5s;
+}
+//整合表单组件样式,包含了各种表单组件以及各种附加色彩修饰
+#componentstyle(@primary-active-color, @bg-color, @head-active-color, @primary-color);
+//个人工作台
+.workbench{
+	#workbench >.workbench(@bg-color, @workbench-color, @body-color); 
+	//样式选择
+	//#workbench >.workbench(style02);
+}

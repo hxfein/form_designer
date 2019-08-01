@@ -1,0 +1,344 @@
+@import "deploy";
+@import "../attribute/attribute";
+.g-layout { 
+	position: relative; 
+	clear: both; 
+	display: block; 
+	overflow: hidden;
+	.layout-head, .layout-left, .layout-right, .layout-center, .layout-foot{
+		position: absolute;
+		clear: both;
+		display: block;
+		z-index: 1;
+		overflow-x: hidden;
+		overflow-y: auto;
+		box-sizing: border-box; 
+	}
+	.layout-head{
+		top: 0; 
+		z-index: 4!important; 
+		overflow: visible;
+	}
+	.layout-left{
+		left: 0; 
+		z-index: 3!important; 
+		overflow: visible!important;
+	}
+	.layout-right{
+		right: 0; 
+		z-index: 1;
+	}
+	.layout-foot{
+		bottom: 0;
+		z-index: 4!important;
+		overflow: hidden;
+	}
+	.layout-center{
+		z-index: 2!important;
+	}
+}
+.g-box{ width: 100%}
+.g-box1000, .container-1000 { 
+	width: 1000px;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+.g-box1200, .container-1200 {
+	width: 1200px;
+	margin: 0 auto;
+	display: block;
+	position: relative;
+}
+//删格系统
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { 
+	float: left;
+	position: relative;
+	display: block;
+}
+.col-1 {
+	width: 8.33333333%;
+}
+.col-3 {
+	width: 25%;
+}
+.col-2 {
+	width: 16.66666667%;
+}
+.col-4 {
+	width: 33.33333333%;
+}
+.col-5 {
+	width: 41.66666667%;
+}
+.col-6 {
+	width: 50%;
+}
+.col-7 {
+	width: 58.33333333%;
+}
+.col-8 {
+	width: 66.66666667%;
+}
+.col-9 {
+	width: 75%;
+}
+.col-10 { 
+	width: 83.33333333%;
+}
+.col-11 {
+	width: 91.66666667%;
+}
+.col-12 {
+	width: 100%;
+}
+//布局base
+.g-h-max {
+	position: relative;
+	overflow-y: hidden;
+}
+.g-w-max {
+	float: left;
+}
+.g-w-auto {
+	float: left;
+	overflow: auto;
+}
+.g-h-auto{
+	overflow: auto;
+}
+
+//颜伟 优化下下面的布局，完全看不懂了
+
+.g-fit { 
+	position: relative;
+	overflow: hidden;
+}
+.g-max {
+	position: relative;
+}
+.g-box {
+	margin: 0 0 10px;
+	zoom: 1;
+}
+.g-box:after {
+	display: block;
+	clear: both;
+	visibility: hidden/*;height:0*/;
+	overflow: hidden;
+	content: "\20";
+}
+.g-lr-l {
+	position: relative;
+	float: left;
+	width: 190px;
+	margin-right: -190px;
+	z-index: 999;
+}
+.g-lr-r {
+	float: right;
+	width: 100%;
+}
+.g-lr-rc {
+	margin-left: 200px;
+}
+.g-rl-l {
+	position: relative;
+	float: right;
+	width: 230px;
+	margin-left: -230px
+}
+.g-rl-lc {
+	float: left;
+	width: 100%;
+	;
+}
+.g-rl-r {
+	margin-right: 240px;
+}
+.g-box1000 {
+	width: 1000px;
+	margin: 0 auto;
+}
+.g-box1200 {
+	width: 1200px;
+	margin: 0 auto;
+}
+.g-box1000-r {
+	float: right;
+	width: 230px;
+}
+.g-box1000-l {
+	float: left;
+	width: 760px;
+}
+.g-lcr-ca-r, .g-lcr-ca-l {
+	position: relative;
+	float: left;
+	width: 200px;
+	margin: 0 -200px 0 0;
+	z-index: 3
+}
+.g-lcr-ca-r {
+	float: right;
+	width: 230px;
+	margin: 0 0 0 -230px;
+	z-index: 3
+}
+.g-lcr-ca-c {
+	float: left;
+	width: 100%;
+}
+.g-lcr-ca-cc {
+	margin: 0 230px 0 200px;
+}
+.g-lcr-la-c, .g-lcr-la-r {
+	position: relative;
+	float: right;
+	width: 190px;
+	z-index: 3
+}
+.g-lcr-la-c {
+	width: 230px;
+	margin-left: 10px;
+	z-index: 3
+}
+.g-lcr-la-l {
+	float: left;
+	width: 100%;
+	margin-right: -430px;
+}
+.g-lcr-la-l-c {
+	margin-right: 440px;
+}
+.g-lcr-la-c, .g-lcr-la-l {
+	position: relative;
+	float: left;
+	width: 230px;
+}
+.g-lcr-la-c {
+	width: 190px;
+	margin-right: 10px;
+}
+.g-lcr-la-r {
+	float: right;
+	width: 100%;
+	margin-left: -430px;
+}
+.g-lcr-la-rc {
+	margin-left: 440px;
+}
+.g-head, .g-side, .g-mian, .g-foot {
+	position: absolute;
+	left: 0;
+}
+.g-head, .g-foot {
+	width: 100%;
+}
+.g-side, .g-mian {
+	top: 100px;
+	bottom: 50px;
+	_height: 100%;
+	overflow: visible;
+	z-index: 1;
+}
+.g-head {
+	top: 0;
+	height: 100px;
+	background: #2F3344;
+}
+.g-side {
+	width: 300px;
+	_overflow: visible;
+	_top: 0;
+	_left: 0;
+	_margin-left: 0;
+	background: #2F3344;
+}
+.g-mian {
+	_position: relative;
+	left: 300px;
+	right: 0;
+	_top: 0;
+	_left: 0;
+	_margin-left: 0;
+	z-index: 1;
+}
+.g-foot {
+	bottom: 0;
+	height: 50px;
+}
+.g-layout {
+	position: relative;
+	clear: both;
+	display: block;
+	overflow: hidden
+}
+.g-layout .layout-head, .g-layout .layout-left, .g-layout .layout-right, .g-layout .layout-center, .g-layout .layout-foot {
+	position: absolute;
+	clear: both;
+	display: block;
+	z-index: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.g-layout .layout-head {
+	top: 0;
+	z-index: 4!important;
+	overflow: visible;
+	font-family:@fontfamily;
+}
+.g-layout .layout-left {
+	left: 0;
+	z-index: 3!important;
+	overflow: visible!important;
+}
+.g-layout .layout-right {
+	right: 0;
+	z-index: 1;
+}
+.g-layout .layout-foot {
+	bottom: 0;
+	z-index: 4!important;
+	overflow: hidden
+}
+.g-layout .layout-center {
+	z-index: 2 !important;
+}
+.g-login {
+}
+.g-login-bg-top {
+	background: url(../img/loginbg03.jpg) center top
+}
+.g-login-bg-buttom {
+	background: #EEF2F5
+}
+.g-login-box {
+	position: absolute;
+	z-index: 5;
+	box-shadow: 0 0 8px rgba(0,0,0,.5);
+	width: 300px;
+	height: 163px;
+	left: 50%;
+	top: 50%;
+	margin-top: -100px;
+	margin-left: -150px;
+	font-family:@fontfamily;
+}
+.g-login-logo {
+	position: absolute;
+	z-index: 5;
+	left: 50%;
+	top: 50%;
+	margin-top: -200px;
+	margin-left: -85px
+}
+.g-login-banner {
+	width: 500px;
+	height: 300px;
+	display: none
+}
+.g-login-title {
+	font-weight: 200;
+	color: #aaa
+}

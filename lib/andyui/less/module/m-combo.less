@@ -1,0 +1,185 @@
+@import "../base/deploy";//基础配置
+.g-combo, .m-combo {
+	position:relative; 
+	*position:static;
+	display:list-item;
+	//z-index: 1;
+	//width: 100%;
+	//display: block;
+	//新结构
+	.u-group{
+		width: 100%;
+		.iconfont{
+			cursor: pointer;
+		}
+		.item-l.u-input{
+			border-right-width:0px;
+		}
+		.item.iconfont{
+			min-width: 20px;
+			text-align: center;
+			padding: 0px;
+		}
+	}
+	.combo {
+		display: none;
+		float: left;
+		position: absolute;
+		left: 0;
+		z-index: 9999;
+		margin-top: -1px;
+		width: 100%;
+		//以下为兼容老结构保留，在新结构下，统一使用了m-menu的样式
+        }
+	&.u-input{
+		padding-left:0;
+		padding-right:0;
+		text-indent: 0;
+	}
+	.u-input {
+		cursor: pointer;
+		//width: 100%;
+		&:hover{
+			background-image:none;
+		}
+		&:focus{
+			box-shadow:none;
+			background-image:none!important;
+		}
+		&.disabled{
+		    background-image:none!important;
+		    cursor:not-allowed;
+		    moz-user-select: -moz-none;
+		    -moz-user-select: none;
+		    -o-user-select:none;
+		    -khtml-user-select:none;
+		    -webkit-user-select:none;
+		    -ms-user-select:none;
+		    user-select:none;
+		}
+	}
+	//老结构
+	.u-down-menu, .menu{
+		li{
+			display: block;
+			float: left;
+			width: 100%;
+			a{
+				display: block;
+				float: left;
+				width: 100%;
+				padding: 3px 0px 3px 0px;
+				text-indent: 8px;
+				font-weight: 400;
+				line-height: 23px;
+				//color: #333;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+				.iconfont{
+					font-size: 12px;
+				}
+				&:hover{
+				}
+			}
+			&.active{
+				a{
+					&:hover{
+					}	
+				}
+			}
+			&.first{
+				border-top: none;
+				a{
+					padding: 4px 0px 3px 0px;
+				}
+			}
+		}
+		}
+	.u-up-menu {
+		display: block;
+		float: left;
+		width: 100%;
+		//.border-box;
+	}
+	.u-down-menu, .but-tree{
+		border-radius: 3px;
+		//background: #FFF;
+		border-style: solid;
+		border-width: 1px;
+		//border-color: #ccc;
+		z-index: 1000;
+	}
+	.but-tree{ min-width: 100%; overflow: auto}
+	.u-button-choice{
+		.iconfont{
+			position: absolute;
+			right: 3px;
+			*top:0px;
+		}
+	}
+	.u-overflow-y{
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	.u-nd{//combo箭头
+		font-size:16px;
+		position: absolute;
+		top: 2px;
+		right: 3px;
+		line-height: 28px;
+		cursor: pointer;
+	}
+	// 基础皮肤
+	#m-combo > .combo-skin(@color-base-white);
+}
+//.g-combo{
+//		.u-input {
+//			width: 100%
+//		}
+//}
+
+
+//历史样式，新版本废除
+//.combo-box .u-menu {
+//	border-radius: 0 0 3px 3px;
+//	border-top: 0
+//}
+//.u-combo {
+//	padding-right: 28px;
+//    *padding-right:24px;
+//	position: relative;
+//}
+//.u-combo button {
+//	height: 28px;
+//	_height: 21px;
+//	border: 1px solid #D7D7D7;
+//	_border: 1px solid #419BC0;
+//	position: absolute;
+//	right: 7px;
+//	top: 0px;
+//    *top:1px;
+//	z-index: 3;
+//	background: rgb(255,255,255);
+//	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 5%, rgba(246,246,246,1) 18%);
+//	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 5%, rgba(246,246,246,1) 18%);
+//	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 5%, rgba(246,246,246,1) 18%);
+//    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6', GradientType=0 );
+//	border-radius: 0 3px 3px 0;
+//	padding: 0 8px;
+//    *padding:0 2px;
+//}
+//.u-combo button:hover {
+//	background: rgb(255,255,255);
+//	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 16%); 
+//	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 16%);
+//	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 16%);
+//    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9', GradientType=0 );
+//}
+//.u-combo button:active {
+//	background: rgb(221,221,221);
+//	background: -moz-linear-gradient(top, rgba(221,221,221,1) 0%, rgba(246,246,246,1) 18%);
+//	background: -webkit-linear-gradient(top, rgba(221,221,221,1) 0%, rgba(246,246,246,1) 18%);
+//	background: linear-gradient(to bottom, rgba(221,221,221,1) 0%, rgba(246,246,246,1) 18%);
+//    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#f6f6f6', GradientType=0 );
+//}

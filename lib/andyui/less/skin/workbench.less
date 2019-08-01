@@ -1,0 +1,498 @@
+@import "../base/deploy";//配置
+//个人桌面
+// 函数集
+
+
+.workbenchpanel-color(@color, @titlecolor, @bg-color) when (lightness(@color) >= 75%){
+	//border:1px solid darken(@bg-color,3%)!important;
+	.panel-head{
+		background-color: @color;
+		.u-group.more{
+			.u-btn.more{
+				border:none;
+				background:none;
+			}
+		}
+	}
+}
+.workbenchpanel-color(@color, @titlecolor, @bg-color) when (lightness(@color) = 100%){
+	/*对于颜色面板头部的局部控制*/
+	//border:1px solid darken(@bg-color,3%)!important;
+	.panel-head{
+		background-color: @color;
+		.title{
+			color: @titlecolor!important;
+		}
+		.u-btn.more{ 
+			border:none;
+			background:none;
+		}
+		
+	}
+}
+.workbenchpanel-color(@color, @titlecolor, @bg-color) when (lightness(@color) < 75%){
+	//border:1px solid darken(@bg-color,3%)!important;
+	.panel-head{
+		background-color: @color;
+		.title{
+			//color:#fff;
+		}
+		.u-group.more{
+			.u-btn.more{
+				border:none;
+				background:none;
+			}
+		}
+	}
+}
+
+#workbench{
+	//基础样式结构
+	.workbench(@bg-color, @panel-color, @primary-active-color){
+	//头部的背景
+	#workBenchhead{
+		background-image: url("@{imgurl}bg/bg01.jpg");
+		background-repeat: repeat-x;
+		background-position: left top;
+		background-size: 100% 120px;
+	}
+	    //常用应用背景
+	    .appbg{
+	width: 100%;
+	border-collapse: collapse;
+	.appbg-l{
+		padding: 10px 0;
+		width: 250px;
+		.count{
+			clear: both;
+			height: 83px;
+			padding: 8px 10px 0 10px;
+			.clear-bg-white;
+			border-radius: 8px;
+			//.radius;
+		}
+		.data, .title{ 
+			text-align: center;
+			display: block;
+			clear: both;
+		}
+		.data{
+			font-size: 60px;
+			height: 60px;
+			line-height: 60px;
+			font-weight: 100;
+		}
+		.title{
+			font-size: 13px;
+		}
+		
+	}
+	.appbg-c{
+	    background-position: bottom left;
+		}
+	.appbg-r{
+		width: 36px;
+		}
+	}
+	    //面板名称编辑状态，以及桌面面板的样式
+	    .m-panel{
+		//box-shadow: 0 5px 8px 0 darken(@bg-color,8%);
+		#panel > .panel-color(solid , @panel-color, @primary-active-color , darken(@bg-color,8%), 3px);
+		background: none;
+		.panel-head{
+			border-bottom: none;
+			.title{
+		     //color: #fff!important; 
+			}
+			input.u-input{
+				border:none;
+				width: 8em;
+				text-indent: 10px;
+				#input > .u-input-skin(lighten(@panel-color,6%));
+			}
+			//这个样式需要配合
+			&.linestyle{
+				border-bottom: 1px solid @primary-active-color;
+				.title{
+					position: relative;
+					small{
+						font-size: 12px!important;
+						opacity: 0.5;
+					}
+					&:after{
+						content: '';
+						width: 8px;
+						height: 8px;
+						position: absolute;
+						left: 38px;
+						bottom: -12px;
+						border-right: 1px solid @primary-active-color;
+						border-bottom: 1px solid @primary-active-color;
+						background-color: @panel-color;
+						transform:rotate(45deg);
+						-ms-transform:rotate(45deg); /* Internet Explorer */
+						-moz-transform:rotate(45deg); /* Firefox */
+						-webkit-transform:rotate(45deg); /* Safari 和 Chrome */
+						-o-transform:rotate(45deg); /* Opera */
+					}
+				}
+			}
+		}
+		.panel-body{
+			background: #fff;
+			.m-table{
+				border-color: darken(@bg-color,3%)!important;
+				thead{
+					th{
+						background-color: #fff;
+					}
+				}
+				tbody{
+					td{
+						border-color: darken(@bg-color,3%);
+					}
+				}
+			}
+			.m-table-form{
+				.table-head{
+					padding-top: 6px;
+					padding-bottom: 6px;
+					padding-top: 5px\9;
+					padding-bottom: 5px\9;
+				}
+			}
+		}
+		//由于色值选择导致面板配色方案的变化
+		.workbenchpanel-color(@panel-color, @primary-active-color, @bg-color);
+		&.bigpanel{
+			height: 100%;
+			box-sizing: border-box;
+			position: relative;
+			border:1px solid darken(@panel-color,10%);
+			box-shadow:none;
+			.panel-head{
+				//height: 60px;
+				//line-height: 60px;
+				display: block;
+				clear: both;
+				position: absolute;
+				width: 100%;
+				top:0;
+				left:0;
+				border-bottom:1px solid darken(@panel-color,10%);
+				.title{
+					//padding: 10px 0 0 5px;
+					span{
+						display: none;
+						font-size: 12px;
+						line-height: 12px;
+						padding-top: 3px;
+						height: 12px;
+						color:fade(@primary-active-color,50%);
+					}
+				}
+				a{
+					height: 18px;
+					line-height: 18px;
+					font-size: 12px;
+					padding: 0 4px;
+					margin:15px 10px 10px 10px;
+					background-color:#FC8500;
+					border-radius: 5px;
+					color:#fff;
+					box-shadow: 2px 2px 2px darken(@panel-color,8%);
+					&:active{
+						box-shadow: 0 2px 2px darken(@panel-color,8%) inset;
+					}
+					&:hover{
+						color:#fff;
+					}
+				}
+			}
+			.panel-body{
+				height: 100%;
+				box-sizing: border-box;
+				padding: 55px 10px 10px 10px;
+			}
+		}
+	}
+		
+	    //tabs
+	    .m-tabs.big{
+			box-sizing: border-box;
+			height: 100%;
+			width: 100%!important;
+			box-shadow:none;
+			.m-tabs-header{
+				width: 100%;
+				position: absolute;
+				top:0;
+				left: 0;
+				height: 45px;
+				box-sizing: border-box;
+				z-index: 1000;
+				background-color: @panel-color;
+				.m-tabs-nav{
+					//padding: 8px 8px 0 8px;
+					box-sizing: border-box;
+					height: 45px;
+					li{
+						height: 45px;
+						padding: 7px;
+						box-sizing: border-box;
+						//margin-right: 5px;
+						a{
+							height: 31px;
+							line-height: 31px;
+							//padding-top: 10px!important;
+							font-size: 16px;
+							box-sizing: border-box;
+							text-align: center;
+							background: none;
+							border:none;
+							position: relative;
+							span{
+								display:block;
+								height: 6px;
+								width: 6px;
+								position: absolute;
+								font-size: 0;
+								overflow: hidden;
+								right: 5px;
+								top:5px;
+								z-index: 3;
+								border-radius: 50%;
+								background-color: #FF0004;
+							}
+						}
+						&.active{
+							a{
+								background:@primary-active-color; 
+								//background: -moz-linear-gradient(top,  #ffffff 0%, #e3eef9 66%);
+								//background: -webkit-linear-gradient(top,  #ffffff 0%,#e3eef9 66%); 
+								//background: linear-gradient(to bottom,  #ffffff 0%, #e3eef9 66%);
+								//box-shadow: 0 -3px 3px darken(@panel-color,10%);
+								//border:none;
+								border-radius: 5px;
+								color:#fff; 
+							}
+						}
+					}
+				}
+			}
+			.m-tabs-content{
+				border:none;
+				position: relative;
+				height: 100%!important;
+				width: 100%!important;
+				box-sizing: border-box;
+				padding: 45px 0 0 0;
+				.item{
+					width: 100%!important;
+					box-sizing: border-box;
+					top:45px!important;
+				}
+			}
+		}
+		.m-tabs.min{
+			.m-tabs-header{
+				background: #fff;
+				
+				.m-tabs-nav{
+					width: 100%;
+					display: table;
+					li{
+						float: none;
+						display: table-cell;
+						box-sizing: border-box;
+						a{
+							padding: 0 8px!important;
+							border:none;
+							background: none;
+							width: 100%;
+							box-sizing: border-box;
+							text-align: center;
+							height: 30px;
+						}
+						&.active{
+							a{
+								border-bottom:2px solid @primary-active-color;
+								color:@primary-active-color;
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		//右侧边线
+		.b-l{
+			box-sizing: border-box;
+			border-left: @panel-color 1px solid;
+		}
+		
+	    //通讯录
+	    .addbook{
+		background-color: @primary-active-color;
+		color: #fff;
+		.f-b-t,.f-b-b{
+			border-color:darken(@primary-active-color,4%)!important;
+		}
+		.u-group{
+			#u-group > .group-skin(solid, @primary-active-color);
+		}
+		.panel-head{
+			height: 30px;
+			background-color:@primary-active-color!important;
+			border-bottom: 1px solid darken(@primary-active-color,8%)!important;
+			
+			.title, .item{
+				height: 20px;
+				line-height: 20px;
+				font-size: 14px;
+				padding-top:5px;
+				padding-bottom:5px;
+				color:#fff!important;
+				
+			}
+			&.active, &.active:hover{
+				background-color:lighten(@primary-active-color,4%)!important;
+				border-bottom-color:lighten(@primary-active-color,8%)!important;
+				.title, .item{
+					color:#fff!important;
+				}
+			}
+		}
+	}
+	    //工具栏拖动面板
+	    .dragbox{
+		#panel > .panel-color(solid ,lighten(@bg-color,3%), @primary-active-color , darken(@bg-color,8%) , 3px);
+		.m-tabs{
+			#tabs-box > .tabs-style(solid, half, #fff, @primary-active-color, #fff, 30px, 0px)
+		}
+	//拖动面板的图标按钮样式
+		.m-list.icon{
+			#m-list > .icon-list(56px , 10px , #fff , @primary-active-color);
+			li{
+				a{
+					//.radius;
+				}
+			}
+		}
+		}
+		
+		//媒体识别的动态padding值
+.f-p-box{
+	padding: 10px;
+}
+/* 窗口宽度<960,设计宽度=768 */
+@media screen and (max-width:1367px){
+   .f-p-box{
+	   padding: 5px;
+	}   
+}
+
+	}
+	//选择的附加皮肤
+	.workbench(style02){
+		
+		#workBenchhead{
+			background:none;
+			background-color:lighten(@bg-color,8%);
+			padding: 0 5%;
+			box-shadow: 0 -4px 12px darken(@bg-color,8%) inset;
+			
+			.m-list.icon{
+			   li{
+				   a{
+					  background: none!important;
+					   i.iconfont{
+						   color:desaturate(@primary-active-color,10%);
+					   }
+				 }
+			   }
+		    }
+			
+		}
+	}
+}
+//移动时图标的样式
+.moving {
+	text-align: center;
+	display: block;
+	width: 60px;
+	padding: 6px;
+	a{
+		zoom: 1;
+		display: block;
+		width: 60px;
+		height: 60px;
+		line-height: 60px;
+		text-align: center;
+		margin: 0px;
+		border-radius: 8px;
+		//.radius;
+		background-color: #fff!important;
+		border:1px dashed #0044FF!important;
+		.iconfont{
+			font-size: 32px;
+			color: #0044FF;
+		}
+	}
+	p{
+		display: block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		text-align: center;
+		width: 100%;
+		line-height: 21px;
+		padding-bottom: 0;
+		color: #0044FF;
+	}
+}	
+.topFrame.locked .lockicon {
+	display: none;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	border-radius: 8px;
+	margin-top: -30px;
+	margin-left: -30px;
+	text-align: center;
+	box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.2);
+	background-color: rgba(226, 226, 226, 0.61);
+	top: 50%;
+	left: 50%;
+}
+.temporaryFrame .f-bb {
+	height: 100%;
+	background-color: #E2E2E2;
+}
+.topFrame.locked .lockicon {
+	display: none;
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	border-radius: 8px;
+	margin-top: -30px;
+	margin-left: -30px;
+	text-align: center;
+	box-shadow: -2px 1px 2px rgba(0, 0, 0, 0.2);
+	background-color: rgba(226, 226, 226, 0.61);
+	top: 50%;
+	left: 50%;
+}
+.topFrame.locked.show .lockicon {
+	display: block;
+}
+.topFrame.locked .lockicon i {
+	color: #959595;
+	font-size: 30px;
+	line-height: 60px;
+}
+
+
+
+
+

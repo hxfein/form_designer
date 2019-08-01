@@ -1,0 +1,23 @@
+@import "../base/deploy";
+.m-topmenu {
+	//纯色
+	    &.info{#menu > .topmenu-skin(solid, @color-base-info)}
+		&.primary{#menu > .topmenu-skin(solid, @color-base-primary)}
+		&.success{#menu > .topmenu-skin(solid, @color-base-success)}
+		&.warning{#menu > .topmenu-skin(solid, @color-base-warning)}
+		&.danger{#menu > .topmenu-skin(solid, @color-base-danger)}
+		&.dark{#menu > .topmenu-skin(solid, @color-base-dark)}
+		&.black{#menu > .topmenu-skin(solid, @color-base-black)}
+		&.light{#menu > .topmenu-skin(solid, @color-base-light)}
+	//默认样式
+	&.default{
+		&.info{#menu > .topmenu-skin(default, #fff, @color-base-info)}
+		&.primary{#menu > .topmenu-skin(default, #fff, @color-base-primary)}
+		&.success{#menu > .topmenu-skin(default, #fff, @color-base-success)}
+		&.warning{#menu > .topmenu-skin(default, #fff, @color-base-warning)}
+		&.danger{#menu > .topmenu-skin(default, #fff, @color-base-danger)}
+		&.dark{#menu > .topmenu-skin(default, #fff, @color-base-dark)}
+		&.black{#menu > .topmenu-skin(default, #fff, @color-base-black)}
+		&.light{#menu > .topmenu-skin(default, #fff, @color-base-light)}
+	}
+}

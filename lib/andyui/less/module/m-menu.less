@@ -1,0 +1,95 @@
+@import "../base/deploy";//基础配置
+.m-menu, .u-down-menu {
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 3px 3px 3px 3px;
+	box-sizing: border-box;
+    &.group{
+		li, >li, ul>li{
+			a{
+				border-bottom:none;
+				border-radius: 0 0 0 0;
+			}
+		}
+	}
+	li, >li, ul>li{
+		position: relative;
+		width: 100%;
+		padding: 0 !important;
+		margin: 0 !important;
+		a{
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			display: block;
+			height: 30px; 
+			line-height: 30px;
+			padding: 0 10px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			position: relative;
+			&:hover{
+			}
+			
+		}
+		&.first, &:first-child{
+			 >a{
+				border-radius: 3px 3px 0 0;
+			}
+		}
+		&.last, &:last-child{
+			 >a{
+				border-bottom-width:0px;
+				border-radius: 0 0 3px 3px;
+			}
+		}
+		&.line{
+				border-top-width: 1px;
+			    border-top-style: solid;
+			}
+		
+		ul{
+			position: absolute;
+			left:100%;
+			top:0;
+			z-index: 200;
+			//box-shadow: 3px 3px 3px #ddd;
+		}
+		.iconfont{
+			font-size: 12px;
+			
+		}
+	}
+	&.combo{
+		border: 1px solid #eee;
+		li, >li, ul>li{
+			a{
+				font-size: 12px;
+				height: 24px;
+				line-height: 24px;
+			}
+		}
+	}
+	&.items{
+		background: none!important;
+		border:none;
+		padding: 4px 8px 4px 4px;
+		li{
+			margin: 0 0 4px 0!important;
+			position:static!important; 
+			a{
+				border-radius: 3px!important;
+				border-style: solid;
+				border-width: 1px;
+			}
+			&.active{
+			a{
+				border-left-width: 2px;
+				}
+			}
+		}
+		
+	}
+	//默认皮肤
+	#menu > .menu-skin(@color-base-white);
+}

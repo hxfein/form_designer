@@ -1,0 +1,66 @@
+@import "../base/deploy";
+
+.u-progress{
+	width: 100%;
+	//border-style: solid;
+	//border-width: 1px!important;
+	font-size: 0!important;
+	box-shadow: 0 2px 2px rgba(0,0,0,0.1) inset;
+	.bar{
+		float: left;
+		width: 0%;
+		font-size: 0!important;
+		background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+		background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+		background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+		
+		-webkit-animation: progress-bar-stripes 2s linear infinite;
+		-o-animation: progress-bar-stripes 2s linear infinite;
+		animation: progress-bar-stripes 2s linear infinite;
+		-webkit-background-size: 40px 40px;
+		background-size: 40px 40px;
+		}
+	#progress > .progress-style(6px, #eaeaea, #58E000);
+	&.xs{
+		#progress > .progress-style(2px, #eaeaea, #58E000);
+	}
+	&.sm{
+		#progress > .progress-style(4px, #eaeaea, #58E000);
+	}
+	&.md{
+		#progress > .progress-style(8px, #eaeaea, #58E000);
+	}
+	&.lg{
+		#progress > .progress-style(12px, #eaeaea, #58E000);
+	}
+}
+
+@-webkit-keyframes progress-bar-stripes {
+	from {
+		background-position: 40px 0
+	}
+
+	to {
+		background-position: 0 0
+	}
+}
+
+@-o-keyframes progress-bar-stripes {
+	from {
+		background-position: 40px 0
+	}
+
+	to {
+		background-position: 0 0
+	}
+}
+
+@keyframes progress-bar-stripes {
+	from {
+		background-position: 40px 0
+	}
+
+	to {
+		background-position: 0 0
+	}
+}

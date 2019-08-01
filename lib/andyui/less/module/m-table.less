@@ -1,0 +1,266 @@
+@import "../base/deploy";
+
+.m-table { 
+	margin: 0; 
+	line-height: 18px; 
+	border-style:solid; 
+	border-width:1px;
+	border-spacing: 0px; 
+	border-collapse: collapse; 
+	table-layout: fixed; 
+	word-break: break-all;
+	table {
+		width: 100%;
+		table-layout: fixed;
+	}
+	th,td{
+		padding: 5px 8px;
+		border-style:solid; 
+	    border-width:1px;
+		p,.u-input-span{
+			padding:0 8px 0px 8px;
+		}
+	}
+	th{
+		font-weight: bold;
+	}
+	td{
+		
+	}
+	
+	thead{
+		th{
+			//color: #000;
+			font-weight: normal;
+			&:last-child{
+				width: auto;
+			}
+			.m-icon{
+				display: inline;
+			}
+		}
+		tr{
+			th{
+				&:first-child{
+					border-left: 0;
+				}
+				&:last-child {
+					border-right: 0;
+				}
+			}
+		}
+		
+	}
+	tbody{
+		//color:@textcolor;
+		td{
+			&:last-child{
+				width: auto;
+			}
+		}
+		tr{
+			&:nth-child(2n) {
+				td{
+					//background:@sncolor;
+				}
+			}
+			&:first-child{
+				td {
+					border-top: 0;
+				}
+			}
+			&:last-child {
+				td {
+					border-bottom: 0;
+				}
+			}
+			td{
+				&:first-child {
+					border-left: 0;
+				}
+				&:last-child {
+					border-right: 0;
+				}
+			}
+			&:hover td, &.current:hover td, &.current:hover .lockColumnBg td{
+				cursor: pointer;
+				transition: background-color 0.4s, color 0.4s ,border-color 0.4s;
+				-moz-transition: background-color 0.4s, color 0.4s ,border-color 0.4s;	//Firefox 4 
+				-webkit-transition: background-color 0.4s, color 0.4s ,border-color 0.4s;	// Safari 和 Chrome
+				-o-transition: background-color 0.4s, color 0.4s ,border-color 0.4s;	// Opera 
+			}
+			&.current, &.current .lockColumnBg, &.current:hover td{
+				cursor: pointer;
+			}
+		}
+		//多行复杂表格
+		&.complex{
+			border-top-width:13px;
+			border-top-style: solid;
+			border-bottom-width:2px;
+			border-bottom-style: solid;
+			
+		}
+	}
+	&.mini, &.min{
+		th,td{
+			padding: 2px 6px !important;
+			border-style:solid; 
+	        border-width:1px;
+		}
+	}
+	
+	&.sm{
+		th,td{
+			padding: 3px 6px !important;
+			border-style:solid; 
+	        border-width:1px; 
+		}
+	}
+	.lockColumnBg{
+		//background:@sncolor;
+	}
+	//表格内的列表
+	.m-table-form{
+		td{
+			border-style:solid; 
+	        border-width:1px;
+			padding: 0px!important;
+			.u-formitem {
+				padding: 5px
+			}
+		}
+	}
+	
+	//样式类型
+	&.bootstrap, &.style01{
+		border-top:none;
+		border-left:none;
+		border-right:none;
+		border-bottom:none;
+		tbody td, thead th{
+			border-left: none;
+			border-right: none;
+			//padding: 10px 8px;
+		}
+		thead th{
+			//background-color: #fff;
+			border-top: none;
+		}
+		tbody td{
+			padding: 9px 8px;
+		}
+			
+	}
+	.table-text, .text{
+		display: block;
+		float: left;
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	//树状列表
+	&.m-treegrid {
+		tr{
+			td{
+				&.node { background-repeat: no-repeat }
+				&.group { background-repeat: no-repeat; cursor: pointer }
+				&.group.open { background-repeat: no-repeat; cursor: pointer }
+				&.n1 { padding-left: 44px; background-position: 8px 50%}
+				&.n2 { padding-left: 61px; background-position: 25px 50%}
+				&.n3 { padding-left: 81px; background-position: 45px 50%}
+				&.n4 { padding-left: 103px; background-position: 66px 50%}
+				&.n5 { padding-left: 124px; background-position: 87px 50%}
+				&.n6 { padding-left: 146px; background-position: 109px 50%}
+				&.n7 { padding-left: 164px; background-position: 128px 50%}
+				&.n8 { padding-left: 184px; background-position: 147px 50%}
+				&.n9 { padding-left: 206px; background-position: 168px 50%}
+				&.n10 { padding-left: 229px; background-position: 190px 50%}
+			}
+		}
+	}
+	#table > .table(solid, lighten(@color-base-light, 10%), #FFEBB5);
+	
+	&.edit{
+        border-collapse: collapse;
+		border-spacing:0;
+		tr{
+			td,th{
+				position: relative;
+				.tredit, .coledit{
+					position: absolute;
+					display:block;
+					.iconfont{
+						font-size:16px;
+						color:#fff;
+						background-color:#73bf2d;
+						padding: 1px 1px 0 1px;
+						cursor: pointer;
+						&:nth-child(2){
+							background-color:#d4d4d4;
+							margin-left: -4px;
+						}
+					}
+				}
+				.tredit{
+					right: -36px;
+					top:0;
+				}
+				.coledit{
+					right: 0;
+					top:-17px;
+				}
+			}
+			&.active{
+				td{
+					border-bottom-width:2px;
+					border-bottom-color: #059DFF;
+				}
+			}
+			.colactive{
+				border-left: 2px solid #36de1c
+			}
+		}	
+		td{
+			
+			height: 30px;
+			border:1px solid #ccc;
+			&.active{//选中
+				border:1px solid #77ce96;
+				background-color: #AEF1B7;
+				box-shadow: 0 0 8px #77ce96;
+			}
+			&.disabled{//不可编辑
+				border:1px solid #ccc;
+				background-color: #eee;
+			}
+			&.lay{//可放置
+				border:1px solid #FC963D;
+				background-color:#FDE2BA;
+			}
+			&.laybled{//不可放置
+				border:1px solid #D75153;
+				background-color: #F8BBBC;
+			}
+		}
+		th{
+		  position:relative;
+		}
+		.closetable{
+			font-size:18px;
+			position: absolute;
+			top:-23px;
+			left: -5px;
+			cursor: pointer;
+			z-index: 999;
+			&:hover{
+				color:#FF0004
+			}
+		}
+	}
+	
+}
+

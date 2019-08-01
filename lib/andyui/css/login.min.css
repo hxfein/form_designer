@@ -1,0 +1,25 @@
+/*!copyright: www.andyui.com
+ developer:andy
+ date:Sun Oct 08 2017 01:25:02
+
+version:1.1.9
+修复内容：
+1.IE7下表单溢出问题；
+2.IE7工具栏居右结构下,按钮消失；
+3.IE7下表格边框颜色不随主题变化；
+4.优化工作面板中考情数据展示的字段行距问题；
+新增内容：
+4.新增公文表单样式；
+
+version:1.1.10 2017-6-30
+修复内容：
+1.修复面板头部鼠标点击时产生变色问题；
+2.优化了手风琴点击触碰效果，以及修复FIT属性；
+3.主框架更改了右侧用户信息关闭的方式；
+4.修复按钮组在数据列表中无法居中的问题；
+新增内容：
+5.API新增各式弹出表单，以及大数据清洗表单；
+6.scrolltabs组件增加；
+7.tabs初始化自定渲染默认true；
+8.修复框架部分功能；
+*/.sm,.xs{padding:0 2px;border-width:1px}.de,.lg,.md,.sm,.xl,.xs{border-width:1px}.login-templateA .g-login-box .layout-head .f-info-c img,.login-templateA .login-box .layout-head .f-info-c img,.login-templateB .g-login-box .layout-head .f-info-c img,.login-templateB .login-box .layout-head .f-info-c img,.login-templateC .login-box .layout-head .f-info-c img{display:inline}body,html{width:100%;height:100%;overflow:hidden!important}.clear-bg-black{background-image:url(../img/bg-bg.png);background-repeat:repeat}.clear-bg-white{background-image:url(../img/scrub.png);background-repeat:repeat}.radius{position:relative;z-index:1;behavior:url(/andyui/htc/ie-css3.htc)}.xs{height:20px;line-height:20px;font-size:12px;font-size:11px}.sm,.sm .iconfont,.xs .iconfont{font-size:12px}.sm{height:24px;line-height:24px}.de,.de .iconfont{font-size:14px}.de{height:28px;line-height:28px;padding:0 3px}.md,.md .iconfont{font-size:17px}.md{height:33px;line-height:33px;padding:0 4px}.lg,.lg .iconfont{font-size:25px}.lg{height:43px;line-height:43px;padding:0 5px}.xl,.xl .iconfont{font-size:30px}.xl{height:50px;line-height:50px;padding:0 6px}.login-templateA .g-login,.login-templateA .login-bg{background:url(../img/login/templateA/login3_bg01.png) center 50% repeat-x #d6dee0}.login-templateA .g-login .top,.login-templateA .login-bg .top{background:url(../img/login/templateA/login3_bg02.jpg) center bottom no-repeat}.login-templateA .g-login .f-clear,.login-templateA .login-bg .f-clear{height:195px}.login-templateA .g-login-box,.login-templateA .login-box{height:414px;width:941px;margin-left:-470px;margin-top:-147px;box-shadow:none;position:absolute;z-index:5;left:50%;top:50%;background:url(../img/login/templateA/login3_boxbg.png) center top no-repeat}.login-templateA .g-login-box .layout-head,.login-templateA .login-box .layout-head{height:100px}.login-templateA .g-login-box .layout-foot,.login-templateA .login-box .layout-foot{height:145px}.login-templateA .g-login-box .layout-foot p,.login-templateA .login-box .layout-foot p{padding:0;margin:0;line-height:18px;font-size:12px;color:#7E7E7E}.login-templateA .g-login-box .layout-left,.login-templateA .g-login-box .layout-right,.login-templateA .login-box .layout-left,.login-templateA .login-box .layout-right{width:320px}.login-templateB{background:url(../img/login/templateB/big-bg.jpg) center 50%}.login-templateB .g-login .f-clear,.login-templateB .login-bg .f-clear{height:600px;background:url(../img/login/templateB/m-bg.png) center 50% repeat-x}.login-templateB .g-login .f-clear .left-bg,.login-templateB .login-bg .f-clear .left-bg{height:100%;width:50%;background:url(../img/login/templateB/left-bg.png) top right no-repeat}.login-templateB .g-login-box,.login-templateB .login-box{height:414px;width:400px;margin-left:-100px;margin-top:-200px;box-shadow:none;position:absolute;z-index:5;left:50%;top:50%}.login-templateB .g-login-box .layout-head,.login-templateB .login-box .layout-head{height:100px}.login-templateB .g-login-box .layout-foot,.login-templateB .login-box .layout-foot{height:145px}.login-templateB .g-login-box .layout-foot p,.login-templateB .login-box .layout-foot p{padding:0;margin:0;line-height:18px;font-size:12px;color:#7E7E7E}.login-templateB .g-login-box .layout-left,.login-templateB .g-login-box .layout-right,.login-templateB .login-box .layout-left,.login-templateB .login-box .layout-right{width:40px}.login-templateC .login-box{height:400px;width:440px;margin-left:-220px;margin-top:-200px;box-shadow:0 0 10px rgba(0,0,0,.2);border-radius:5px;position:absolute;z-index:5;left:50%;top:50%;background:rgba(255,255,255,.14)}.login-templateC .login-box .m-table-form td .u-group .item{background-color:#fff}.login-templateC .login-box .m-table-form td .u-checkbox{color:#fff}.login-templateC .login-box .layout-head{padding-top:15px}.login-templateC .login-box .layout-foot{height:65px}.login-templateC .login-box .layout-foot p{padding:0;margin:0;line-height:22px;font-size:12px;color:#fff}.login-templateC .login-box .layout-left,.login-templateC .login-box .layout-right{width:40px}

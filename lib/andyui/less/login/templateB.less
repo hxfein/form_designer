@@ -1,0 +1,46 @@
+@import "../base/deploy";//基础配置
+.login-templateB{
+	background:url("@{imgurl}login/templateB/big-bg.jpg") center 50%;
+	.g-login,.login-bg{
+		.f-clear{
+			height: 600px;
+			background:url("@{imgurl}login/templateB/m-bg.png") center 50% repeat-x;
+			.left-bg{
+				height: 100%;
+				width: 50%;
+				background:url("@{imgurl}login/templateB/left-bg.png") top right no-repeat;
+			}
+		}
+	}
+	.g-login-box, .login-box{
+		height:414px;
+		width:400px;
+		margin-left:-100px;
+		margin-top:-200px;
+		box-shadow:none;
+		position: absolute;
+		z-index: 5;
+		left: 50%;
+		top: 50%;
+		.layout-head{
+			height: 100px;
+			.f-info-c{
+				img{display: inline}
+			}
+		}
+		.layout-foot{
+			height: 145px;
+			p{
+				padding: 0;
+				margin: 0;
+				line-height: 18px;
+				font-size: 12px;
+				color:#7E7E7E;
+			}
+		}
+		.layout-left, .layout-right{
+			width:40px;
+		}
+	}
+}
+

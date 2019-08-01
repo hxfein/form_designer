@@ -1,0 +1,54 @@
+@import "../base/deploy";
+.u-group,.u-l-select {
+	&.primary{
+		#u-group > .group-skin(solid, @color-base-primary);
+	}
+	&.info{
+		#u-group > .group-skin(solid, @color-base-info);
+	}
+	&.success{
+		#u-group > .group-skin(solid, @color-base-success);
+	}
+	&.warning{
+		#u-group > .group-skin(solid, @color-base-warning);
+	}
+	&.danger{
+		#u-group > .group-skin(solid, @color-base-danger);
+	}
+	&.light{
+		#u-group > .group-skin(solid, @color-base-light); 
+	}
+	&.black{
+		#u-group > .group-skin(solid, @color-base-black);
+	}
+	&.dark{
+		#u-group > .group-skin(solid, @color-base-dark);
+	}
+	&.texture{
+		#u-group > .group-skin(gral, @color-base-white);
+		&.primary{
+			#u-group > .group-skin(gral, lighten(@color-base-primary,45%));
+		}
+		&.info{
+			#u-group > .group-skin(gral, lighten(@color-base-info,45%));
+		}
+		&.success{
+			#u-group > .group-skin(gral, lighten(@color-base-success,45%));
+		}
+		&.warning{
+			#u-group > .group-skin(gral, lighten(@color-base-warning,45%));
+		}
+		&.danger{
+			#u-group > .group-skin(gral, lighten(@color-base-danger,45%));
+		}
+		&.light{
+			#u-group > .group-skin(gral, lighten(@color-base-light,20%));
+		}
+		&.black{
+			#u-group > .group-skin(gral, lighten(@color-base-black,45%));
+		}
+		&.dark{
+			#u-group > .group-skin(gral, lighten(@color-base-dark,45%));
+		}
+	}
+}
