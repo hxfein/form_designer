@@ -1,6 +1,6 @@
 # form_designer
 一套简单的自定义表单的前端基础代码，支持简单的表单定义，具有端好的扩展性。
-![blockchain](https://github.com/hxfein/form_designer/blob/master/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png "效果图")
+![效果图](https://raw.githubusercontent.com/hxfein/form_designer/master/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png "效果图")
 # 如何使用
 ## 1.构建表单结构
 该自定义表单工具与excel类似，可以先通过添加/删除行列、合并/折分单元格构建基本的表单框架结构。在表单未编辑的情况下，可以直接从excel中复制结构粘贴到表单设计器中。
