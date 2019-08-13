@@ -1,5 +1,5 @@
 # form_designer
-一套简单的自定义表单的前端基础代码，支持简单的表单定义，具有端好的扩展性。
+一套简单的自定义表单的前端基础代码，支持简单的表单定义，具有较好的扩展性。
 ![效果图](https://raw.githubusercontent.com/hxfein/form_designer/master/%E6%95%88%E6%9E%9C%E6%88%AA%E5%9B%BE.png "效果图")
 # 如何使用
 ## 1.构建表单结构
